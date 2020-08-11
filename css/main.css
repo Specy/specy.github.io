@@ -1,0 +1,8 @@
+*{
+    margin: 0;
+}
+#canvas{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
