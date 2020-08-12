@@ -43,7 +43,7 @@ body {
 .bottomButtons {
     position: fixed;
     width: 100px;
-    right: 0.5em;
+    right: 40px;
     top: 0.2em;
     padding: 0.2em;
     z-index: 100;
@@ -157,4 +157,8 @@ text-align: justify;;
     .row {
         flex-direction: column;
     }
+    .bottomButtons {
+        right: 0.5em;
+    }
+
 }

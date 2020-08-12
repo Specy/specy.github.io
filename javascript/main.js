@@ -168,10 +168,9 @@ function handleFrame() {
         drawCanvas(nextGen, ctx, "#DA0363")
         matrix = nextGen
     }
-
-    requestAnimationFrame(handleFrame)
+        window.requestAnimationFrame(handleFrame)   
 }
-requestAnimationFrame(handleFrame);
+
 let palette = {
     0: ['#283049', '#404B69', '#278EA5'],
     1: ['#4b5d67', '#1f4068', '#30475e', '#3282b8'],
@@ -213,3 +212,4 @@ function toggleUtils(){
     let utils = document.getElementById("utils")
     utils.classList.toggle("hide")
 }
+window.requestAnimationFrame(handleFrame)
