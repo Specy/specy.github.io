@@ -1,0 +1,80 @@
+{
+    "dir": "ltr",
+    "lang": "en",
+    "name": "Specy's portfolio",
+    "short_name": "Specy's portfolio",
+    "scope": "/",
+    "display": "standalone",
+    "start_url": "https://specy-wot.github.io/",
+    "background_color": "#1f4068",
+    "theme_color": "#DA0363",
+    "description": "Specy's portfolio website",
+    "orientation": "any",
+    "url": "https://specy-wot.github.io/",
+    "icons": [{
+        "src": "/favicons/android-icon-192x192-dunplab-manifest-11912.png",
+        "type": "image/png",
+        "sizes": "192x192"
+    },
+    {
+        "src": "/favicons/apple-icon-180x180-dunplab-manifest-11912.png",
+        "type": "image/png",
+        "sizes": "180x180"
+    },
+    {
+        "src": "/favicons/apple-icon-152x152-dunplab-manifest-11912.png",
+        "type": "image/png",
+        "sizes": "152x152"
+    },
+    {
+        "src": "/favicons/apple-icon-144x144-dunplab-manifest-11912.png",
+        "type": "image/png",
+        "sizes": "144x144"
+    },
+    {
+        "src": "/favicons/apple-icon-120x120-dunplab-manifest-11912.png",
+        "type": "image/png",
+        "sizes": "120x120"
+    },
+    {
+        "src": "/favicons/apple-icon-114x114-dunplab-manifest-11912.png",
+        "type": "image/png",
+        "sizes": "114x114"
+    },
+    {
+        "src": "/favicons/favicon-96x96-dunplab-manifest-11912.png",
+        "type": "image/png",
+        "sizes": "96x96"
+    },
+    {
+        "src": "/favicons/apple-icon-76x76-dunplab-manifest-11912.png",
+        "type": "image/png",
+        "sizes": "76x76"
+    },
+    {
+        "src": "/favicons/apple-icon-72x72-dunplab-manifest-11912.png",
+        "type": "image/png",
+        "sizes": "72x72"
+    },
+    {
+        "src": "/favicons/apple-icon-60x60-dunplab-manifest-11912.png",
+        "type": "image/png",
+        "sizes": "60x60"
+    },
+    {
+        "src": "/favicons/apple-icon-57x57-dunplab-manifest-11912.png",
+        "type": "image/png",
+        "sizes": "57x57"
+    },
+    {
+        "src": "/favicons/favicon-32x32-dunplab-manifest-11912.png",
+        "type": "image/png",
+        "sizes": "32x32"
+    },
+    {
+        "src": "/favicons/favicon-16x16-dunplab-manifest-11912.png",
+        "type": "image/png",
+        "sizes": "16x16"
+    }
+]
+}

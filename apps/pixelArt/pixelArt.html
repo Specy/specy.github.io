@@ -14,14 +14,14 @@
                 <input type=button id="generate" class="btn btn-primary" value="Generate" onclick="generate()">
                 <input type=button id="saveImage" class="btn btn-success" value="Save Image" onclick="saveImage()">
         </div>
-        <div class="foreground" style="width:70%;">
+        <div class="foreground drawingTable">
             <div id="canvasParent" style="border:solid 2px #375a7f; margin:2em; display: none;">
                 <h2>Right click on the image and save </h2>
                 <canvas id="canvas">
 
                 </canvas>
             </div>
-            <table style="background-color: white;" id=canvasTable></table>
+            <table id=canvasTable></table>
         </div>
     </center>
     <div align=center class="foreground colorChoser">

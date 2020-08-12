@@ -6,7 +6,13 @@
   margin: 0.5em;
   padding: 0.3em;
 }
-
+#canvasTable{
+  background-color: white;
+  background-image: url();
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 .top {
   width: 70%;
   text-align: left;
@@ -14,7 +20,9 @@
   display: flex;
   justify-content: space-between;
 }
-
+.drawingTable{
+  width:70%
+}
 .colorChoser {
   width: 10%;
   position: fixed;
@@ -51,7 +59,9 @@ td {
   input {
     max-width: 60px;
   }
-
+  .drawingTable{
+    width:95%
+  }
   #saveImage,
   #generate,
   #btnAddColor{
