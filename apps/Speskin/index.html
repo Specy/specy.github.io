@@ -1,0 +1,585 @@
+<html>
+
+<head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<link rel="stylesheet" href="./style.css">
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-149483953-2"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-149483953-2');
+	</script>
+
+	</script>
+	<title>Gota.io Skin Viewer</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="loadAnim.css">
+	<link rel="shortcut icon"
+		href="https://cdn.discordapp.com/attachments/272340130860236802/680163592426881035/IMG_20200220_222126__01__01.jpg" />
+	<style>
+		body {
+			margin: 0 auto;
+			width: 110vw;
+		}
+
+		.button {
+
+			border-radius: 6px;
+			font-family: Arial;
+			color: #000000;
+			font-size: 20px;
+			background: #aeaeae;
+			padding: 4px 8px 4px 8px;
+			font-weight: bold;
+			border: solid #000000 2px;
+		}
+
+		.topnav {
+			background: #191919;
+			color: #242424;
+			text-align: center;
+			text-decoration: none;
+			font-family: Arial;
+			font-weight: bold;
+			font-size: 25px;
+			border: black 2px solid;
+			margin: 0;
+
+		}
+
+		.topnav a {
+
+			background: #bbbbbb;
+			color: #242424;
+			text-align: center;
+			padding: 0% 6% 0% 6%;
+			text-decoration: none;
+			font-family: Arial;
+			font-weight: bold;
+			font-size: 25px;
+			border: black 2px solid;
+
+		}
+
+		.topnav a:hover {
+			background-color: #242424;
+			color: #bbbbbb;
+		}
+
+
+		.alignright {
+			position: fixed;
+			top: 37%;
+			right: 1%;
+		}
+
+
+		.alignleft {
+			position: fixed;
+			left: 0%;
+		}
+
+
+
+		.listText {
+			border-radius: 5px;
+			font-family: Arial;
+			color: #000000;
+			font-size: 21px;
+			background: #aeaeae;
+			font-weight: bold;
+			border: solid #000000 2px;
+
+		}
+
+
+		.inTab {
+			border-radius: 2px;
+			font-family: Arial;
+			color: #000000;
+			font-size: 15px;
+			background: #aeaeae;
+			padding: 4px 8px 4px 8px;
+			font-weight: bold;
+			border: solid #000000 2px;
+		}
+
+
+		.inTabObscured {
+			border-radius: 2px;
+			font-family: Arial;
+			color: #383838;
+			font-size: 15px;
+			background: #d6d6d6;
+			padding: 4px 8px 4px 8px;
+			font-weight: bold;
+			border: solid #000000 2px;
+		}
+
+		.img {
+			border-radius: 50%;
+			margin: 0px;
+			width: 200px;
+			height: 200px;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		}
+
+		.imgName {
+			text-align: center;
+			position: relative;
+			margin-top: -30px;
+			font-size: 22px;
+			font-family: Arial;
+			font-weight: bold;
+			background: rgba(25, 25, 25, 0.72);
+			color: #fff;
+			visibility: hidden;
+		}
+
+		.img:hover .imgName {
+			visibility: visible;
+		}
+
+		.bigSkin {
+			border: 3px solid #bbbbbb;
+			height: 512px;
+			width: 512px;
+			background-color: #323232;
+			top: 50%;
+			margin-left: -256px;
+			margin-top: -256px;
+			left: 50%;
+			position: fixed;
+			display: none;
+		}
+
+		.closeButton {
+
+			border-radius: 5px;
+			font-size: 25;
+			font-family: Arial;
+			font-weight: bold;
+			color: red;
+			position: absolute;
+			border: 3px solid red;
+		}
+
+		.gameImg {
+			max-width: 100%;
+			max-height: 100%;
+			padding: 25px;
+		}
+
+		.wrapperGameImg {
+			width: 50%;
+			float: left;
+			height: 100%;
+			position: relative;
+			cursor: pointer;
+		}
+	</style>
+</head>
+
+<body bgcolor=#191919>
+	<div id=blur>
+		<div class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<a href="index.html" style="border:solid 3px #375A7F; border-radius: 5px; margin-right: 2%;"
+				class="nav-link"> Skin Viewer </a>
+			<a href="SkinChecker.html" style="border:solid 3px #00bc8c; border-radius: 5px; margin-right: 2%;"
+				class="nav-link"> Image Checker </a>
+			<a href="FavSkins.html" style="border:solid 3px #00bc8c; border-radius: 5px; margin-right: 2%;"
+				class="nav-link"> Favourite Skins </a>
+			<a href="SkinGallery.html" style="border:solid 3px #00bc8c; border-radius: 5px; margin-right: 2%;"
+				class="nav-link">Skin Gallery </a><br>
+			<a href="OldInterface.html" style="border:solid 3px #00bc8c; border-radius: 5px; margin-right: 2%;"
+				class="nav-link">Old Interface </a>
+			<a href="https://greasyfork.org/en/scripts/393675-gota-io-skin-manager"
+				style="border:solid 3px #ccac00; border-radius: 5px; margin-right: 2%;" class="nav-link">Skin extension
+			</a>
+		</div>
+
+		<font face="Arial Black" size=3 color=#bbbbbb>
+
+			<div style="border-bottom:solid #333333 3px; margin-bottom:10px; ">
+				<p style="position:absolute; float:left; margin:1%;  font-size:20px;">Game selection</p>
+				<div style="width:25%; display: table; position:absolute; height:15%; margin-left:1px; margin-top: 2%;">
+					<div class=wrapperGameImg>
+						<img id="gotaImg" src="gotaImg.png" class="gameImg" onclick="gotaClicked()">
+					</div>
+					<div class=wrapperGameImg>
+						<img id="glub" src="glubImg.png" style="margin-top:-5%;" class="gameImg"
+							onclick="glubClicked()">
+					</div>
+				</div>
+				<h1 align=center>
+					<input type="text" style="width:20%; margin:auto; display: inline; margin-top:2%;"
+						class="form-control" placeholder="skin name" id="skin">
+					<input type="button" value="Start" id="check" class="btn btn-primary" style="margin-top:1%;"
+						onclick="check()">
+					<input type="button" value="Single skin" id="singleSkin" class="btn btn-secondary"
+						style="margin-top:1%;" onclick="singleSkin()">
+					<br>
+					<input type="button" value="Random Skin" onclick="RandomSkin()" class="btn btn-secondary">
+					<input type="button" value="Search by name" id="check" class="btn btn-secondary"
+						onclick="searchByName()">
+					<input type="button" value="Reset" onclick="reset()" class="btn btn-danger">
+					<br>
+					<font style="font-size:15px;">
+						The random skin might not work
+					</font> <br>
+					<font style="font-size:25px;">
+						Select Skin type: | <input type="checkbox" id="skinX" class="btn btn-secondary"
+							onclick="unCheckXskin()"> skinX | or | <input type="checkbox" id="Xskin" class="button"
+							onclick="unCheckskinX()"> Xskin |<br>
+					</font>
+
+				</h1>
+
+			</div>
+
+			<div id=loadingAnimation style="position:absolute; left:47%; margin-top:20px;">
+				<span style="font-size:20px; margin-left: -12%;">Loading...</span>
+				<div style="margin-top:40px;">
+					<span class="loader">
+						<span class="loader-inner"></span>
+					</span>
+				</div>
+			</div>
+
+			<div id="skinGallery"
+				style="background-color:#454545; left: 0; right: 0; margin-left: auto; margin-right: auto;border-radius: 10px; padding:10px; position:absolute; margin:auto; width:1070px; visibility: hidden;">
+
+
+			</div>
+	</div>
+	<div class="alignright" style="right:-30px;">
+		<textarea type="text" size="15" class="form-control" id="ListSkin" onClick="this.select();"
+			style=" border-radius:5px; width:80%; margin:3px; margin-bottom: -8%;" rows="4"
+			disabled>  You can save the skins name by pressing "+" button.</textarea> <br>
+		<input type="button" value="Copy list" class="btn btn-secondary" style="width:80%; margin:3px;"
+			onclick="Copy()"> <br>
+		<input type="button" value="GO to the top" onclick="topFunction()" style="width:80%; margin:3px;"
+			class="btn btn-secondary">
+	</div>
+	<div id=bigSkinDiv class=bigSkin>
+		<input class="btn btn-secondary"
+			style="font-size:25; background:white; color:red;position:absolute;border: 3px solid red;" type=button
+			id="closeBigSkin" onclick="hideBigSkin()" value="X">
+		<img id="img2">
+	</div>
+
+
+	<script type="text/javascript">
+		var count = 0;
+		var whichCheck = true; //true is skinX, false is Xskin
+		var linkozzo = "https://gamedata.gota.io/skins/"
+		var skin = document.getElementById("skin").value;
+		var png = ".png"
+		var linkFin = "";
+		var skinFin = "";
+		var skinlist = "";
+		var firstElement = true;
+		var seriesArray = [];
+		var favSkins = [];
+		var gameSelection = 0; //0=gota, 1=glub
+		var allSkins = []
+		window.onload = function () {
+			var result = null;
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.open("GET", "https://cors-anywhere.herokuapp.com/https://gamedata.gota.io/skinData.php", false);
+			xmlhttp.send();
+			if (xmlhttp.status == 200) {
+				result = xmlhttp.responseText;
+				$("#loadingAnimation").fadeOut("fast")
+			}
+			try {
+				allSkins = JSON.parse(JSON.parse(xmlhttp.responseText).names);
+			} catch {
+				$("#loadingAnimation").fadeOut("fast")
+			}
+
+			var result = null;
+			xmlhttp = new XMLHttpRequest();
+			xmlhttp.open("GET", "SkinSerieses.txt", false);
+			xmlhttp.send();
+			if (xmlhttp.status == 200) {
+				result = xmlhttp.responseText;
+			}
+			seriesArray = result.split('\n');
+			const queryString = window.location.search;
+			const urlParams = new URLSearchParams(queryString)
+			if (urlParams.has("skin")) {
+				document.getElementById("skin").value = urlParams.get("skin");
+				check();
+			}
+			document.getElementById("skinX").checked = true;
+		};
+
+		if (localStorage.getItem("favSkins") != null) {
+			favSkins = localStorage.getItem("favSkins").split(",")
+		}
+
+		gotaClicked() //preselects gota
+		function gotaClicked() {
+			document.getElementById("glub").style.filter = "grayscale(100%)"
+			document.getElementById("gotaImg").style.filter = "none"
+			linkozzo = "https://gamedata.gota.io/skins/"
+			gameSelection = 0;
+			reset()
+		}
+
+		function glubClicked() {
+			document.getElementById("gotaImg").style.filter = "grayscale(100%)"
+			document.getElementById("glub").style.filter = "none"
+			linkozzo = "http://glub.tonohost.com/skins/"
+			gameSelection = 1;
+			reset()
+		}
+
+		function RandomSkin() {
+			var seriesArrayLength = seriesArray.length;
+			var RanNum = Math.floor(Math.random() * seriesArrayLength);
+			var RanSkin = seriesArray[RanNum];
+			if (RanSkin.charAt(0) == "#") {
+				unCheckskinX();
+			} else {
+				unCheckXskin();
+			}
+			document.getElementById("skin").value = RanSkin.replace("#", "");
+			check();
+		}
+
+
+		document.onkeydown = function (evt) {
+			evt = evt || window.event;
+			if (event.keyCode === 27) {
+				event.preventDefault();
+				hideBigSkin();
+			}
+		};
+
+		function copyImage(imgName) {
+			var dummy = document.createElement("input");
+			document.body.appendChild(dummy);
+			dummy.setAttribute("id", "dummy_id");
+			document.getElementById("dummy_id").value = imgName;
+			dummy.select();
+			document.execCommand("copy");
+			document.body.removeChild(dummy);
+		}
+
+		function unCheckXskin() {
+			document.getElementById("Xskin").checked = false;
+			document.getElementById("skinX").checked = true;
+			whichCheck = true;
+		}
+
+		function unCheckskinX() {
+			document.getElementById("skinX").checked = false;
+			document.getElementById("Xskin").checked = true;
+			whichCheck = false;
+		}
+
+
+
+		function skinList(skinN) {
+			if (skinN !== "") {
+				if (firstElement) {
+					skinlist = (skinlist + skinN);;
+					document.getElementById("ListSkin").value = skinlist;
+					firstElement = false;
+				} else {
+					skinlist = (skinlist + "," + skinN);;
+					document.getElementById("ListSkin").value = skinlist;
+				}
+			}
+			favSkins.push(skinN)
+			localStorage.setItem("favSkins", favSkins)
+
+			event.stopPropagation();
+		}
+
+		function Copy() {
+
+			var copyText = document.getElementById("ListSkin");
+			copyText.select();
+			document.execCommand("copy");
+			alert("Skin list copied!");
+
+		}
+
+
+
+
+		function check() {
+			reset();
+			skin = document.getElementById("skin").value;
+			skin = skin.toLowerCase();
+			loadSkins();
+			document.getElementById("skinGallery").style.visibility = "visible";
+
+		}
+
+		window.onscroll = function (ev) {
+			if (hasPressedGallery) {
+				if ((window.innerHeight + window.scrollY + 100) >= document.body.scrollHeight) {
+
+					loadSkins();
+				}
+			}
+		};
+
+		function reset() {
+			var tableRef = document.getElementById('skinGallery');
+			tableRef.innerHTML = ""
+			stopLoadingCount = 0;
+			count = 0;
+		}
+
+		function singleSkin() {
+			var singleSkinName = document.getElementById("skin").value;
+			document.getElementById("img2").src = (linkozzo + singleSkinName + ".png");
+			document.getElementById("bigSkinDiv").style.display = "inline";
+
+			document.getElementById("blur").style.filter = "blur(4px)";
+
+		}
+
+		async function loadSkins() {
+			hasPressedGallery = true;
+
+			for (var i = 0; i < 20; i++) {
+				if (stopLoadingCount < 10) {
+					var table = document.getElementById("skinGallery");
+					table.innerHTML += createSkinLink()
+				}
+			}
+
+		}
+
+		function searchByName() {
+			var name = document.getElementById("skin").value
+			var searchedSkins = []
+			if (name.length == 0) {
+				return
+			}
+			var table = document.getElementById("skinGallery");
+			table.style.visibility = "visible"
+			for (var i = 0; i < allSkins.length; i++) {
+				if (allSkins[i].includes(name)) {
+					searchedSkins.push(allSkins[i])
+				}
+			}
+			for (var i = 0; i < searchedSkins.length; i++) {
+				var link = linkozzo + searchedSkins[i] + ".png"
+				var nameForBigSkin = ('"' + link + '"')
+				var nameForSkinFin = ('"' + searchedSkins[i] + '"');
+				var result = '<div style="float:left; width:200px; height: 200px; margin:5px;">' +
+					'<div class=img onclick=bigSkin(' + nameForBigSkin +
+					') style="background-size: contain; z-index:1; border-radius:50%; background-image:url(' + link + ')">' +
+					'<input type=button value="+" style=" position:relative; z-index:1000; top:170px; height:30px; vertical-align: middle; font-weight:bold; color:blue; border: solid 2px blue; border-radius:20%;" onclick=skinList(' +
+					nameForSkinFin + ')>' +
+					'<p class=imgName >' + searchedSkins[i] + '</p>' +
+					'</div>' +
+					'</div>'
+				table.innerHTML += result
+			}
+		}
+
+		function bigSkin(bigSkinName) {
+			document.getElementById("img2").src = bigSkinName;
+			document.getElementById("bigSkinDiv").style.display = "inline";
+
+			document.getElementById("blur").style.filter = "blur(4px)";
+		}
+
+		function hideBigSkin() {
+			document.getElementById("bigSkinDiv").style.display = "none";
+			document.getElementById("blur").style.filter = "blur(0px)";
+		}
+
+		function topFunction() {
+			document.body.scrollTop = 0;
+			document.documentElement.scrollTop = 0;
+		}
+
+		function createSkinLink() {
+			count++;
+			if (gameSelection == 0) {
+				skinExists = false;
+				if (whichCheck) {
+					linkFin = (linkozzo + skin + count + png);
+					skinFin = (skin + count);
+				} else {
+					linkFin = (linkozzo + count + skin + png);
+					skinFin = (count + skin);
+				}
+				for (var i = 0; i < allSkins.length; i++) {
+					if (skinFin == allSkins[i]) {
+						skinExists = true;
+						break;
+					}
+				}
+				skiName = skinFin;
+				skiName = skiName.replace(" ", "%20");
+				skiName = skiName.replace(" ", "%20");
+				skiName = skiName.replace(" ", "%20");
+				skiName = skiName.replace(" ", "%20");
+
+				linkFin = (linkozzo + skiName + ".png");
+				var nameForBigSkin = ('"' + linkFin + '"');
+				var nameForSkinFin = ('"' + skinFin + '"');
+				if (skinExists) { //'<div style="position:absolute; float:left;">  </div><div class=img onclick=bigSkin('+nameForBigSkin+') style="background-size: contain;   border-radius:50%; background-image:url('+linkFin+');"><p class=imgName >'+skinFin+"</p></div>");
+					var result = '<div style="float:left; width:200px; height: 200px; margin:5px;">' +
+						'<div class=img onclick=bigSkin(' + nameForBigSkin +
+						') style="background-size: contain; z-index:1; border-radius:50%; background-image:url(' + linkFin +
+						')">' +
+						'<input type=button value="+" style=" position:relative; z-index:1000; top:170px; height:30px; vertical-align: middle; font-weight:bold; color:blue; border: solid 2px blue; border-radius:20%;" onclick=skinList(' +
+						nameForSkinFin + ')>' +
+						'<p class=imgName >' + skinFin + '</p>' +
+						'</div>' +
+						'</div>'
+					stopLoadingCount = 1;
+					return result;
+				} else {
+					stopLoadingCount++;
+					return ""
+				}
+			} else {
+				if (whichCheck) {
+					linkFin = (linkozzo + skin + count + png);
+					skinFin = (skin + count);
+				} else {
+					linkFin = (linkozzo + count + skin + png);
+					skinFin = (count + skin);
+				}
+				skiName = skinFin;
+				skiName = skiName.replace(" ", "%20");
+				skiName = skiName.replace(" ", "%20");
+				skiName = skiName.replace(" ", "%20");
+				skiName = skiName.replace(" ", "%20");
+				linkFin = (linkozzo + skiName + ".png");
+				var nameForBigSkin = ('"' + linkFin + '"');
+				var nameForSkinFin = ('"' + skinFin + '"');
+				var result = '<div style="float:left; width:200px; height: 200px; margin:5px;">' +
+					'<div class=img onclick=bigSkin(' + nameForBigSkin +
+					') style="background-size: contain; z-index:1; border-radius:50%; background-image:url(' + linkFin +
+					')">' +
+					'<input type=button value="+" style=" position:relative; visibility:hidden; top:170px; height:30px; vertical-align: middle; font-weight:bold; color:blue; border: solid 2px blue; border-radius:20%;" onclick=skinList(' +
+					nameForSkinFin + ')>' +
+					'<p class=imgName >' + skinFin + '</p>' +
+					'</div>' +
+					'</div>'
+				stopLoadingCount = 1;
+				return result;
+			}
+		}
+	</script>
+</body>
+
+</html>

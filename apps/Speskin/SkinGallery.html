@@ -1,0 +1,348 @@
+<html>
+<head>
+  <link rel = "stylesheet" href = "./style.css">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-149483953-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-149483953-2');
+</script>
+<title>Gota.io Skin Viewer</title>
+	<link rel="shortcut icon" href="https://cdn.discordapp.com/attachments/272340130860236802/680163592426881035/IMG_20200220_222126__01__01.jpg"/>
+
+<style>
+html { overflow-y: scroll; }
+body{ margin:0 auto; }
+
+
+
+.img {
+  border-radius: 50%;
+  margin:auto;
+  margin-right:10px;
+  margin-bottom:10px;
+  width:200px;
+  height:200px;
+ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+ }
+ 
+  .imgName {
+   text-align: center;
+   position: relative;
+	 font-size:22px;
+   font-family:Arial;
+   font-weight:bold;
+   background: rgba(25, 25, 25, 0.72);
+   color: #fff;
+   visibility: hidden;
+   }
+
+   .img:hover .imgName {
+      visibility: visible;
+   }
+
+.button {
+
+	border-radius: 6px;
+	font-family: Arial;
+	color: #00000;
+	font-size: 15px;
+	background: #aeaeae;
+	padding: 4px 8px 4px 8px;
+    font-weight: bold;
+	border: solid #000000 2px;
+}
+
+.topnav a:hover {
+  background-color: #242424;
+  color: #bbbbbb;
+}
+
+show{
+   color:white;
+   font-size:50px;
+   
+   
+}
+
+.topnav {
+  background:#242424 ;
+  color:#242424;
+  text-align: center;
+  text-decoration: none;
+  font-family: Arial;
+  font-weight:bold;
+  font-size: 25px;
+  border: black 2px solid;
+  margin-bottom:30px;
+  
+}
+
+.topnav a{
+  
+  background:#bbbbbb ;
+  color:#242424;
+  text-align: center;
+  padding:0% 6% 0% 6%;
+  text-decoration: none;
+  font-family: Arial;
+  font-weight:bold;
+  font-size: 25px;
+  border: black 2px solid;
+  
+}
+
+
+.center {
+text-align:center;
+margin:auto;
+}
+.bigSkin{
+border: 3px solid #bbbbbb;
+ height:512px;
+ width:512px;
+ background-color:#323232;
+ top:50%; margin-left: -256px;
+ margin-top: -256px; left:50%;
+ position:fixed;
+ display:none;
+}
+
+.closeButton{
+
+border-radius:5px;
+font-size:25;
+font-family:Arial;
+font-weight:bold;
+color:red;
+position:absolute;
+border: 3px solid red;
+}
+
+.alignright {
+	position:fixed;
+	right:1%;
+	top:25%;
+}
+
+.inTabObscured {
+	border-radius: 2px;
+	font-family: Arial;
+	color: #383838;
+	font-size: 15px;
+	background: #d6d6d6;
+	padding: 4px 8px 4px 8px;
+    font-weight: bold;
+	border: solid #000000 2px;
+}
+
+.ListText {
+	border-radius: 5px;
+	font-family: Arial;
+	color: #000000;
+	font-size: 21px;
+	background: #aeaeae;
+	font-weight: bold;
+	border: solid #000000 2px;
+ 
+}
+
+
+
+                                        
+</style>
+</head>
+<body  bgcolor=#191919>
+<div id=blur>
+	<div class="navbar navbar-expand-lg navbar-dark bg-dark"> 
+		<a href="index.html" style="border:solid 3px #00bc8c; border-radius: 5px; margin-right: 2%;" class="nav-link"> Skin Viewer </a>
+		<a href="SkinChecker.html"style="border:solid 3px #00bc8c; border-radius: 5px; margin-right: 2%;" class="nav-link"> Image Checker </a>
+		<a href="FavSkins.html" style="border:solid 3px #00bc8c; border-radius: 5px; margin-right: 2%;" class="nav-link"> Favourite Skins </a>
+		<a href="SkinGallery.html" style="border:solid 3px #375A7F; border-radius: 5px; margin-right: 2%;" class="nav-link">Skin Gallery </a><br>
+    <a href="OldInterface.html" style="border:solid 3px #00bc8c; border-radius: 5px; margin-right: 2%;" class="nav-link">Old Interface </a>
+    <a href="https://greasyfork.org/en/scripts/393675-gota-io-skin-manager" style="border:solid 3px #ccac00; border-radius: 5px; margin-right: 2%;" class="nav-link">Skin extension </a>
+</div>
+
+<font face="Arial Black" color=#bbbbbb>
+ <h1 align="center" style="font-family:Arial Black; font-size:30px;">
+<div style="border-bottom:solid #333333 3px;  padding:1%; "> Skin Gallery: <input type="text" size="15" class="button" value="" style="display:none;" id="skin">
+			<input type=button onclick=loadSkins() id=load class="btn btn-primary" value="Start loading skins">
+</div>	
+</h1>
+		
+		
+     
+		<table id="skinGallery" style="background-color:#454545; border-radius: 10px; padding:6px; " align=center>
+        <tr>
+	     
+	    <tr>	   
+     </table>
+		
+
+
+</font>
+</div>
+<div class="alignright" style="right:10px;">
+  <textarea type="text" size="15"  class="form-control" id="ListSkin" onClick="this.select();" style=" border-radius:5px; width:80%; margin:3px; margin-bottom: -8%;" rows="4" disabled>  You can save the skins name by pressing "+" button.</textarea> <br>
+  <input type="button" value="Copy list" class="btn btn-secondary" style="width:80%; margin:3px;" onclick="Copy()"> <br>
+  <input type="button" value="GO to the top"  onclick="topFunction()" style="width:80%; margin:3px;" class="btn btn-secondary" > 
+</div>	
+  <div id=bigSkinDiv class=bigSkin>
+		    <input class=closeButton type=button id="closeBigSkin" onclick="hideBigSkin()" value="X">
+			<img id="img2">
+    </div>
+</body>
+
+
+
+
+
+<script>
+var linkozzo= "https://gamedata.gota.io/skins/"
+var skin= document.getElementById("skin").value; 
+var png=".png";
+var linkFin="";
+var skinFin="";
+var skinlist="";
+var hasPressedGallery=false;
+var firstElement=true;
+var favSkins=[];
+function skinList(skinN){
+	
+	if (skinN !== ""){
+	if(firstElement){
+		var addSpace=skinN.replace("%20"," ");
+		skinlist=(skinlist+addSpace);;
+		document.getElementById("ListSkin").value=skinlist;
+		firstElement=false;
+	}else{
+		var addSpace=skinN.replace("%20"," ");
+		skinlist=(skinlist+","+addSpace);;
+		document.getElementById("ListSkin").value=skinlist;
+  }
+  favSkins.push(skinN)
+	localStorage.setItem("favSkins",favSkins)
+  }
+  
+}
+if(localStorage.getItem("favSkins")!=null){
+	favSkins= localStorage.getItem("favSkins").split(",")
+  }
+
+function Copy() { 
+	var copyText = document.getElementById("ListSkin");
+	copyText.select();
+	document.execCommand("copy");
+	alert("Skin list copied!");
+
+}
+	
+window.onload = function(){
+       var result = null;
+  var xmlhttp = new XMLHttpRequest();  
+  xmlhttp.open("GET", "https://cors-anywhere.herokuapp.com/https://gamedata.gota.io/skinData.php", false);
+  xmlhttp.send();
+  if (xmlhttp.status==200) {
+    result = xmlhttp.responseText;
+
+  }
+    arrayList = JSON.parse(JSON.parse(xmlhttp.responseText).names);
+    loadSkins();
+ };
+
+
+window.onscroll = function(ev) {
+if (hasPressedGallery){
+  if ((window.innerHeight + window.scrollY+100) >= document.body.scrollHeight) {
+
+    document.getElementById("load").click();
+    }
+  }
+};
+
+function copyImage(imgName){
+var dummy = document.createElement("input");
+  document.body.appendChild(dummy);
+  dummy.setAttribute("id", "dummy_id");
+  var addSpace=imgName.replace("%20"," ");
+  document.getElementById("dummy_id").value=addSpace;
+  dummy.select();
+  document.execCommand("copy");
+  document.body.removeChild(dummy);
+}
+
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+
+function bigSkin(bigSkinName){
+	document.getElementById("img2").src=bigSkinName;
+	document.getElementById("bigSkinDiv").style.display = "inline";
+	
+	 document.getElementById("blur").style.filter= "blur(4px)";
+}
+
+function hideBigSkin(){
+    document.getElementById("bigSkinDiv").style.display = "none";
+	document.getElementById("blur").style.filter= "blur(0px)";
+}
+
+function singleSkin(){
+var singleSkinName= document.getElementById("skin").value; 
+document.getElementById("img2").src=(linkozzo+singleSkinName+".png");
+	document.getElementById("bigSkinDiv").style.display = "inline";
+	
+	 document.getElementById("blur").style.filter= "blur(4px)";
+
+}
+document.onkeydown = function(evt) {
+    evt = evt || window.event;
+		if (event.keyCode === 27) {
+		event.preventDefault();
+		hideBigSkin();
+		}
+};
+
+
+function loadSkins() {
+ hasPressedGallery=true;
+  for (var i=0; i<5; i++) {
+  var table = document.getElementById("skinGallery");
+  var row = table.insertRow(-1);
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  var cell3 = row.insertCell(2);
+  var cell4 = row.insertCell(3);
+  var cell5 = row.insertCell(4);
+ 
+  cell1.innerHTML = RandomSkin();
+  cell2.innerHTML = RandomSkin();
+  cell3.innerHTML = RandomSkin();
+  cell4.innerHTML = RandomSkin();
+  cell5.innerHTML = RandomSkin();
+  }
+  
+}
+
+function RandomSkin(){
+	var ArrLength=arrayList.length;
+	var RanNum=Math.floor(Math.random() * ArrLength);
+	var skiName=arrayList[RanNum]
+	 skiName = skiName.replace(" ", "%20");
+	 skiName = skiName.replace(" ", "%20");
+	 skiName = skiName.replace(" ", "%20");
+	document.getElementById("skin").value=skiName;
+    var skin=document.getElementById("skin").value;
+	linkFin=(linkozzo+skin+".png");
+    var nameForBigSkin=('"'+linkFin+'"');
+	var nameForSkinFin=('"'+skin+'"');
+    var skin = skin.replace("%20"," ");
+	var result=('<div style="position:relative;"> <input type=button value="+" style="font-size:20px; position:absolute; top:170px; font-weight:bold; color:blue; border: solid 2px blue; border-radius:20%;" onclick=skinList('+nameForSkinFin+')></div><div class=img onclick=bigSkin('+nameForBigSkin+') style="background-size: contain;   border-radius:50%; background-image:url('+linkFin+');"><p class=imgName >'+skin+"</p></div>");
+	return result;
+}		
+</script>
+<html>

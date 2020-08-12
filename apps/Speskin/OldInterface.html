@@ -1,0 +1,380 @@
+<html>
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-149483953-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-149483953-2');
+</script>
+    <title>Gota.io Skin Viewer</title>
+	<link rel="shortcut icon" href="https://drive.google.com/uc?id=1nvGEUYpC2TN0i1edRF1JBHZ_mLVTyhdh"/>
+<style>
+body{ margin:0 auto; }
+.button {
+
+	border-radius: 6px;
+	font-family: Arial;
+	color: #00000;
+	font-size: 15px;
+	background: #aeaeae;
+	padding: 4px 8px 4px 8px;
+    font-weight: bold;
+	border: solid #000000 2px;
+}
+
+.topnav {
+  background:#191919 ;
+  color:#242424;
+  text-align: center;
+  text-decoration: none;
+  font-family: Arial;
+  font-weight:bold;
+  font-size: 25px;
+  border: black 2px solid;
+  margin:0;
+  
+}
+.topnav a{
+  
+  background:#bbbbbb ;
+  color:#242424;
+  text-align: center;
+  padding:0% 6% 0% 6%;
+  text-decoration: none;
+  font-family: Arial;
+  font-weight:bold;
+  font-size: 25px;
+  border: black 2px solid;
+  
+}
+
+.topnav a:hover {
+  background-color: #242424;
+  color: #bbbbbb;
+}
+
+
+.alignright {
+	position:absolute;
+	right:0%;
+}
+
+
+.alignleft {
+	position:absolute;
+	left:0%;
+	text-align:center;
+}
+
+
+.buttonPM {
+	border-radius: 5px;
+	font-family: Arial;
+	color: #00000;
+	font-size: 22px;
+	background: #aeaeae;
+	font-weight: bold;
+	border: solid #000000 2px;
+ 
+}
+
+.ListText {
+	border-radius: 5px;
+	font-family: Arial;
+	color: #00000;
+	font-size: 21px;
+	background: #aeaeae;
+	font-weight: bold;
+	border: solid #000000 2px;
+ 
+}
+
+
+.WhiteMode {
+	position: absolute;
+    left:8px;
+	top:1%;
+	border-radius: 8px;
+	font-family: Arial;
+	color: #00000;
+	font-size: 25px;
+	background: white;
+	font-weight: bold;
+	border: solid #000000 2px;
+ 
+}
+
+
+.intab {
+	border-radius: 2px;
+	font-family: Arial;
+	color: #00000;
+	font-size: 15px;
+	background: #aeaeae;
+	padding: 4px 8px 4px 8px;
+    font-weight: bold;
+	border: solid #000000 2px;
+}
+ 
+ 
+  .intabosc {
+	border-radius: 2px;
+	font-family: Arial;
+	color: #383838;
+	font-size: 15px;
+	background: #d6d6d6;
+	padding: 4px 8px 4px 8px;
+    font-weight: bold;
+	border: solid #000000 2px;
+}
+
+  </style>
+</head>
+
+<body bgcolor=#191919 >
+<div class="topnav" align=center> 
+ <a href="index.html"> Skin Viewer </a>
+ <a href="SkinChecker.html"> Image Checker </a>
+ <a href="FavSkins.html"> Favourite Skins </a>
+ <a href="SkinGallery.html">Skin Gallery </a>
+</div>
+
+   <font face="Arial Black" size=3 color=#bbbbbb>
+		
+        <div style="border-bottom:solid #333333 3px; margin-bottom:10px; ">
+ 
+			<h1 align=center><h1 align=center> &nbsp  &nbsp &nbsp  &nbsp &nbsp &nbsp
+			Skin Name: <input type="text" size="15"  class="intab" value="" id="skin">
+			<input type="button" value="Check" id="check"  class="button" onclick="check()"> 
+			<input type="button" value="Random Skin"  onclick="RandomSkin()" class="button" > <br>
+
+			&nbsp &nbsp
+			 Skin Number(skinX): <input type="text" size="3"  value="" class="intab" id="count"> 
+			<input type="button" value="-" id="minus" class="buttonPM" onclick="minus()">
+			<input type="button" value="+" id="plus"  class="buttonPM" onclick="plus()"> 
+	
+	
+	 
+			(Xskin) <input type="button" value="-" id="Xminus"  class="buttonPM" onclick="Xminus()">
+			<input type="button" value="+" id="Xplus" class="buttonPM" onclick="Xplus()">
+			<input type="button" value="RESET" id="reset"  class="button" onclick="reset()">  <br>  &nbsp  &nbsp &nbsp  &nbsp &nbsp
+
+			 
+			Final Skin Name: <input type="text" size="15" onClick="this.select();"  value="" class="intabosc" id="skinFin" readonly>
+			
+  
+	        <font size=3> 
+			     Image link: <input type="text" size="15" onClick="this.select();"   value="" class="intabosc" id="link" readonly> <br>
+	        </font> </h1>
+	
+		</div>
+		
+		<div class="alignright" style="right:1%;">
+			<textarea type="text" size="15"  class="intabosc" id="ListSkin" onClick="this.select();" style="width:100%; margin-bottom:3px; padding:5px;" rows="4" >  You can save the skins name by pressing the button "Add to saved skin" then the "copy" button to copy the list </textarea> <br>
+			<input type="button" value="Add to saved skins" id="savedskin" class="ListText"  onclick="SSkin()"> 
+			<input type="button" value="Copy list" class="ListText"  onclick="Copy()">
+		</div>
+		
+    <div> 
+	
+	    <img class=alignright  width=300px height=250px style="margin-top:10%; margin-right:10px;" src="images/2.png">		
+		
+		<div style="width:28%; " class=alignleft >
+			<font size=4 color=#bbbbbb> If you just want to see a skin (ex. spreme), then you have to write it into "Skin name" and then click on "check" or press Enter. <br> If you want to see a skin name which has numbers at the end (ex.adxx2), write the letters into "Skin name" and then click on the "plus" or "minus"(skinX) buttons or left and right arrows to see the skins after and before that one. <br> If the skin has the number before the name, use the "plus" and "minus" of the (XSkin).  </font> &nbsp &nbsp  
+			<a href="https://youtu.be/sHOCQC3vd4Y" target="_blank">	 <input type="button" class="buttonPM" value="Watch Tutorial" > </a>
+			<font color=#e6005c size=4> <br>   |Made by Specy and Kristy| </font>
+		</div>
+		
+		<div  style="border: 3px solid #bbbbbb; height:512px; width:512px; background-color:#323232; margin:auto;">
+			<img id="img">
+		</div>
+		
+		
+		
+	</div>
+
+  
+<script type="text/javascript">
+
+var count = document.getElementById("count").value;
+var countEl = document.getElementById("count");
+var linkozzo= "https://gamedata.gota.io/skins/"
+var skin= document.getElementById("skin").value; 
+var png=".png";
+var linkFin="";
+var skinFin="";
+var keypress=false;
+var skinlist="";
+var firstElement=true;
+window.onload = function(){
+       var result = null;
+  var xmlhttp = new XMLHttpRequest();  
+  xmlhttp.open("GET", "SkinList.txt", false);
+  xmlhttp.send();
+  if (xmlhttp.status==200) {
+    result = xmlhttp.responseText;
+
+  }
+    ArrayList = result.split('\n')
+ };
+
+
+function RandomSkin(){
+	var ArrLength=ArrayList.length;
+	var RanNum=Math.floor(Math.random() * ArrLength);
+	document.getElementById("skin").value=ArrayList[RanNum];
+	document.getElementById("check").click();
+	
+}
+
+
+
+function SSkin(){
+	if (skinFin !== ""){
+	if(firstElement){
+			skinlist=(skinlist+skinFin);
+		document.getElementById("ListSkin").value=skinlist;
+		firstElement=false;
+	}else{
+		skinlist=(skinlist+","+skinFin);
+		document.getElementById("ListSkin").value=skinlist;
+	}
+	}
+}
+
+function Copy() { 
+	
+	var copyText = document.getElementById("ListSkin");
+	copyText.select();
+	document.execCommand("copy");
+	alert("Skin list copied!");
+
+}
+
+
+document.onkeydown = function(evt) {
+    evt = evt || window.event;
+	if(keypress===false){ 
+		if (event.keyCode === 39) {
+		event.preventDefault();
+		document.getElementById("plus").click();
+		}
+		if (event.keyCode === 37) {
+		event.preventDefault();
+		document.getElementById("minus").click();
+		}
+		if (event.keyCode === 13) {
+		event.preventDefault();
+		document.getElementById("check").click();
+		}
+	}
+   keypress=true;
+};
+
+
+document.onkeyup = function(evt) {
+    evt = evt || window.event;
+	if (event.keyCode === 39 || event.keyCode === 13 || event.keyCode === 37) {
+	keypress=false;
+	}
+};
+
+
+function check(){
+    count = document.getElementById("count").value;
+	skin= document.getElementById("skin").value; 
+	skin= skin.toLowerCase();
+	linkFin=(linkozzo+skin+count+png);
+	skinFin=(skin+count);
+    link.value = linkFin;
+	document.getElementById("img").src=linkFin;
+	document.getElementById("skinFin").value =skinFin;
+}
+
+
+function reset(){
+	count = "";
+	countEl.value = count;
+	linkFin = "";
+	document.getElementById("img").src=linkFin;
+	skin= ""; 
+	document.getElementById("skin").value =skin;
+	skinFin="";
+	document.getElementById("skinFin").value =""; 
+	document.getElementById("link").value =""; 
+}
+
+
+function plus(){
+	count = document.getElementById("count").value;
+	skin= document.getElementById("skin").value;
+	skin= skin.toLowerCase();
+    count++;
+    countEl.value = count;
+	linkFin=(linkozzo+skin+count+png);
+    link.value = linkFin;
+	document.getElementById("img").src=linkFin;
+    skinFin=(skin+count);
+	document.getElementById("skinFin").value =skinFin;
+}
+
+
+function Xplus(){
+	count = document.getElementById("count").value;
+	skin= document.getElementById("skin").value;
+	skin= skin.toLowerCase();
+    count++;
+    countEl.value = count;
+	skinFin=(count+skin);
+	linkFin=(linkozzo+skinFin+png);
+	document.getElementById("img").src=linkFin;
+	document.getElementById("skinFin").value =skinFin;
+	link.value = linkFin;
+}
+
+
+function Xminus(){ 
+	count = document.getElementById("count").value;
+   if (count > 1) {
+	 
+		skin= document.getElementById("skin").value;
+		skin= skin.toLowerCase();
+        count--;
+        countEl.value = count;
+	}else{
+		countEl.value = "";
+		count="";
+	}
+	skinFin=(count+skin);
+	linkFin=(linkozzo+skinFin+png);
+	document.getElementById("img").src=linkFin;
+	document.getElementById("skinFin").value =skinFin;
+	link.value = linkFin;
+}
+
+
+function minus(){
+    count = document.getElementById("count").value;
+     if (count > 1) {
+		skin= document.getElementById("skin").value;
+		skin= skin.toLowerCase();
+        count--;
+        countEl.value = count;
+	}else{
+		countEl.value = "";
+		count="";
+	}
+   
+	linkFin=(linkozzo+skin+count+png);
+    link.value = linkFin;
+	document.getElementById("img").src=linkFin;
+	 skinFin= skin.concat(count);
+	document.getElementById("skinFin").value =skinFin;
+}
+</script>
+</body>
+</html>
+ 

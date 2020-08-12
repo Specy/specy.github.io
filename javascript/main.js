@@ -2,11 +2,12 @@ const canvas = document.getElementById("canvas")
 const ctx = canvas.getContext("2d")
 const canvas2 = document.getElementById("canvas2")
 const ctx2 = canvas2.getContext("2d")
+let body = document.getElementsByTagName("body")[0]
 var positionInfo = document.getElementById("canvas").getBoundingClientRect();
 let screenWidth = positionInfo.width
 let screenHeight = positionInfo.height
-let height = screenHeight / 1.5
-let width = screenWidth / 1.5
+let height = screenHeight / 2
+let width = screenWidth / 2
 canvas.height = height
 canvas.width = width
 canvas2.height = height
@@ -25,6 +26,13 @@ function createMatrix() {
 
 let matrix = createMatrix()
 
+function redirect(url,samePage){
+    if(samePage){
+        location.href = window.location.origin + url
+    }else{
+        location.href = "https://"+url
+    }
+}
 function drawCanvas(toDraw, context, color) {
     let cellSize = 1
     let drawHeight = toDraw.length
@@ -48,14 +56,6 @@ function drawCanvas(toDraw, context, color) {
 
 function eraseCanvas(context, color) {
     context.clearRect(0, 0, width, height);
-    /*
-   if(color == "transparent"){
-
-   }else{
-    ctx.fillStyle = color
-    ctx.fillRect(0, 0, width, height)
-   }
-   */
 }
 
 function generateRandomMatrix(bias) {
@@ -69,27 +69,31 @@ function generateRandomMatrix(bias) {
     }
     return matrix
 }
-canvas.addEventListener("touchmove", event => {
-    let x = Math.floor((event.touches[0].clientX / screenWidth) * width)
-    let y = Math.floor((event.touches[0].clientY / screenHeight) * height)
+window.addEventListener("touchmove", event => {
+    let x = Math.floor((event.touches[0].pageX / screenWidth) * width)
+    let y = Math.floor(((event.touches[0].pageY - window.scrollY) / screenHeight) * height)
     let noise = Math.round(Math.random() * 10 + 30)
     drawMatrix(x, y, noise)
 })
 
-let canDraw = false
-canvas.addEventListener("mousedown", function () {
+let canDraw = true
+window.addEventListener("mousedown", function () {
     canDraw = true
 })
-canvas.addEventListener("mouseup", function () {
-    canDraw = false
+window.addEventListener("mouseup", function () {
+    //canDraw = true
 })
-canvas.addEventListener("mousemove", event => {
+window.addEventListener("wheel", function () {
+    //canDraw = true
+})
+window.addEventListener("mousemove", event => {
     if (!canDraw) return
-    let x = Math.floor((event.offsetX / screenWidth) * width)
-    let y = Math.floor((event.offsetY / screenHeight) * height)
-    let noise = Math.round(Math.random() * 10 + 40)
+    let x = Math.floor((event.pageX / screenWidth) * width)
+    let y = Math.floor(((event.pageY - window.scrollY) / screenHeight) * height)
+    let noise = Math.round(Math.random() * 10 + 20)
     drawMatrix(x, y, noise)
 })
+
 
 function drawMatrix(x, y, noise) {
     try {
@@ -188,6 +192,12 @@ isStopped = false
 
 function stop() {
     isStopped = !isStopped
+    let stopButton = document.getElementById("stopBtn")
+    if(isStopped){
+        stopButton.innerHTML = "Play"
+    }else{
+        stopButton.innerHTML = "Stop"
+    }
 }
 
 function random(){
