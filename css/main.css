@@ -10,8 +10,12 @@
     color: #dad8b3;
     outline: none;
     user-select: none;
+    -webkit-tap-highlight-color: transparent;
 }
-
+html{
+   height:100%;
+   overflow:hidden;
+}
 #canvas,
 #canvas2 {
     position: fixed;
@@ -24,7 +28,9 @@ body {
     /* animation: pulse 10s infinite; */
     background-color: rgb(22, 22, 22);
     padding: 0;
+    margin:0;
     overflow-y: hidden;
+    overscroll-behavior: none
 }
 
 .bgImage {
@@ -70,7 +76,7 @@ body {
 
 .presentation {
     margin-top: 5vh;
-    height: 85vh;
+    height: 80vh;
 }
 
 #toggleUtils {
@@ -140,8 +146,9 @@ body {
     padding: 1em;
     border-radius: 2vh;
     margin: 2vh;
-    background-color: rgb(42, 42, 42, 0.7);
+    background-color: rgb(42, 42, 42, 0.8);
     flex: 1 1 0;
+    
 }
 
 .logo {
@@ -152,7 +159,7 @@ body {
 
 .middleText {
     padding-bottom: 5px;
-    font-size: 25px;
+    font-size: 2rem;
     color: #DA0363;
     display: flex;
     align-items: center;
@@ -160,17 +167,17 @@ body {
 }
 
 .smallText {
-    font-size: 15px;
+    font-size: 1rem;
 }
 
 .bigText {
     text-align: center;
-    font-size: 40px;
+    font-size: 2.5rem;
 }
 
 .biggerText {
     text-align: center;
-    font-size: 60px;
+    font-size: 3.5rem;
 }
 
 .hide {
@@ -179,7 +186,7 @@ body {
 
 #mainContent {
     overflow-y: auto;
-    height: 100vh;
+    height: 110vh;
 }
 
 @media only screen and (orientation: portrait) {
