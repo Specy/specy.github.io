@@ -121,15 +121,16 @@ body {
 }
 
 #myProjects,
-#aboutMe {
+#aboutMe,#contact{
     width: 100%;
     display: flex;
     flex-direction: column;
+    margin-bottom:5vh;
     justify-content: center;
 }
 
 .smallMiddleText {
-    font-size: 18px;
+    font-size: 1.2rem
 }
 
 .row {
@@ -146,7 +147,7 @@ body {
     padding: 1em;
     border-radius: 2vh;
     margin: 2vh;
-    background-color: rgb(42, 42, 42, 0.8);
+    background-color: rgba(50,50,50,0.8);
     flex: 1 1 0;
     
 }
@@ -186,24 +187,25 @@ body {
 
 #mainContent {
     overflow-y: auto;
-    height: 110vh;
+    height: 100vh;
 }
 
 @media only screen and (orientation: portrait) {
     .bottomButtons button {
-        height: 60px;
+        height: 45px;
         padding: 1px;
-        font-size: 0.9em;
-        width: 65px;
+        font-size: 0.6rem;
+        width: 45px;
     }
 
     .bottomButtons {
-        width: 65px;
+        width: 45px;
     }
 
     .cell {
         font-size: 1.2em;
         flex: none;
+        box-shadow:0 0 px #333333;
     }
 
     .row {
