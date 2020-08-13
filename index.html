@@ -15,7 +15,7 @@
     <meta property="og:title" content="Portfolio">
     <meta property="og:url" content="https://specy-wot.github.io/">
     <meta property="og:description" content="Specy's portfolio website">
-    <link rel="icon" type="image/png" href="/favicon.png"/>
+    <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="shortcut icon" href="/favicon.png?v=2" type="image/x-icon" />
     <link rel='manifest' href='/manifest.json'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -23,7 +23,8 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
         integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
-    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta name="viewport"
+        content="user-scalable=no, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
     <title>Specy's portfolio</title>
     <link rel="stylesheet" href="/css/main.css" type="text/css">
 </head>
@@ -39,14 +40,35 @@
         <div class="presentation">
             <div class="biggerText"> Specy's portfolio</div>
         </div>
+        <div id="aboutMe" style="margin-bottom: 10vh;">
+            <div class="bigText" style="margin-bottom: 10vh;">About Me</div>
+            <div class="cell" style="min-height: unset;">
+                <div class="smallMiddleText leftText">
+                    My nick is Specy, i'm an italian student, born in 2002, with a passion in building, reparing and
+                    developing. <br><br>
+                    I have experience in 3D printing, 3D scanning, Website development and Userscripts. <br><br>
+                    I'm relatively new to Development but i'm already proficient in:
+                    <ul>
+                        <li>JavaScript</li>
+                        <li>Html</li>
+                        <li>Css</li>
+                        <li>Node.js</li>
+                    </ul><br>
+                    I'm able to build, repair, troubleshoot and upgrade FDM 3D printers of any kind, doing 3D scans
+                    using photogrammetry
+                    and 3D printing any 3D model.
+                </div>
+            </div>
+        </div>
         <div id="myProjects">
             <div class="bigText" style="margin-bottom: 5vh;"> My Projects</div>
             <div class="centerText" style="font-size: 0.8em">
                 <div class="row">
                     <div class="cell" onclick="redirect('sky-music.herokuapp.com',false)">
-                        <div class="middleText">Sky music</div><br>
+                        <div class="middleText">Sky music<img class="logo" src="images/Sky.png"></div>
                         <div class="centerText smallText">
-                            A webApp made to help players of the game Sky children of light to learn, practice, compose and share songs
+                            A webApp made to help players of the game Sky children of light to learn, practice, compose
+                            and share songs
                         </div>
                     </div>
                 </div>
@@ -61,20 +83,23 @@
                 <div class="cell">
                     <div class="middleText">OwO pet</div><br>
                     <div class="centerText smallText">
-                        An arduino project for a cat pet, it uses a small oled screen, touch module and vibration to purr and show expressions
+                        An arduino project for a cat pet, it uses a small oled screen, touch module and vibration to
+                        purr and show expressions
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="cell">
-                    <div class="middleText">Lista digitale App</div><br>
+                    <div class="middleText">Lista digitale App <img class="logo" src="images/ListaDigitale.png"></div>
+                    <br>
                     <div class="centerText smallText">
                         An app created for my school to make it easier to order food from the school's bar
                     </div>
                 </div>
 
-                <div class="cell" onclick="redirect('play.google.com/store/apps/details?id=io.kodular.dionea2002.Spongify',false)">
-                    <div class="middleText">Spongify App</div><br>
+                <div class="cell"
+                    onclick="redirect('play.google.com/store/apps/details?id=io.kodular.dionea2002.Spongify',false)">
+                    <div class="middleText">Spongify App <img class="logo" src="images/Spongify.png"></div><br>
                     <div class="centerText smallText">
                         A fun app to turn any text into "ThE sPoNgEboB mEmE"
                     </div>
@@ -96,16 +121,18 @@
             </div>
             <div class="row">
                 <div class="cell" onclick="redirect('greasyfork.org/en/scripts/393675-gota-io-skin-manager',false)">
-                    <div class="middleText">Gota.io skin extension</div><br>
+                    <div class="middleText">Gota.io skin extension <img class="logo" src="images/Gota.png"></div><br>
                     <div class="centerText smallText">
-                        An userscript for the gota.io players to make it easier to remember and find skins, works like an add-on to the game
+                        An userscript for the gota.io players to make it easier to remember and find skins, works like
+                        an add-on to the game
                     </div>
                 </div>
 
                 <div class="cell" onclick="redirect('/apps/Speskin/index.html',true)">
-                    <div class="middleText">Gota.io website</div><br>
+                    <div class="middleText">Gota.io website <img class="logo" src="images/SpeSkin.png"></div><br>
                     <div class="centerText smallText">
-                        A website for gota.io, similar concept to the skin extension but as a standalone website, this was the first version
+                        A website for gota.io, similar concept to the skin extension but as a standalone website, this
+                        was the first version
                     </div>
                 </div>
             </div>
@@ -114,7 +141,7 @@
     <div class="bottomButtons">
         <button onclick="toggleUtils()" id="toggleUtils">Settings</button>
         <div id="utils" class="hide">
-            
+
             <button onclick="toggleTrail()">
                 Trail
             </button>
@@ -130,6 +157,9 @@
         </div>
     </div>
 </body>
+<div id="fps">
+    0
+</div>
 <script src="/javascript/main.js"></script>
 
 </html>

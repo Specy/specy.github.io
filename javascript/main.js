@@ -6,55 +6,73 @@ let body = document.getElementsByTagName("body")[0]
 var positionInfo = document.getElementById("canvas").getBoundingClientRect();
 let screenWidth = positionInfo.width
 let screenHeight = positionInfo.height
-let height = screenHeight / 2
-let width = screenWidth / 2
+let height = Math.floor(screenHeight / 1.5)
+let width = Math.floor(screenWidth / 1.5)
 canvas.height = height
 canvas.width = width
 canvas2.height = height
 canvas2.width = width
+
 function createMatrix() {
     let matrix = []
     for (let i = 0; i < height; i++) {
-        let row = []
-        for (let j = 0; j < width; j++) {
-            row.push(0)
-        }
+        let row = new Uint8Array(width)
         matrix.push(row)
     }
     return matrix
 }
-
 let matrix = createMatrix()
 
-function redirect(url,samePage){
-    if(samePage){
+function redirect(url, samePage) {
+    if (samePage) {
         location.href = window.location.origin + url
-    }else{
-        location.href = "https://"+url
+    } else {
+        location.href = "https://" + url
     }
 }
-function drawCanvas(toDraw, context, color) {
-    let cellSize = 1
+
+function hexToRgb(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+    } : null;
+}
+
+function drawCanvas(toDraw, context, color, erase) {
     let drawHeight = toDraw.length
     let drawWidth = toDraw[0].length
-    let currentHeight = 0
-    let currentwidth = 0
-    context.fillStyle = color
+    let rgbObj = hexToRgb(color)
+    let rgb = [rgbObj.r, rgbObj.g, rgbObj.b]
+    let data
+    if (erase) {
+        data = new Uint8ClampedArray(width * height * 4).fill(0)
+    } else {
+        data = context.getImageData(0, 0, width, height).data
+    }
+    let counter = 0
     for (let i = 0; i < drawHeight; i++) {
-        currentHeight += cellSize
         for (let j = 0; j < drawWidth; j++) {
-            currentwidth += cellSize
-            let cell = toDraw[i][j]
-            if (cell == 1) {
-                context.fillRect(currentwidth, currentHeight, cellSize, cellSize)
+            if (data[counter + 3]) {
+                counter += 4
+            } else {
+                let cell = toDraw[i][j]
+                data[counter++] = rgb[0]
+                data[counter++] = rgb[1]
+                data[counter++] = rgb[2]
+                if (cell) {
+                    data[counter++] = 255
+                } else {
+                    data[counter++] = 0
+                }
             }
         }
-        currentwidth = 0
     }
-
+    context.putImageData(new ImageData(data, width, height), 0, 0)
 }
 
-function eraseCanvas(context, color) {
+function eraseCanvas(context) {
     context.clearRect(0, 0, width, height);
 }
 
@@ -90,7 +108,7 @@ window.addEventListener("mousemove", event => {
     if (!canDraw) return
     let x = Math.floor((event.pageX / screenWidth) * width)
     let y = Math.floor(((event.pageY - window.scrollY) / screenHeight) * height)
-    let noise = Math.round(Math.random() * 10 + 20)
+    let noise = Math.round(Math.random() * 10 + 30)
     drawMatrix(x, y, noise)
 })
 
@@ -137,24 +155,25 @@ function calculateGeneration() {
     }
     return nextGen
 }
-drawCanvas(matrix, ctx, "white")
+drawCanvas(matrix, ctx, "#DA0363", true)
 let every60 = 0
 let secondContextColor = "black"
 let generations = []
 let every5 = 5
 
 function handleFrame() {
-    if (isStopped){
-        drawCanvas(matrix, ctx, "#DA0363")
-    }else{
+    eraseCanvas(ctx)
+    if (isStopped) {
+        drawCanvas(matrix, ctx, "#DA0363", true)
+    } else {
         let nextGen = calculateGeneration()
         every60++
         every5++
-        if (every60 > 60) {
+        if (every60 > 30) {
             secondContextColor = getRandomColor()
             every60 = 0
         }
-        if (generations.length > 10) {
+        if (generations.length > 15) {
             generations.shift()
             generations.push(nextGen)
         } else {
@@ -162,13 +181,13 @@ function handleFrame() {
         }
         if (trailToggled) {
             every5 = 0
-            drawCanvas(generations[0], ctx2, getRandomColor())
+            drawCanvas(generations[0], ctx2, secondContextColor, false)
         }
-        eraseCanvas(ctx)
-        drawCanvas(nextGen, ctx, "#DA0363")
+        drawCanvas(nextGen, ctx, "#DA0363", true)
         matrix = nextGen
     }
-        window.requestAnimationFrame(handleFrame)   
+    window.requestAnimationFrame(handleFrame)
+    calcFps()
 }
 
 let palette = {
@@ -192,24 +211,42 @@ isStopped = false
 function stop() {
     isStopped = !isStopped
     let stopButton = document.getElementById("stopBtn")
-    if(isStopped){
+    if (isStopped) {
         stopButton.innerHTML = "Play"
-    }else{
+    } else {
         stopButton.innerHTML = "Stop"
     }
 }
 
-function random(){
+function random() {
     matrix = generateRandomMatrix(0.4)
 }
-function erase(){
+
+function erase() {
     matrix = createMatrix()
     eraseCanvas(ctx)
     eraseCanvas(ctx2)
 }
 
-function toggleUtils(){
+function toggleUtils() {
     let utils = document.getElementById("utils")
     utils.classList.toggle("hide")
 }
 window.requestAnimationFrame(handleFrame)
+
+let fps = 0
+let lastCalledTime = 0
+
+function calcFps() {
+    if (!lastCalledTime) {
+        lastCalledTime = Date.now();
+        fps = 0;
+        return;
+    }
+    delta = (Date.now() - lastCalledTime) / 1000;
+    lastCalledTime = Date.now();
+    fps = Math.floor(1 / delta)
+}
+setInterval(() => {
+    document.getElementById("fps").innerHTML = fps
+}, 400);

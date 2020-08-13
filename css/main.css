@@ -11,6 +11,7 @@
     outline: none;
     user-select: none;
 }
+
 #canvas,
 #canvas2 {
     position: fixed;
@@ -22,8 +23,19 @@
 body {
     /* animation: pulse 10s infinite; */
     background-color: rgb(22, 22, 22);
-    padding: 1em;
+    padding: 0;
     overflow-y: hidden;
+}
+
+.bgImage {
+    opacity: 0.1;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: 80%;
 }
 
 @keyframes pulse {
@@ -38,6 +50,12 @@ body {
     100% {
         background-color: #001F3F;
     }
+}
+
+#fps {
+    position: absolute;
+    bottom: 0.5em;
+    right: 40px;
 }
 
 .bottomButtons {
@@ -56,6 +74,7 @@ body {
 }
 
 #toggleUtils {
+    cursor: pointer;
     background-image: url('/icons/settings.svg');
     background-size: 40px;
     background-repeat: no-repeat;
@@ -72,6 +91,7 @@ body {
 }
 
 .bottomButtons button {
+    cursor: pointer;
     margin-top: 5px;
     height: 50px;
     text-align: center;
@@ -81,17 +101,29 @@ body {
     font-size: 1em;
     word-break: break-all
 }
-.justifyText{
-text-align: justify;;
+
+.justifyText {
+    text-align: justify;
 }
-.centerText{
-    text-align: center;;
-    }
-#myProjects {
+
+.centerText {
+    text-align: center;
+}
+
+.leftText {
+    text-align: left;
+}
+
+#myProjects,
+#aboutMe {
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.smallMiddleText {
+    font-size: 18px;
 }
 
 .row {
@@ -101,24 +133,36 @@ text-align: justify;;
 }
 
 .cell {
+    cursor: pointer;
     text-align: center;
-    height: 20vh;
+    min-height: 20vh;
     font-size: 1.5em;
     padding: 1em;
     border-radius: 2vh;
     margin: 2vh;
-    opacity: 0.9;
-    background-color: #2a2a2a;
+    background-color: rgb(42, 42, 42, 0.7);
     flex: 1 1 0;
-
 }
-.middleText{
+
+.logo {
+    width: 45px;
+    margin-left: 10px;
+    border-radius: 50%;
+}
+
+.middleText {
+    padding-bottom: 5px;
     font-size: 25px;
     color: #DA0363;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.smallText{
+
+.smallText {
     font-size: 15px;
 }
+
 .bigText {
     text-align: center;
     font-size: 40px;
@@ -134,7 +178,7 @@ text-align: justify;;
 }
 
 #mainContent {
-    overflow-y:auto;
+    overflow-y: auto;
     height: 100vh;
 }
 
@@ -154,11 +198,16 @@ text-align: justify;;
         font-size: 1.2em;
         flex: none;
     }
+
     .row {
         flex-direction: column;
     }
+
     .bottomButtons {
         right: 0.5em;
     }
 
+    #fps {
+        right: 0.5em;
+    }
 }
