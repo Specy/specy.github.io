@@ -25,7 +25,6 @@ html{
 }
 
 body {
-    /* animation: pulse 10s infinite; */
     background-color: rgb(22, 22, 22);
     padding: 0;
     margin:0;
@@ -42,20 +41,6 @@ body {
     bottom: 0;
     margin: auto;
     height: 80%;
-}
-
-@keyframes pulse {
-    0% {
-        background-color: #001F3F;
-    }
-
-    50% {
-        background-color: #FF4136;
-    }
-
-    100% {
-        background-color: #001F3F;
-    }
 }
 
 #fps {

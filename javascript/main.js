@@ -77,13 +77,11 @@ function eraseCanvas(context) {
 }
 
 function generateRandomMatrix(bias) {
-    let matrix = []
     for (let i = 0; i < height; i++) {
         let row = []
         for (let j = 0; j < width; j++) {
-            row.push(Math.round(Math.random() - bias))
+           if(!matrix[i][j]) matrix[i][j] = (Math.round(Math.random() - bias))
         }
-        matrix.push(row)
     }
     return matrix
 }
@@ -129,15 +127,16 @@ function calculateGeneration() {
     let height = nextGen.length - 1
     for (let i = 1; i < height; i++) {
         for (let j = 1; j < width; j++) {
-            let neighbours = 0
-            if (matrix[i - 1][j - 1]) neighbours++
-            if (matrix[i - 1][j]) neighbours++
-            if (matrix[i - 1][j + 1]) neighbours++
-            if (matrix[i][j - 1]) neighbours++
-            if (matrix[i][j + 1]) neighbours++
-            if (matrix[i + 1][j - 1]) neighbours++
-            if (matrix[i + 1][j]) neighbours++
-            if (matrix[i + 1][j + 1]) neighbours++
+            let neighbours = 
+                matrix[i - 1][j - 1]
+               +matrix[i - 1][j]
+               +matrix[i - 1][j + 1]
+               +matrix[i][j - 1]
+               +matrix[i][j + 1]
+               +matrix[i + 1][j - 1]
+               +matrix[i + 1][j]
+               +matrix[i + 1][j + 1]
+               
             if (!matrix[i][j]) {
                 //If cell is dead
                 if (neighbours == 3) {
@@ -159,7 +158,7 @@ drawCanvas(matrix, ctx, "#DA0363", true)
 let every60 = 0
 let secondContextColor = "black"
 let generations = []
-let every5 = 5
+let every5 = 0
 
 function handleFrame() {
     eraseCanvas(ctx)
@@ -224,6 +223,7 @@ function random() {
 
 function erase() {
     matrix = createMatrix()
+    generations = []
     eraseCanvas(ctx)
     eraseCanvas(ctx2)
 }
@@ -236,7 +236,6 @@ window.requestAnimationFrame(handleFrame)
 
 let fps = 0
 let lastCalledTime = 0
-
 function calcFps() {
     if (!lastCalledTime) {
         lastCalledTime = Date.now();
