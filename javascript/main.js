@@ -84,7 +84,7 @@ function generateRandomMatrix(bias) {
     }
     return matrix
 }
-window.addEventListener("touchmove", event => {
+document.getElementById("mainContent").addEventListener("touchmove", event => {
     let x = Math.floor((event.touches[0].pageX / screenWidth) * width)
     let y = Math.floor(((event.touches[0].pageY - window.scrollY) / screenHeight) * height)
     let noise = Math.round(Math.random() * 10 + 30)
@@ -161,7 +161,6 @@ function getRandomColor() {
 let every30 = 0
 let secondContextColor = getRandomColor()
 let generations = []
-let every5 = 0
 
 function handleFrame() {
     eraseCanvas(ctx)
@@ -170,19 +169,13 @@ function handleFrame() {
     } else {
         let nextGen = calculateGeneration()
         every30++
-        every5++
         if (every30 > 30) {
             secondContextColor = getRandomColor()
             every30 = 0
         }
-        if (generations.length > 15) {
-            generations.shift()
-            generations.push(nextGen)
-        } else {
-            generations.push(nextGen)
-        }
+        if (generations.length > 15) generations.shift()
+        generations.push(nextGen)
         if (trailToggled) {
-            every5 = 0
             drawCanvas(generations[0], ctx2, secondContextColor, false)
         }
         drawCanvas(nextGen, ctx, "#DA0363", true)
@@ -196,9 +189,15 @@ let trailToggled = false
 
 function toggleTrail() {
     trailToggled = !trailToggled
+    let btn = document.getElementById("trailBtn")
+    if(trailToggled){
+       btn.style.backgroundColor = palette[0][0]
+    }else{
+       btn.style.backgroundColor = ""
+    }
 }
-isStopped = false
 
+isStopped = false
 function stop() {
     isStopped = !isStopped
     let stopButton = document.getElementById("stopBtn")
@@ -220,11 +219,13 @@ function erase() {
     eraseCanvas(ctx2)
 }
 
-function showHiddenDiv(div) {
-    $(".hiddenDiv").fadeOut(200)
+async function showHiddenDiv(div) {
+   
     let toHide = div.getElementsByClassName("hiddenDiv")[0]
     if (toHide.style.display != "block") {
+        $(".hiddenDiv").css({display:"none"})
         $(toHide).fadeIn(400)
+        div.scrollIntoView({behavior:"smooth"})
     }
 }
 
@@ -254,20 +255,21 @@ setInterval(() => {
 async function drawS() {
     let drawing
     await fetch("/drawing.json").then(file => file.json()).then(file => drawing = file)
-    trailToggled = true
+    toggleTrail()
     for (let i = 0; i < drawing.length; i++) {
         let pos = drawing[i]
         let x = Math.floor((pos[0]-7) / 100 * width)
         if(screenWidth > screenHeight){
             x = Math.floor((pos[0]/2.5+27) / 100 * width)
         }
-        let y = Math.floor((pos[1]+25) / 100 * height)
+        pos[1] = +pos[1] + 3
+        let y = Math.floor(pos[1] / 100 * height)
         let noise = Math.round(Math.random() * 10 + 30)
         await delay(4)
         drawMatrix(x, y, noise)
     }
     setTimeout(() => {
-        trailToggled = false
+       if(trailToggled) toggleTrail()
     },10000);
 }
 drawS()

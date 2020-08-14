@@ -37,7 +37,7 @@
         </canvas>
     </div>
     <div id="mainContent">
-        <div class="presentation">
+        <div class="presentation" id="presentation">
             <div class="biggerText">Specy</div>
         </div>
         <div id="aboutMe" style="margin-bottom: 10vh;">
@@ -97,7 +97,6 @@
                                 <li>Giving 5 or more random words that you can learn</li>
                             </ul><br>
                             and also gives moderation for the open dictionary, deleting duplicates
-                            <a href="/apps/Speskin/index.html">Speskin website</a> to show skin lists.
                         </div><br>
                         <div class="smallMiddleText" style="color:#DA0363">
                             Spongify!
@@ -130,11 +129,11 @@
                     </div>
                     <div class="hiddenDiv">
                         <div class="smallMiddleText" style="color:#DA0363">
-                            Features
+                            Description
                         </div>
                         <div class="smallText" style="display: inline-flex; flex-direction: column;">
-                            This is an interactive arduino nano project, it's a cat that shows it's feelings with the oled screen
-                            and vibration motor. 
+                            This is an interactive arduino nano project that i made to learn the
+                            basics of arduino and electronics. The finished product was soldered to a pcb
                             <br><br>
                             <div class="smallMiddleText" style="color:#DA0363">
                                 Expressions
@@ -231,12 +230,15 @@
               </div>
            </div>
         </div>
+        <div class="middleText" onclick="presentation.scrollIntoView({behavior:'smooth'})">
+           Go back up
+        </div>
     </div>
     <div class="bottomButtons">
         <button onclick="toggleUtils()" id="toggleUtils">Settings</button>
         <div id="utils" class="hide">
 
-            <button onclick="toggleTrail()">
+            <button onclick="toggleTrail()" id="trailBtn">
                 Trail
             </button>
             <button onclick="stop()" id="stopBtn">
