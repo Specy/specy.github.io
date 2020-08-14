@@ -102,7 +102,17 @@ body {
     margin-bottom:5vh;
     justify-content: center;
 }
-
+#contact{
+    width: 50%;
+    margin: auto;
+}
+ul{
+    text-align: left;
+}
+.hiddenDiv{
+    display: none;
+    margin-top: 1vh;
+}
 .smallMiddleText {
     font-size: 1.2rem
 }
@@ -112,7 +122,12 @@ body {
     flex-direction: row;
     justify-content: space-evenly;
 }
-
+.owoImg{
+    height: 100%;
+    background-color: #dad8b3;
+    border-radius: 20%;
+    max-height: 5vh;
+}
 .cell {
     cursor: pointer;
     text-align: center;
@@ -122,6 +137,7 @@ body {
     border-radius: 2vh;
     margin: 2vh;
     background-color: rgba(50,50,50,0.8);
+    box-shadow:0 0 10px #333333;
     flex: 1 1 0;
     
 }
@@ -160,7 +176,7 @@ body {
 }
 
 #mainContent {
-    overflow-y: auto;
+    overflow-y: hidden;
     height: 100vh;
 }
 
@@ -179,7 +195,6 @@ body {
     .cell {
         font-size: 1.2em;
         flex: none;
-        box-shadow:0 0 px #333333;
     }
 
     .row {
@@ -192,5 +207,9 @@ body {
 
     #fps {
         right: 0.5em;
+    }
+    #contact{
+        width: 100%;
+        margin: auto;
     }
 }

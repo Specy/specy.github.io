@@ -78,9 +78,8 @@ function eraseCanvas(context) {
 
 function generateRandomMatrix(bias) {
     for (let i = 0; i < height; i++) {
-        let row = []
         for (let j = 0; j < width; j++) {
-           if(!matrix[i][j]) matrix[i][j] = (Math.round(Math.random() - bias))
+            if (!matrix[i][j]) matrix[i][j] = (Math.round(Math.random() - bias))
         }
     }
     return matrix
@@ -92,18 +91,10 @@ window.addEventListener("touchmove", event => {
     drawMatrix(x, y, noise)
 })
 
-let canDraw = true
-window.addEventListener("mousedown", function () {
-    canDraw = true
-})
-window.addEventListener("mouseup", function () {
-    //canDraw = true
-})
-window.addEventListener("wheel", function () {
-    //canDraw = true
-})
+
+const delay = ms => new Promise(res => setTimeout(res, ms))
 window.addEventListener("mousemove", event => {
-    if (!canDraw) return
+    //if (!canDraw) return
     let x = Math.floor((event.pageX / screenWidth) * width)
     let y = Math.floor(((event.pageY - window.scrollY) / screenHeight) * height)
     let noise = Math.round(Math.random() * 10 + 30)
@@ -127,16 +118,16 @@ function calculateGeneration() {
     let height = nextGen.length - 1
     for (let i = 1; i < height; i++) {
         for (let j = 1; j < width; j++) {
-            let neighbours = 
-                matrix[i - 1][j - 1]
-               +matrix[i - 1][j]
-               +matrix[i - 1][j + 1]
-               +matrix[i][j - 1]
-               +matrix[i][j + 1]
-               +matrix[i + 1][j - 1]
-               +matrix[i + 1][j]
-               +matrix[i + 1][j + 1]
-               
+            let neighbours =
+                matrix[i - 1][j - 1] +
+                matrix[i - 1][j] +
+                matrix[i - 1][j + 1] +
+                matrix[i][j - 1] +
+                matrix[i][j + 1] +
+                matrix[i + 1][j - 1] +
+                matrix[i + 1][j] +
+                matrix[i + 1][j + 1]
+
             if (!matrix[i][j]) {
                 //If cell is dead
                 if (neighbours == 3) {
@@ -155,8 +146,20 @@ function calculateGeneration() {
     return nextGen
 }
 drawCanvas(matrix, ctx, "#DA0363", true)
-let every60 = 0
-let secondContextColor = "black"
+
+let palette = {
+    0: ['#283049', '#404B69', '#278EA5'],
+    1: ['#4b5d67', '#1f4068', '#30475e', '#3282b8'],
+    2: ['', '', '', ''],
+    3: ['', '', '', ''],
+    4: ['', '', '', '']
+}
+
+function getRandomColor() {
+    return palette[0][Math.floor(Math.random() * palette[0].length)]
+}
+let every30 = 0
+let secondContextColor = getRandomColor()
 let generations = []
 let every5 = 0
 
@@ -166,11 +169,11 @@ function handleFrame() {
         drawCanvas(matrix, ctx, "#DA0363", true)
     } else {
         let nextGen = calculateGeneration()
-        every60++
+        every30++
         every5++
-        if (every60 > 30) {
+        if (every30 > 30) {
             secondContextColor = getRandomColor()
-            every60 = 0
+            every30 = 0
         }
         if (generations.length > 15) {
             generations.shift()
@@ -189,17 +192,6 @@ function handleFrame() {
     calcFps()
 }
 
-let palette = {
-    0: ['#283049', '#404B69', '#278EA5'],
-    1: ['#4b5d67', '#1f4068', '#30475e', '#3282b8'],
-    2: ['', '', '', ''],
-    3: ['', '', '', ''],
-    4: ['', '', '', '']
-}
-
-function getRandomColor() {
-    return palette[0][Math.floor(Math.random() * palette[0].length)]
-}
 let trailToggled = false
 
 function toggleTrail() {
@@ -228,6 +220,14 @@ function erase() {
     eraseCanvas(ctx2)
 }
 
+function showHiddenDiv(div) {
+    $(".hiddenDiv").fadeOut(200)
+    let toHide = div.getElementsByClassName("hiddenDiv")[0]
+    if (toHide.style.display != "block") {
+        $(toHide).fadeIn(400)
+    }
+}
+
 function toggleUtils() {
     let utils = document.getElementById("utils")
     utils.classList.toggle("hide")
@@ -236,6 +236,7 @@ window.requestAnimationFrame(handleFrame)
 
 let fps = 0
 let lastCalledTime = 0
+
 function calcFps() {
     if (!lastCalledTime) {
         lastCalledTime = Date.now();
@@ -249,3 +250,24 @@ function calcFps() {
 setInterval(() => {
     document.getElementById("fps").innerHTML = fps
 }, 400);
+
+async function drawS() {
+    let drawing
+    await fetch("/drawing.json").then(file => file.json()).then(file => drawing = file)
+    trailToggled = true
+    for (let i = 0; i < drawing.length; i++) {
+        let pos = drawing[i]
+        let x = Math.floor((pos[0]-7) / 100 * width)
+        if(screenWidth > screenHeight){
+            x = Math.floor((pos[0]/2.5+27) / 100 * width)
+        }
+        let y = Math.floor((pos[1]+25) / 100 * height)
+        let noise = Math.round(Math.random() * 10 + 30)
+        await delay(4)
+        drawMatrix(x, y, noise)
+    }
+    setTimeout(() => {
+        trailToggled = false
+    },10000);
+}
+drawS()
