@@ -32,17 +32,6 @@ body {
     overscroll-behavior: none
 }
 
-.bgImage {
-    opacity: 0.1;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    height: 80%;
-}
-
 #fps {
     position: absolute;
     bottom: 0.5em;
