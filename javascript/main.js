@@ -8,6 +8,10 @@ let screenWidth = positionInfo.width
 let screenHeight = positionInfo.height
 let height = Math.floor(screenHeight / 1.5)
 let width = Math.floor(screenWidth / 1.5)
+if (screenWidth > 1400) {
+    height = Math.floor(screenHeight / 1.8)
+    width = Math.floor(screenWidth / 1.8)
+}
 canvas.height = height
 canvas.width = width
 canvas2.height = height
@@ -39,6 +43,7 @@ function hexToRgb(hex) {
         b: parseInt(result[3], 16)
     } : null;
 }
+let secondCanvasData = new Uint8ClampedArray(width * height * 4).fill(0)
 
 function drawCanvas(toDraw, context, color, erase) {
     let drawHeight = toDraw.length
@@ -49,7 +54,7 @@ function drawCanvas(toDraw, context, color, erase) {
     if (erase) {
         data = new Uint8ClampedArray(width * height * 4).fill(0)
     } else {
-        data = context.getImageData(0, 0, width, height).data
+        data = secondCanvasData
     }
     let counter = 0
     for (let i = 0; i < drawHeight; i++) {
@@ -57,18 +62,20 @@ function drawCanvas(toDraw, context, color, erase) {
             if (data[counter + 3]) {
                 counter += 4
             } else {
-                let cell = toDraw[i][j]
-                data[counter++] = rgb[0]
-                data[counter++] = rgb[1]
-                data[counter++] = rgb[2]
-                if (cell) {
+                if (toDraw[i][j]) {
+                    data[counter++] = rgb[0]
+                    data[counter++] = rgb[1]
+                    data[counter++] = rgb[2]
                     data[counter++] = 255
+
                 } else {
+                    counter += 3
                     data[counter++] = 0
                 }
             }
         }
     }
+    if (!erase) secondCanvasData = data
     context.putImageData(new ImageData(data, width, height), 0, 0)
 }
 
@@ -118,8 +125,7 @@ function calculateGeneration() {
     let height = nextGen.length - 1
     for (let i = 1; i < height; i++) {
         for (let j = 1; j < width; j++) {
-            let neighbours =
-                matrix[i - 1][j - 1] +
+            let neighbours = matrix[i - 1][j - 1] +
                 matrix[i - 1][j] +
                 matrix[i - 1][j + 1] +
                 matrix[i][j - 1] +
@@ -127,7 +133,6 @@ function calculateGeneration() {
                 matrix[i + 1][j - 1] +
                 matrix[i + 1][j] +
                 matrix[i + 1][j + 1]
-
             if (!matrix[i][j]) {
                 //If cell is dead
                 if (neighbours == 3) {
@@ -190,23 +195,30 @@ let trailToggled = false
 function toggleTrail() {
     trailToggled = !trailToggled
     let btn = document.getElementById("trailBtn")
-    if(trailToggled){
-       btn.style.backgroundColor = palette[0][0]
-    }else{
-       btn.style.backgroundColor = ""
+    if (trailToggled) {
+        btn.style.backgroundColor = palette[0][0]
+    } else {
+        btn.style.backgroundColor = ""
     }
 }
 
 isStopped = false
+
 function stop() {
     isStopped = !isStopped
     let stopButton = document.getElementById("stopBtn")
     if (isStopped) {
-        stopButton.innerHTML = "Play"
+        stopButton.style.backgroundImage = "url('/icons/play.svg')"
     } else {
-        stopButton.innerHTML = "Stop"
+        stopButton.style.backgroundImage = "url('/icons/pause.svg')"
     }
 }
+document.getElementById("mainContent").addEventListener("scroll", function () {
+    let blur = ((this.scrollTop - screenHeight + 200) / 200).toFixed(2)
+    if (blur > 1.5) return
+    canvas.style.filter = 'blur(' + blur + 'px)'
+    canvas2.style.filter = 'blur(' + blur + 'px)'
+})
 
 function random() {
     matrix = generateRandomMatrix(0.4)
@@ -215,18 +227,29 @@ function random() {
 function erase() {
     matrix = createMatrix()
     generations = []
+    secondCanvasData = new Uint8ClampedArray(width * height * 4)
     eraseCanvas(ctx)
     eraseCanvas(ctx2)
 }
 
 async function showHiddenDiv(div) {
-   
+
     let toHide = div.getElementsByClassName("hiddenDiv")[0]
     if (toHide.style.display != "block") {
-        $(".hiddenDiv").css({display:"none"})
+        $(".hiddenDiv").css({
+            display: "none"
+        })
         $(toHide).fadeIn(400)
-        div.scrollIntoView({behavior:"smooth"})
+        goToElement(div, 0.98)
     }
+}
+
+function goToElement(element, scroll = 0.9) {
+    let container = document.getElementById("mainContent")
+    if (typeof element == "string") element = document.getElementById(element)
+    $(container).animate({
+        scrollTop: ($(element).offset().top - $(container).offset().top + $(container).scrollTop()) * scroll
+    })
 }
 
 function toggleUtils() {
@@ -258,9 +281,10 @@ async function drawS() {
     toggleTrail()
     for (let i = 0; i < drawing.length; i++) {
         let pos = drawing[i]
-        let x = Math.floor((pos[0]-7) / 100 * width)
-        if(screenWidth > screenHeight){
-            x = Math.floor((pos[0]/2.5+27) / 100 * width)
+        let x = Math.floor((pos[0] - 7) / 100 * width)
+        if (screenWidth > screenHeight) {
+            x = Math.floor((pos[0] / 3 + 30) / 100 * width)
+            pos[1] = +pos[1] * 1.2 - 6
         }
         pos[1] = +pos[1] + 3
         let y = Math.floor(pos[1] / 100 * height)
@@ -269,7 +293,14 @@ async function drawS() {
         drawMatrix(x, y, noise)
     }
     setTimeout(() => {
-       if(trailToggled) toggleTrail()
-    },10000);
+        if (trailToggled) toggleTrail()
+    }, 10000);
 }
 drawS()
+
+function download() {
+    var link = document.createElement('a');
+    link.download = 'CGOLdrawing.png';
+    link.href = document.getElementById('canvas').toDataURL()
+    link.click();
+}

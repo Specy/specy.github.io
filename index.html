@@ -37,6 +37,34 @@
         </canvas>
     </div>
     <div id="mainContent">
+        <div class="navBar">
+            <div class="navBarLogo" onclick="drawS()"></div>
+            <div style="margin-left: 2vw; display: inline-flex;">
+                <div class="navBarOption" style="margin-left: 0;" onclick="goToElement('contact')">
+                    Contact
+                </div>
+                <div class="navBarOption" onclick="goToElement('aboutMe')">
+                    About me
+                </div>
+                <div class="navBarOption" onclick="goToElement('myProjects',0.95)">
+                    My projects
+                </div>
+            </div>
+            <button onclick="toggleUtils()" id="toggleUtils">Settings</button>
+            <div id="utils" class="hide">
+                <button onclick="toggleTrail()" id="trailBtn">
+                    Trail
+                </button>
+                <button onclick="stop()" id="stopBtn" style="background-image:url('/icons/pause.svg');">
+                </button>
+                <button onclick="random()" style="background-image:url('/icons/random.svg');">
+
+                </button>
+                <button onclick="erase()" style="background-image:url('/icons/erase.svg');">
+
+                </button>
+            </div>
+        </div>
         <div class="presentation" id="presentation">
             <div class="biggerText">Specy</div>
         </div>
@@ -84,14 +112,16 @@
                             Speskin bot
                         </div>
                         <div class="smallText">
-                            A bot that is meant to replace the gota.io bot, it has skin acception notifications and connects with the 
+                            A bot that is meant to replace the gota.io bot, it has skin acception notifications and
+                            connects with the
                             <a href="/apps/Speskin/index.html">Speskin website</a> to show skin lists.
                         </div><br>
                         <div class="smallMiddleText" style="color:#DA0363">
                             Guessing words!
                         </div>
                         <div class="smallText">
-                            A bot that links to a server used as a dictionary, it has minigames in 5 different languages such as:<br><br>
+                            A bot that links to a server used as a dictionary, it has minigames in 5 different languages
+                            such as:<br><br>
                             <ul>
                                 <li>Translating a word from english to the other language or vice versa</li>
                                 <li>Giving 5 or more random words that you can learn</li>
@@ -108,16 +138,19 @@
                             Compitazzi!
                         </div>
                         <div class="smallText">
-                            A bot used in my class discord server to manage homework given out by teachers, alerting the day before all the 
+                            A bot used in my class discord server to manage homework given out by teachers, alerting the
+                            day before all the
                             homework/tests that will be due the day after
                         </div><br>
                         <div class="smallMiddleText" style="color:#DA0363">
-                            skyMusic 
+                            skyMusic
                         </div>
                         <div class="smallText">
-                            A bot used to manage server-side errors of the 
-                            <a href="https://sky-music.herokuapp.com">Sky music</a> website and allow users to send the songs they have made
-                            so to be uploaded to the <a href="https://sky-music.herokuapp.com/songLibrary.html"> Library</a>
+                            A bot used to manage server-side errors of the
+                            <a href="https://sky-music.herokuapp.com">Sky music</a> website and allow users to send the
+                            songs they have made
+                            so to be uploaded to the <a href="https://sky-music.herokuapp.com/songLibrary.html">
+                                Library</a>
                         </div>
                     </div>
                 </div>
@@ -138,15 +171,16 @@
                             <div class="smallMiddleText" style="color:#DA0363">
                                 Expressions
                             </div>
-                            <div>   
-                                <img src="/images/d-d.png" class="owoImg"> 
-                                <img src="/images/-w-.png" class="owoImg"> 
-                                <img src="/images/^w^.png" class="owoImg"><br> 
-                                <img src="/images/cry.png" class="owoImg"> 
-                                <img src="/images/x-x.png" class="owoImg"> 
-                                <img src="/images/owo.png" class="owoImg"> 
+                            <div>
+                                <img src="/images/d-d.png" class="owoImg">
+                                <img src="/images/-w-.png" class="owoImg">
+                                <img src="/images/^w^.png" class="owoImg"><br>
+                                <img src="/images/cry.png" class="owoImg">
+                                <img src="/images/x-x.png" class="owoImg">
+                                <img src="/images/owo.png" class="owoImg">
                             </div><br>
-                            If not being petted for too long it will start to cry, but if petted for too long it will get mad. 
+                            If not being petted for too long it will start to cry, but if petted for too long it will
+                            get mad.
                             All expressions are random, each biased differently.
                         </div>
                     </div>
@@ -164,9 +198,11 @@
                             Features
                         </div><br>
                         <div class="smallText">
-                            The app has an account system connected to firebase to manage each student orders. 
-                            Each class has an account, each students does the login with their name, class name and password, they can 
-                            then place orders which will then get sorted and displayed in a single place to make it easier to order at the school's bar.
+                            The app has an account system connected to firebase to manage each student orders.
+                            Each class has an account, each students does the login with their name, class name and
+                            password, they can
+                            then place orders which will then get sorted and displayed in a single place to make it
+                            easier to order at the school's bar.
                         </div>
                     </div>
                 </div>
@@ -212,44 +248,25 @@
             </div>
         </div>
         <div id="contact">
-           <div class="bigText">Contact me!</div>
-           <div class="cell">
-              <div class="middleText" style="margin-bottom:1.5rem">Contact info</div>
-              <div style="display: flex; justify-content: space-between; margin-bottom:1rem; user-select: auto;">
-                 <div class="smallMiddleText" style="margin-right: 5px; color: #DA0363">
-                    Discord:
-                 </div>
-                 Specy#7347
-              </div>
-              <div style="display: flex; justify-content: space-between;">
-                 <div class="smallMiddleText" style="margin-right: 5px; color: #DA0363">
-                    E-mail: 
-                 </div>
-                 <a style="user-select:auto;"
-                 href="mailto:specy.dev@gmail.com"> specy.dev@gmail.com</a>
-              </div>
-           </div>
+            <div class="bigText">Contact me!</div>
+            <div class="cell">
+                <div class="middleText" style="margin-bottom:1.5rem">Contact info</div>
+                <div style="display: flex; justify-content: space-between; margin-bottom:1rem; user-select: auto;">
+                    <div class="smallMiddleText" style="margin-right: 5px; color: #DA0363">
+                        Discord:
+                    </div>
+                    Specy#7347
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                    <div class="smallMiddleText" style="margin-right: 5px; color: #DA0363">
+                        E-mail:
+                    </div>
+                    <a style="user-select:auto;" href="mailto:specy.dev@gmail.com"> specy.dev@gmail.com</a>
+                </div>
+            </div>
         </div>
-        <div class="middleText" onclick="presentation.scrollIntoView({behavior:'smooth'})">
-           Go back up
-        </div>
-    </div>
-    <div class="bottomButtons">
-        <button onclick="toggleUtils()" id="toggleUtils">Settings</button>
-        <div id="utils" class="hide">
-
-            <button onclick="toggleTrail()" id="trailBtn">
-                Trail
-            </button>
-            <button onclick="stop()" id="stopBtn">
-                Stop
-            </button>
-            <button onclick="random()">
-                Random
-            </button>
-            <button onclick="erase()">
-                Erase
-            </button>
+        <div class="goBackUp" onclick="presentation.scrollIntoView({behavior:'smooth'})">
+            Go back up
         </div>
     </div>
 </body>

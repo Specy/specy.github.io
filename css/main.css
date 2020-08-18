@@ -12,22 +12,67 @@
     user-select: none;
     -webkit-tap-highlight-color: transparent;
 }
-html{
-   height:100%;
-   overflow:hidden;
+
+html {
+    height: 100%;
+    overflow: hidden;
 }
+
 #canvas,
 #canvas2 {
     position: fixed;
     width: 100%;
     height: 100%;
     z-index: -1;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-crisp-edges;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+.navBar {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background: rgba(40, 48, 73, 0.8);
+    height: 5vh;
+    border-bottom: 2px #b00752 solid;
+    display: flex;
+    align-items: center;
+
+}
+
+.goBackUp {
+    font-size: 1.5rem;
+    color: #DA0363;
+    text-align: center;
+}
+
+.navBarLogo {
+    background-image: url(/favicon.png);
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 4.5vh;
+    width: 4.5vh;
+    margin-left: 1vw;
+}
+
+.navBarOption {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-left: 5vw;
+}
+
+.navBarOption:hover {
+    color: #DA0363;
 }
 
 body {
     background-color: rgb(22, 22, 22);
     padding: 0;
-    margin:0;
+    margin: 0;
     overflow-y: hidden;
     overscroll-behavior: none
 }
@@ -38,47 +83,52 @@ body {
     right: 40px;
 }
 
-.bottomButtons {
-    position: fixed;
-    width: 100px;
-    right: 40px;
-    top: 0.2em;
-    padding: 0.2em;
-    z-index: 100;
-}
 
 
 .presentation {
-    margin-top: 5vh;
+    margin-top: 7vh;
     height: 80vh;
 }
 
 #toggleUtils {
+    margin-left: auto;
+    margin-right: 1vw;
     cursor: pointer;
     background-image: url('/icons/settings.svg');
-    background-size: 40px;
+    background-size: 4vh;
     background-repeat: no-repeat;
     background-position: center;
     background-color: #b00752;
     font-size: 0;
-    width: 100%;
+    width: 4vw;
+    border: none;
+    border-radius: 1vh;
+    height: 4.5vh;
 }
 
 #utils {
     display: flex;
+    top: 4.5vh;
+    width: 4vw;
     flex-direction: column;
     justify-content: space-evenly;
+    position: fixed;
+    right: 1vw;
 }
 
-.bottomButtons button {
+#utils button {
     cursor: pointer;
+    background-size: 3.5vh;
+    background-position: center;
+    background-repeat: no-repeat;
     margin-top: 5px;
-    height: 50px;
+    width: 100%;
+    height: 5vh;
     text-align: center;
     border: none;
     border-radius: 1vh;
     background-color: #7b0e3f;
-    font-size: 1em;
+    font-size: 0.8em;
     word-break: break-all
 }
 
@@ -95,24 +145,29 @@ body {
 }
 
 #myProjects,
-#aboutMe,#contact{
+#aboutMe,
+#contact {
     width: 100%;
     display: flex;
     flex-direction: column;
-    margin-bottom:5vh;
+    margin-bottom: 5vh;
     justify-content: center;
 }
-#contact{
+
+#contact {
     width: 50%;
     margin: auto;
 }
-ul{
+
+ul {
     text-align: left;
 }
-.hiddenDiv{
+
+.hiddenDiv {
     display: none;
     margin-top: 1vh;
 }
+
 .smallMiddleText {
     font-size: 1.2rem
 }
@@ -122,12 +177,14 @@ ul{
     flex-direction: row;
     justify-content: space-evenly;
 }
-.owoImg{
+
+.owoImg {
     height: 100%;
     background-color: #dad8b3;
     border-radius: 20%;
     max-height: 5vh;
 }
+
 .cell {
     cursor: pointer;
     text-align: center;
@@ -136,10 +193,10 @@ ul{
     padding: 1em;
     border-radius: 2vh;
     margin: 2vh;
-    background-color: rgba(50,50,50,0.8);
-    box-shadow:0 0 10px #333333;
+    background-color: rgba(50, 50, 50, 0.8);
+    box-shadow: 0 0 10px #333333;
     flex: 1 1 0;
-    
+
 }
 
 .logo {
@@ -181,15 +238,17 @@ ul{
 }
 
 @media only screen and (orientation: portrait) {
-    .bottomButtons button {
-        height: 45px;
-        padding: 1px;
-        font-size: 0.6rem;
-        width: 45px;
+    #toggleUtils {
+        width: 12vw;
+
     }
 
-    .bottomButtons {
-        width: 45px;
+    #utils {
+        width: 12vw;
+    }
+
+    .navBarOption {
+        font-size: 0.8em;
     }
 
     .cell {
@@ -201,14 +260,12 @@ ul{
         flex-direction: column;
     }
 
-    .bottomButtons {
-        right: 0.5em;
-    }
 
     #fps {
         right: 0.5em;
     }
-    #contact{
+
+    #contact {
         width: 100%;
         margin: auto;
     }
