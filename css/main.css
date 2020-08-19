@@ -31,7 +31,7 @@ html {
 }
 
 .navBar {
-    position: absolute;
+    position: fixed;
     top: 0;
     width: 100%;
     background: rgba(40, 48, 73, 0.8);
@@ -39,6 +39,7 @@ html {
     border-bottom: 2px #b00752 solid;
     display: flex;
     align-items: center;
+    z-index: 2;
 
 }
 
@@ -46,6 +47,8 @@ html {
     font-size: 1.5rem;
     color: #DA0363;
     text-align: center;
+    cursor: pointer;
+    margin-bottom: 5vh;
 }
 
 .navBarLogo {
@@ -78,16 +81,33 @@ body {
 }
 
 #fps {
-    position: absolute;
+    position: fixed;
     bottom: 0.5em;
-    right: 40px;
+    left: 1vw;
+    z-index: -1;
 }
 
+.clickMe {
+    position: absolute;
+    right: 1.4rem;
+    bottom: 0.5rem;
+    font-size: 0.8rem;
+}
 
+#scrollDown {
+    background-image: url(/icons/arrow.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 3vh;
+    width: 3vh;
+    margin-left: auto;
+    margin-right: 1vw;
+    padding-bottom: 2rem;
+}
 
 .presentation {
     margin-top: 7vh;
-    height: 80vh;
+    height: 88vh;
 }
 
 #toggleUtils {
@@ -187,31 +207,47 @@ ul {
 
 .cell {
     cursor: pointer;
+    position: relative;
     text-align: center;
-    min-height: 20vh;
+    min-height: 22vh;
     font-size: 1.5em;
-    padding: 1em;
+    padding: 0.8rem;
     border-radius: 2vh;
     margin: 2vh;
-    background-color: rgba(50, 50, 50, 0.8);
+    background-color: rgba(44, 44, 44, 0.8);
     box-shadow: 0 0 10px #333333;
     flex: 1 1 0;
 
 }
 
+.contactCell {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .logo {
     width: 45px;
-    margin-left: 10px;
     border-radius: 50%;
+
 }
 
 .middleText {
+    margin-bottom: 3vh;
+    margin-left: 45px;
     padding-bottom: 5px;
-    font-size: 2rem;
+    font-size: 1.7rem;
     color: #DA0363;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.projectText {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    color: #DA0363;
 }
 
 .smallText {
@@ -262,11 +298,15 @@ ul {
 
 
     #fps {
-        right: 0.5em;
+        margin-left: 2vw;
     }
 
     #contact {
         width: 100%;
         margin: auto;
+    }
+
+    #scrollDown {
+        margin-right: 4vw;
     }
 }
