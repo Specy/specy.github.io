@@ -273,6 +273,7 @@ async function showHiddenDiv(div) {
     }
 }
 
+
 function goToElement(element, scroll = 0.9) {
     //function to scroll the body to a selected element, scroll is the offset
     let container = document.getElementById("mainContent")
