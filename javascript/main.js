@@ -107,7 +107,7 @@ function generateRandomMatrix(bias) {
     }
     return matrix
 }
-document.getElementById("mainContent").addEventListener("touchmove", event => {
+document.addEventListener("touchmove", event => {
     //listen to the touches on the screen and add the selected cells to the matrix
     let x = Math.floor((event.touches[0].pageX / screenWidth) * width)
     let y = Math.floor(((event.touches[0].pageY - window.scrollY) / screenHeight) * height)

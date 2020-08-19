@@ -48,7 +48,7 @@ html {
     color: #DA0363;
     text-align: center;
     cursor: pointer;
-    margin-bottom: 5vh;
+    margin-bottom: 20vh;
 }
 
 .navBarLogo {
@@ -101,13 +101,14 @@ body {
     height: 3vh;
     width: 3vh;
     margin-left: auto;
+    margin-top: -10vh;
     margin-right: 1vw;
-    padding-bottom: 2rem;
+    padding-bottom: 5vh;
 }
 
 .presentation {
     margin-top: 7vh;
-    height: 88vh;
+    height: 100%
 }
 
 #toggleUtils {
@@ -308,5 +309,8 @@ ul {
 
     #scrollDown {
         margin-right: 4vw;
+    }
+    #scrollDown{
+       margin-top: -19vh;
     }
 }
