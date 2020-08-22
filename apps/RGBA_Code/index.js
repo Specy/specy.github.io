@@ -1,37 +1,32 @@
 let canvas = document.getElementById("canvas")
 let ctx = canvas.getContext("2d")
-ctx.imageSmoothingEnabled= false
-let globalImage
+let hasGenerated = false
 function generateImage() {
     let text = document.getElementById("text").value
-    let image = RGBA_Code.createImage(text, false, 1)
+    if(text == "")return
+    let shift = parseInt(document.getElementById("shiftPicker").value)
+    let image = RGBA_Code.createImage(text, shift)
     canvas.width = image.width
     canvas.height = image.height
-    ctx.putImageData(image, 0, 0)
-    globalImage = image
+    hasGenerated = true
+    RGBA_Code.drawOnCanvas(image,canvas)
 }
 
 function downloadImage() {
-    if(globalImage != undefined) RGBA_Code.downloadImage(globalImage)
-    console.log(globalImage.data)
+    if(hasGenerated) RGBA_Code.downloadImageFromData(ctx.getImageData(0, 0, canvas.width, canvas.height),"RGBA_Code_demo")
 }
 
 function loadImage() {
     document.getElementById("filePicker").addEventListener("change", function () {
         let fr = new FileReader()
         fr.onload = function () {
-            let file = fr.result
-            console.log(file)
             let image = new Image
             image.onload = () =>{
                 canvas.width = image.width
                 canvas.height = image.height
-                canvas.style.imageRendering = "pixelated"
-                console.log(image)
                 ctx.drawImage(image,0,0);
                 let text = RGBA_Code.getTextFromImage(ctx.getImageData(0, 0, canvas.width, canvas.height))
-                console.log(ctx.getImageData(0, 0, canvas.width, canvas.height).data)
-                console.log(text)
+                document.getElementById("text").value = text
             }
             image.src = fr.result
             filePicker.value = ""
