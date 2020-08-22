@@ -348,14 +348,8 @@ function bounceArrow() {
     for (i = 0; i < 15; i++) {
         let bounce = "5%"
         if (screenWidth > screenHeight) bounce = "2%"
-        $("#scrollDown").animate({
-                marginTop: '-=' + bounce,
-                marginBottom: '+=' + bounce
-            }, 500)
-            .animate({
-                marginTop: '+=' + bounce,
-                marginBottom: '-=' + bounce
-            }, 500);
+        $("#scrollDown").animate({marginTop: bounce}, 400)
+            .animate({marginTop: 0}, 400);
     }
 }
 bounceArrow()

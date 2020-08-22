@@ -29,19 +29,23 @@ function drawOnImage() {
     let y = 10
     let text = document.getElementById("text").value
     hasGenerated = true
-    let newImage = SP_Code.drawTextOnPicture(ctx.getImageData(0,0,canvas.width,canvas.height),text,x,y)
-    SP_Code.drawOnCanvas(newImage,canvas)
+    let shift = parseInt(document.getElementById("shiftPicker").value)
+    ctx.drawImage(selectedImageGlobal, 0, 0);
+    let newImage = SP_Code.drawTextOnPicture(ctx.getImageData(0, 0, canvas.width, canvas.height), text, shift, x, y)
+    SP_Code.drawOnCanvas(newImage, canvas)
 }
 
-async function selectImage(){
+let selectedImageGlobal
+async function selectImage() {
     let selectedImage = await pickImage()
+    selectedImageGlobal = selectedImage
     canvas.width = selectedImage.width
     canvas.height = selectedImage.height
     ctx.drawImage(selectedImage, 0, 0);
 }
 
 function pickImage() {
-    return new Promise((resolve,reject) => {
+    return new Promise((resolve, reject) => {
         document.getElementById("filePicker").addEventListener("change", function () {
             let fr = new FileReader()
             fr.onload = function () {
@@ -52,7 +56,9 @@ function pickImage() {
                 image.src = fr.result
                 filePicker.value = ""
             }
-            fr.onerror = function (e) {reject(e)}
+            fr.onerror = function (e) {
+                reject(e)
+            }
             fr.readAsDataURL(this.files[0])
         })
         filePicker.click()
