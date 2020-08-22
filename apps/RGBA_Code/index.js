@@ -7,7 +7,7 @@ function generateImage() {
     let image = RGBA_Code.createImage(text, false, 1)
     canvas.width = image.width
     canvas.height = image.height
-    ctx.drawImage(createImageBitmap(image), 0, 0)
+    ctx.putImageData(image, 0, 0)
     globalImage = image
 }
 
