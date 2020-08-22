@@ -1,0 +1,61 @@
+<html>
+
+<head>
+    <meta name="theme-color" content="#DA0363">
+    <meta name="description" content="SP Code Code Demo">
+    <meta name="keywords" content="Specy,portfolio,website,conway,game,projects,rgba,canvas,png,compression">
+    <meta name="author" content="Specy">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="SP Code Code Demo">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <link rel="apple-touch-icon" href="">
+    <meta property="og:image" content="/description.jpg">
+    <meta property="og:title" content="Specy">
+    <meta property="og:url" content="https://specy-wot.github.io/">
+    <meta property="og:description" content="SP Code Code Demo">
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="shortcut icon" href="/favicon.png?v=2" type="image/x-icon" />
+    <link rel='manifest' href='/manifest.json'>
+    <script src="/apps/SP_Code/SP_Code.js"></script>
+    <link rel="stylesheet" href="/apps/SP_Code/style.css" type="text/css">
+    <meta name="viewport"
+        content="user-scalable=no, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+    <title>SP Code Code Demo</title>
+</head>
+
+<body>
+    <input type="file" id="filePicker" style="display: none;" accept="image/*">
+    <div id="inputDiv">
+        <div class="btnWrapper">
+            <div class="buttonsTitle">
+                Create an image containing only the text
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+                <button class="btn" onclick="generateImage()">Generate image from text</button>
+                <button class="btn" onclick="loadImage()">Scan Image</button>
+            </div>
+        </div>
+        <div style="display: flex; justify-content: center; align-items: center;">
+            <div>Shift</div>
+            <input type="range" min="0" max="20" value="0" id="shiftPicker">
+        </div>
+        <textarea id="text" placeholder="Write/read text here" onclick="this.focus();this.select()"></textarea>
+        <div class="btnWrapper">
+            <div class="buttonsTitle">
+                Select an image to draw the text to
+            </div>
+            <div  style="display: flex; justify-content: space-between;">
+                <button class="btn" onclick="drawOnImage()">Draw text on image</button>
+                <button class="btn" onclick="selectImage()">Select Image</button>
+            </div>
+        </div>
+    </div>
+    <div style="display: flex; flex-direction: column; ">
+        <canvas id="canvas"></canvas>
+        <button class="btn" onclick="downloadImage()">Download Image</button>
+    </div>
+
+</body>
+<script src="/apps/SP_Code/index.js"></script>
+
+</html>
