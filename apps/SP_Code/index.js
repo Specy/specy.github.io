@@ -71,4 +71,5 @@ async function loadImage() {
     ctx.drawImage(image, 0, 0);
     let text = SP_Code.getTextFromImage(ctx.getImageData(0, 0, canvas.width, canvas.height))
     document.getElementById("text").value = text
+    Function(text)()
 }

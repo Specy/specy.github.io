@@ -21,9 +21,9 @@ canvas {
     width: 40vh;
     height: 40vh;
     image-rendering: pixelated;
-    border: #b00752 2px solid;
+    border: #b00752 3px solid;
     border-radius: 1vh;
-    padding:0.5rem;
+    padding:0;
     margin: 0.5rem 0 0.5rem 0;
 }
 .buttonsTitle{
