@@ -13,9 +13,11 @@
     <meta property="og:title" content="Specy">
     <meta property="og:url" content="https://specy-wot.github.io/">
     <meta property="og:description" content="SP Code Code Demo">
+    
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="shortcut icon" href="/favicon.png?v=2" type="image/x-icon" />
     <link rel='manifest' href='/manifest.json'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="/apps/SP_Code/SP_Code.js"></script>
     <link rel="stylesheet" href="/apps/SP_Code/style.css" type="text/css">
     <meta name="viewport"
@@ -32,7 +34,10 @@
             </div>
             <div style="display: flex; justify-content: space-between;">
                 <button class="btn" onclick="generateImage()">Generate image from text</button>
-                <button class="btn" onclick="loadImage()">Scan Image</button>
+                <button class="btn" onclick="loadImage()" style="background-color:#016b6b;">
+                    Scan Image
+                    <img src="./icons/search.svg" style="margin-left:5px;">
+                </button>
             </div>
         </div>
         <div style="display: flex; justify-content: center; align-items: center;">
@@ -52,7 +57,9 @@
     </div>
     <div style="display: flex; flex-direction: column; ">
         <canvas id="canvas"></canvas>
-        <button class="btn" onclick="downloadImage()">Download Image</button>
+        <button class="btn" onclick="downloadImage()">Download</button>
+    </div>
+    <div id="hiddenMessage">
     </div>
 
 </body>

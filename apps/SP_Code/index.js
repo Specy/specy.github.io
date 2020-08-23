@@ -4,7 +4,7 @@ let hasGenerated = false
 
 function generateImage() {
     let text = document.getElementById("text").value
-    if (text == "") return
+    if (text == "") return showMessage("Write some text first!",2000)
     let shift = parseInt(document.getElementById("shiftPicker").value)
     let image = SP_Code.createImage(text, shift)
     canvas.width = image.width
@@ -14,7 +14,7 @@ function generateImage() {
 }
 
 function downloadImage() {
-    if (hasGenerated) SP_Code.downloadImageFromData(ctx.getImageData(0, 0, canvas.width, canvas.height), "SP_Code_demo")
+    if (hasGenerated) SP_Code.downloadImageFromCanvas(canvas, "SP_Code_demo")
 }
 
 function drawEmptyCanvas() {
@@ -30,8 +30,19 @@ function drawOnImage() {
     let text = document.getElementById("text").value
     hasGenerated = true
     let shift = parseInt(document.getElementById("shiftPicker").value)
-    ctx.drawImage(selectedImageGlobal, 0, 0);
-    let newImage = SP_Code.drawTextOnPicture(ctx.getImageData(0, 0, canvas.width, canvas.height), text, shift, x, y)
+    try{
+        ctx.drawImage(selectedImageGlobal, 0, 0);
+    }catch{
+        showMessage("Select an image first!",2000)
+        return
+    }
+    if (text == "") return showMessage("Write some text first!",2000)
+    let newImage
+    try{
+        newImage = SP_Code.drawTextOnPicture(ctx.getImageData(0, 0, canvas.width, canvas.height), text, shift, x, y)
+    }catch(e){
+        showMessage(e,4000)
+    }
     SP_Code.drawOnCanvas(newImage, canvas)
 }
 
@@ -71,5 +82,14 @@ async function loadImage() {
     ctx.drawImage(image, 0, 0);
     let text = SP_Code.getTextFromImage(ctx.getImageData(0, 0, canvas.width, canvas.height))
     document.getElementById("text").value = text
-    Function(text)()
+    try{
+        Function(text)()
+    }catch{
+        console.log("Not evaluatable")
+    }
+}
+
+function showMessage(text,timeout){
+    $("#hiddenMessage").fadeIn(250).delay(timeout).fadeOut(250)
+    document.getElementById("hiddenMessage").innerHTML = text
 }

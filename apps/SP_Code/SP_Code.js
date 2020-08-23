@@ -1,11 +1,16 @@
 let SP_Code = {}
-SP_Code.createImage = function (text, shift = 0) {
+SP_Code.createImage = function (text, shift = 0,fill = 0) {
     let charCodes = []
     //convert all letters to UTF-16 number
+    let max = 0
     for (let i = 0; i < text.length; i++) {
         charCodes.push(text.charCodeAt(i))
+        if (charCodes[i] > max) max = charCodes[i]
     }
     let charBytes = [1]
+    let ignoreWordSplit = false
+    //if it contains only ASCII characters it doesn't need to create letter splits so it can store twice the amount of data
+    if (max < 253) charBytes[0] = 3, ignoreWordSplit = true
     //Adds a 1 bit offset, without it the image looks almost completely green
     for (let i = 0; i < charCodes.length; i++) {
         let code = charCodes[i]
@@ -21,8 +26,8 @@ SP_Code.createImage = function (text, shift = 0) {
             }
             charBytes.push(reminder)
         }
-        //adds a character break
-        charBytes.push(254)
+        //adds a character break, doesn't add it if the text is only ascii
+        if (!ignoreWordSplit) charBytes.push(254)
         //this is just for the looks, an offset might make the image look better but doesn't change the text data
         //higher value means higher file size
         if (shift) charBytes.push(...new Array(shift).fill(0))
@@ -35,7 +40,7 @@ SP_Code.createImage = function (text, shift = 0) {
     }
     let width = Math.round(Math.sqrt(subDivision.length / 4) + 1)
     let height = width
-    let imageData = new Uint8ClampedArray(width * height * 4).fill(0)
+    let imageData = new Uint8ClampedArray(width * height * 4).fill(fill)
     //to make sure a subdivision was completed 
     subDivision.push(...new Array(3).fill(255))
     for (let i = 0; i < subDivision.length; i++) {
@@ -56,7 +61,15 @@ SP_Code.getTextFromImage = function (image) {
         let ctx = document.createElement("canvas").getContext("2d")
         ctx.putImageData(image, 0, 0)
         //1 is the x pos, 2 is the y pos, 4 is the width/height, the limitation is a width of 255px
-        data = ctx.getImageData(data[1], data[2], data[4], data[4]).data
+        let width = data[4]
+        data = ctx.getImageData(data[1], data[2], width, width).data
+    }
+    // if the type of data is only ascii, it doesn't need the letter breaks
+    if (data[0] == 3) {
+        for (let i = 1; i < data.length; i++) {
+            if (data[i] != 255 && data[i] != 0) string += String.fromCharCode(data[i])
+        }
+        return string
     }
     for (let i = 1; i < data.length; i++) {
         if (data[i] != 254 && data[i] != 255) charCode += data[i]
@@ -67,28 +80,28 @@ SP_Code.getTextFromImage = function (image) {
     }
     return string
 }
-
+    //Downloads the image data to png
 SP_Code.downloadImageFromData = function (image, fileName = "SP_Code") {
-    var link = document.createElement('a');
-    link.download = fileName + '.png';
     let canvas = document.createElement("canvas")
     canvas.width = image.width
     canvas.height = image.height
     canvas.style.imageRendering = "pixelated"
     let ctx = canvas.getContext("2d")
     ctx.putImageData(image, 0, 0)
-    link.href = canvas.toDataURL("image/png", 1)
-    link.click();
+    SP_Code.downloadImageFromCanvas(canvas,fileName)
 }
-
+    //Download the canvas to png
 SP_Code.downloadImageFromCanvas = function (canvas, fileName = "SP_Code") {
     var link = document.createElement('a');
+    link.style.display = 'none';
     link.download = fileName + '.png';
     canvas.style.imageRendering = "pixelated"
     link.href = canvas.toDataURL("image/png", 1)
+    document.body.appendChild(link)
     link.click();
+    document.body.removeChild(link);
 }
-
+    //Utility tool, draws an image on a canvas
 SP_Code.drawOnCanvas = function (image, canvas) {
     let ctx = canvas.getContext("2d")
     canvas.width = image.width
@@ -97,9 +110,9 @@ SP_Code.drawOnCanvas = function (image, canvas) {
     ctx.putImageData(image, 0, 0)
     ctx.getImageData(0, 0, canvas.width, canvas.height) // refreshes the canvas
 }
-
-SP_Code.drawTextOnPicture = function (image, text, shift = 0, x = 10, y = 10) {
-    let imageToDraw = SP_Code.createImage(text, shift)
+    //Draws the data on top of an already existing image
+SP_Code.drawTextOnPicture = function (image, text = "", shift = 0, x = 10, y = 10) {
+    let imageToDraw = SP_Code.createImage(text, shift,255)
     let background = document.createElement("canvas")
     let backgroundCtx = background.getContext("2d")
     let foreground = document.createElement("canvas")
@@ -107,6 +120,9 @@ SP_Code.drawTextOnPicture = function (image, text, shift = 0, x = 10, y = 10) {
     SP_Code.drawOnCanvas(imageToDraw, foreground)
     if (image.width - 10 < imageToDraw.width || image.height - 10 < imageToDraw.height) {
         throw new Error("The image to be drawn can't be bigger than the generated image")
+    }
+    if (text.length > 50000) {
+        throw new Error("Text is too big!")
     }
     backgroundCtx.drawImage(foreground, x, y)
     let imageData = backgroundCtx.getImageData(0, 0, canvas.width, canvas.height)
