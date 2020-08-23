@@ -40,10 +40,10 @@ function drawOnImage() {
     let newImage
     try{
         newImage = SP_Code.drawTextOnPicture(ctx.getImageData(0, 0, canvas.width, canvas.height), text, shift, x, y)
+        SP_Code.drawOnCanvas(newImage, canvas)
     }catch(e){
         showMessage(e,4000)
     }
-    SP_Code.drawOnCanvas(newImage, canvas)
 }
 
 let selectedImageGlobal
