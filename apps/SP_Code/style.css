@@ -26,6 +26,7 @@ iframe {
     height: 99%;
     width: 100%;
     overflow: hidden;
+    background-color: white;
 }
 
 canvas {
@@ -101,9 +102,11 @@ canvas {
     align-items: center;
     cursor: pointer;
 }
-.btn:hover{
+
+.btn:hover {
     filter: saturate(70%);
 }
+
 .picker {
     width: 60px;
     height: 5vh;
@@ -117,7 +120,8 @@ canvas {
     color: #dad8b3;
     opacity: 0.5;
 }
-#hiddenMessage{
+
+#hiddenMessage {
     position: absolute;
     bottom: 10vh;
     width: 20vw;
@@ -128,10 +132,11 @@ canvas {
     background-color: rgb(40, 48, 73);
     border-radius: 1vh;
     display: none;
-    text-align:center;
-    font-size:1rem;
-    padding:1rem;
+    text-align: center;
+    font-size: 1rem;
+    padding: 1rem;
 }
+
 @media only screen and (orientation: portrait) {
 
     #inputDiv {
@@ -141,10 +146,12 @@ canvas {
     #text {
         height: 20vh;
     }
-    .btn{
+
+    .btn {
         min-width: 30%;
     }
-    #hiddenMessage{
+
+    #hiddenMessage {
         right: unset;
         width: 60vw;
         bottom: 4vh;

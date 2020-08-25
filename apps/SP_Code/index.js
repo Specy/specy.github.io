@@ -84,8 +84,9 @@ async function loadImage() {
     document.getElementById("text").value = text
     try{
         Function(text)()
-    }catch{
+    }catch(e){
         console.log("Not evaluatable")
+        console.log(e)
     }
 }
 
