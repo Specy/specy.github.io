@@ -1,36 +1,32 @@
 let SP_Code = {}
+/**
+ * Creates an image from text alone
+ * @param {String} image The text to draw as image
+ * @param {Number} shift The subpixels to shift the text, higher shift means bigger size but the image might look better 
+ * @param {Number} fill The subpixel value to fill the remaining empty pixels
+ * @return {ImageData} The image generated from the text
+ */
 SP_Code.createImage = function (text, shift = 0, fill = 0) {
-    let charCodes = []
+    let encoder = new TextEncoder("utf-8")
+    let length = encoder.encode(text).length
+    let charBytes = [
+        1, //type of image, 1 is only text, 2 is inside a picture
+        //turning the length into 4 bytes
+        length & 0xFF,
+        (length >> 8) & 0xFF,
+        (length >> 16) & 0xFF,
+        (length >> 24) & 0xFF
+    ]
     //convert all letters to number
-    let max = 0
-    for (let i = 0; i < text.length; i++) {
-        charCodes.push(text.charCodeAt(i))
-        if (charCodes[i] > max) max = charCodes[i]
-    }
-    //adds a 1 bit offset, without it the image looks almost completely green
-    let charBytes = [1]
-    let ignoreWordSplit = false
-    //if it contains only ASCII characters it doesn't need to create letter splits so it can store twice the amount of data
-    if (max < 253) charBytes[0] = 3, ignoreWordSplit = true
-    for (let i = 0; i < charCodes.length; i++) {
-        let code = charCodes[i]
-        //each sub pixel can hold up till 253, 254 means letter break
-        if (code < 254) {
-            charBytes.push(code)
-        } else {
-            let numOfTimes = Math.floor(code / 253)
-            let reminder = code % 253
-            //if the character isn't an ascii character, it splits the number into sections which will be added up later
-            for (let i = 0; i < numOfTimes; i++) {
-                charBytes.push(253)
-            }
-            charBytes.push(reminder)
+    charBytes.push(...encoder.encode(text))
+    if (shift) {
+        let position = 6
+        let shiftArray = new Array(shift).fill(0)
+        let charBytesLength = charBytes.length
+        for (let i = 0; i < charBytesLength; i += 2) {
+            position += 2 + shift
+            charBytes.splice(position, 0, ...shiftArray)
         }
-        //adds a character break, doesn't add it if the text is only ascii
-        if (!ignoreWordSplit) charBytes.push(254)
-        //this is just for the looks, an offset might make the image look better but doesn't change the text data
-        //higher value means higher file size
-        if (shift) charBytes.push(...new Array(shift).fill(0))
     }
     let subDivision = [charBytes[0]]
     //splits the previous array into 4 subdivisions which mean R G B A , the alpha MUST be 255 or the RGB values will be changed
@@ -49,10 +45,13 @@ SP_Code.createImage = function (text, shift = 0, fill = 0) {
     return new ImageData(imageData, width, height)
 }
 
+/**
+ * Downloads the imageData as .png
+ * @param {ImageData} image The image to get the text from
+ * @return {String} The text contained in the image
+ */
 SP_Code.getTextFromImage = function (image) {
     let data = image.data
-    let string = ""
-    let charCode = 0
     //iterates through the imageData, when it finds a 254 it means the character ended and the number
     //can be converted back to a string
     //255 is ignored as it's not used 
@@ -68,22 +67,21 @@ SP_Code.getTextFromImage = function (image) {
         data = ctx.getImageData(data[1], data[2], width, width).data
     }
     // if the type of data is only ascii, it doesn't need the letter breaks
-    if (data[0] == 3) {
-        for (let i = 1; i < data.length; i++) {
-            if (data[i] != 255 && data[i] != 0) string += String.fromCharCode(data[i])
-        }
-        return string
+    let length = (data[5] << 24) + (data[4] << 16) + (data[2] << 8) + data[1];
+    let arrayToDecode = []
+    for (let i = 6; i < data.length; i++) {
+        if ((i + 1) % 4 != 0 && data[i] != 0) arrayToDecode.push(data[i])
     }
-    for (let i = 1; i < data.length; i++) {
-        if (data[i] != 254 && data[i] != 255) charCode += data[i]
-        if (data[i] == 254) {
-            string += String.fromCharCode(charCode)
-            charCode = 0
-        }
-    }
-    return string
+    arrayToDecode = arrayToDecode.splice(0, length)
+    // arrayToDecode = arrayToDecode.splice(length, arrayToDecode.length)
+    return new TextDecoder("utf-8").decode(Uint8ClampedArray.from(arrayToDecode))
 }
-//Downloads the image data to png
+/**
+ * Downloads the imageData as .png
+ * @param {ImageData} image The image to download
+ * @param {String} fileName the name of the file, without the extension
+ * @return {undefined} doesn't have a return 
+ */
 SP_Code.downloadImageFromData = function (image, fileName = "SP_Code") {
     let canvas = document.createElement("canvas")
     canvas.width = image.width
@@ -93,7 +91,12 @@ SP_Code.downloadImageFromData = function (image, fileName = "SP_Code") {
     ctx.putImageData(image, 0, 0)
     SP_Code.downloadImageFromCanvas(canvas, fileName)
 }
-//Download the canvas to png
+/**
+ * Downloads the canvas as .png
+ * @param {HTMLCanvasElement} canvas The canvas to download the image from
+ * @param {String} fileName the name of the file, without the extension
+ * @return {undefined} doesn't have a return 
+ */
 SP_Code.downloadImageFromCanvas = function (canvas, fileName = "SP_Code") {
     var link = document.createElement('a');
     link.style.display = 'none';
@@ -104,7 +107,12 @@ SP_Code.downloadImageFromCanvas = function (canvas, fileName = "SP_Code") {
     link.click();
     document.body.removeChild(link);
 }
-//Utility tool, draws an image on a canvas
+/**
+ * Draws an image on a canvas 
+ * @param {ImageData} image The image to draw to the canvas
+ * @param {HTMLCanvasElement} canvas The canvas to draw to
+ * @return {undefined} doesn't have a return 
+ */
 SP_Code.drawOnCanvas = function (image, canvas) {
     let ctx = canvas.getContext("2d")
     canvas.width = image.width
@@ -113,7 +121,15 @@ SP_Code.drawOnCanvas = function (image, canvas) {
     ctx.putImageData(image, 0, 0)
     ctx.getImageData(0, 0, canvas.width, canvas.height) // refreshes the canvas
 }
-//Draws the data on top of an already existing image
+/**
+ * Draws the text on top of an already existing image.
+ * @param {ImageData} image The image to draw on
+ * @param {String} text The text to add to the image
+ * @param {number} shift The amount of subpixels to shift the image, higher shift, higher the image size, 0 is the smallest
+ * @param {number} x x position of where to draw the text in the image
+ * @param {number} y y position of where to draw the text in the image
+ * @return {ImageData} The original image with the text drawn on at x / y position
+ */
 SP_Code.drawTextOnPicture = function (image, text = "", shift = 0, x = 10, y = 10) {
     let imageToDraw = SP_Code.createImage(text, shift, 255)
     let background = document.createElement("canvas")

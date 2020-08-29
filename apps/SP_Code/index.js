@@ -89,7 +89,7 @@ async function loadImage() {
         console.log(e)
     }
 }
-
+SP_Code.drawte
 function showMessage(text,timeout){
     $("#hiddenMessage").fadeIn(250).delay(timeout).fadeOut(250)
     document.getElementById("hiddenMessage").innerHTML = text
