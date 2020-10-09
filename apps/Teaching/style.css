@@ -6,7 +6,8 @@
 *{
     margin: 0;
     padding: 0;
-    color: #dadada;
+	color: #dadada;
+	outline: none;
 }
 pre[class*="language-"],
 code[class*="language-"] {
@@ -294,9 +295,11 @@ pre[class*="language-"] > code[class*="language-"] {
 	white-space: pre;
 }
 pre{
-    width: 50%;
+    width: 70%;
     margin-left: auto !important;
-    margin-right: auto !important;
+	margin-right: auto !important;
+	margin-top: 1rem !important;
+	margin-bottom: 1rem !important;
     border-radius: 0.8rem;
 }
 code{
@@ -310,14 +313,12 @@ code{
 html, body{
     display: flex;
     flex-direction: column;
-    align-items: left;
     min-height: 100%;
     width: 100%;
     background-color: #1a191d;
 }
 body{
     font-family: Arial;
-    padding-top: 5rem;
     overflow-y: auto;
     font-size: 1.2rem;
 }
@@ -331,7 +332,8 @@ body{
 }
 .text{
     font-size: 1.4rem;
-    margin: 0.5rem;
+	margin: 0.5rem;
+	line-height: 2.2rem;
 }
 .snippet{
     border: 1px solid green;
@@ -351,6 +353,28 @@ body{
 b{
     font-size: 1.2rem;
     color: #4ec9b0;
+}
+.partWrapper{
+	display: flex;
+	justify-content: space-between;
+	padding: 1rem;
+}
+.partWrapper *{
+	text-decoration: none;
+}
+.partBefore{
+	margin-right: auto;
+	background-color: #569CD6;
+	color: white;
+	padding: 0.6rem;
+	border-radius: 0.6rem;
+}
+.partAfter{
+	margin-left: auto;
+	background-color: #569CD6;
+	color: white;
+	padding: 0.6rem;
+	border-radius: 0.6rem;
 }
 .code{
     width: 90%;
@@ -376,6 +400,9 @@ iframe{
     padding: 1rem;
     margin: 1rem;
 }
+ul, ol{
+	margin-left: 1rem;
+}
 @media only screen and (orientation:portrait){
     .code{
         font-size: 0.9rem;
@@ -385,7 +412,8 @@ iframe{
         font-size: 2rem;
     }
     .text{
-        font-size: 0.9rem;
+		font-size: 0.9rem;
+		line-height: 1.3rem;
     }
     pre{
         width: 100%;
