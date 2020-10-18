@@ -218,7 +218,7 @@ ul {
     padding: 0.8rem;
     border-radius: 2vh;
     margin: 2vh;
-    background-color: rgba(44, 44, 44, 0.8);
+    background-color: rgba(44, 44, 44, 0.85);
     box-shadow: 0 0 10px #333333;
     flex: 1 1 0;
 }
@@ -278,14 +278,13 @@ ul {
 
 .footer {
     width: 100%;
-    height: 5rem;
     background-color: rgb(32 38 58);
     margin-top: 2rem;
     display: flex;
     justify-content: space-around;
     box-sizing: border-box;
     padding: 1rem;
-
+    padding-bottom: 4rem;
 }
 
 .footer img {
@@ -294,24 +293,6 @@ ul {
     filter: invert(1);
 }
 
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: rgb(44, 44, 44);
-    overflow: hidden;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #DA0363;
-    border-radius: 2px;
-    overflow: hidden;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    opacity: 0.6;
-}
 
 @media only screen and (orientation: portrait) {
 

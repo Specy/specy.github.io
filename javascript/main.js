@@ -349,12 +349,16 @@ function download() {
 
 function bounceArrow() {
     //function that makes the "scroll down" icon bounce
-    for (i = 0; i < 15; i++) {
+    document.getElementById("scrollDown").style.display = "block"
+    for (i = 0; i < 16; i++) {
         let bounce = "5%"
         if (screenWidth > screenHeight) bounce = "2%"
-        $("#scrollDown").animate({marginTop: bounce}, 400)
-            .animate({marginTop: 0}, 400);
+        $("#scrollDown").animate({marginTop: 0}, 400)
+            .animate({marginTop: bounce}, 400);
     }
+    setTimeout(function(){
+        document.getElementById("scrollDown").style.display = "none"
+    },14000)
 }
 bounceArrow()
 drawCanvas(matrix, ctx, "#DA0363", true)
