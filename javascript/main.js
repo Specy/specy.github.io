@@ -10,6 +10,10 @@ let height = Math.floor(screenHeight / 1.5)
 let width = Math.floor(screenWidth / 1.5)
 
 //limiting the matrix size to increase performance
+let isMobile = false
+if(screenHeight > screenWidth){
+    isMobile = true
+}
 if (screenWidth > 1400) {
     height = Math.floor(screenHeight / 1.8)
     width = Math.floor(screenWidth / 1.8)
@@ -243,7 +247,7 @@ function stop() {
 document.getElementById("mainContent").addEventListener("scroll", function () {
     //when scrolling down the page, if it reached the "about me", start blurring the canvas to make it easier to see the text
     let blur = ((this.scrollTop - screenHeight + 100) / 200).toFixed(2)
-    if (blur > 1.5) return
+    if (blur > 1.5 || isMobile) return
     canvas.style.filter = 'blur(' + blur + 'px)'
     canvas2.style.filter = 'blur(' + blur + 'px)'
 })

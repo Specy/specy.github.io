@@ -34,7 +34,7 @@ html {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(40, 48, 73, 0.8);
+    background: rgba(40, 48, 73, 0.9);
     height: 5vh;
     border-bottom: 2px #b00752 solid;
     display: flex;
@@ -73,7 +73,7 @@ html {
 }
 
 body {
-    background-color: rgb(22, 22, 22);
+    background-color: rgb(15 13 25);
     padding: 0;
     margin: 0;
     overflow-y: hidden;
@@ -157,6 +157,8 @@ body {
 
 .centerText {
     text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 .leftText {
@@ -170,7 +172,9 @@ body {
     display: flex;
     flex-direction: column;
     margin-bottom: 5vh;
-    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 70vw;
 }
 
 #contact {
@@ -195,6 +199,7 @@ ul {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    width: 100%;
 }
 
 .owoImg {
@@ -216,7 +221,6 @@ ul {
     background-color: rgba(44, 44, 44, 0.8);
     box-shadow: 0 0 10px #333333;
     flex: 1 1 0;
-
 }
 
 .contactCell {
@@ -272,7 +276,51 @@ ul {
     height: 100vh;
 }
 
+.footer {
+    width: 100%;
+    height: 5rem;
+    background-color: rgb(32 38 58);
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-around;
+    box-sizing: border-box;
+    padding: 1rem;
+
+}
+
+.footer img {
+    width: 3rem;
+    height: 3rem;
+    filter: invert(1);
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgb(44, 44, 44);
+    overflow: hidden;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #DA0363;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    opacity: 0.6;
+}
+
 @media only screen and (orientation: portrait) {
+
+    #myProjects,
+    #aboutMe,
+    #contact {
+        max-width: unset;
+    }
+
     #toggleUtils {
         width: 12vw;
 
@@ -308,8 +356,9 @@ ul {
     #scrollDown {
         margin-right: 4vw;
     }
-    .presentation{
-       height: 78%;
+
+    .presentation {
+        height: 78%;
     }
 
 }
