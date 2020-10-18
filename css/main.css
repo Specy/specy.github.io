@@ -284,7 +284,7 @@ ul {
     justify-content: space-around;
     box-sizing: border-box;
     padding: 1rem;
-    padding-bottom: 4rem;
+
 }
 
 .footer img {
@@ -306,7 +306,9 @@ ul {
         width: 12vw;
 
     }
-
+    .footer{
+        padding-bottom: 4rem;
+    }
     #utils {
         width: 12vw;
     }
