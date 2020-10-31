@@ -11,7 +11,7 @@ let width = Math.floor(screenWidth / 1.5)
 
 //limiting the matrix size to increase performance
 let isMobile = false
-if(screenHeight > screenWidth){
+if (screenHeight > screenWidth) {
     isMobile = true
 }
 if (screenWidth > 1400) {
@@ -353,12 +353,16 @@ function bounceArrow() {
     for (i = 0; i < 16; i++) {
         let bounce = "5%"
         if (screenWidth > screenHeight) bounce = "2%"
-        $("#scrollDown").animate({marginTop: 0}, 400)
-            .animate({marginTop: bounce}, 400);
+        $("#scrollDown").animate({
+                marginTop: 0
+            }, 400)
+            .animate({
+                marginTop: bounce
+            }, 400);
     }
-    setTimeout(function(){
+    setTimeout(function () {
         document.getElementById("scrollDown").style.display = "none"
-    },14000)
+    }, 14000)
 }
 bounceArrow()
 drawCanvas(matrix, ctx, "#DA0363", true)
