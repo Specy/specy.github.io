@@ -76,13 +76,19 @@
                 <div class="smallMiddleText leftText">
                     I'm Specy, an italian student born in 2002 with a passion in building, reparing and
                     developing. <br><br>
-                    I have experience in 3D printing, 3D scanning, Website development and Userscripts. <br><br>
-                    I'm relatively new to Development but i'm already proficient in:<br><br>
+                    I have experience in 3D printing, 3D scanning and development of Websites, Apps and Userscripts. <br><br>
+                    I'm currently proficient in:<br><br>
                     <ul>
                         <li>JavaScript</li>
                         <li>Html</li>
                         <li>Css</li>
                         <li>Node.js</li>
+                    </ul><br>
+                    And learning:<br><br>
+                    <ul>
+                        <li>React</li>
+                        <li>React Native</li>
+                        <li>Php</li>
                     </ul><br>
                     I'm able to build, repair, troubleshoot and upgrade FDM 3D printers of any kind, doing 3D scans
                     using photogrammetry
@@ -110,11 +116,45 @@
                         <img class="logo" src="/images/SP_Code.png">
                     </div>
                     <div class="centerText smallText">
-                        A Javascript library that turns any text into an image that can be then converted back to
+                        A Javascript library for steganography that turns any text into an image that can be then converted back to
                         text.<br>
-                        The file size of the image is +-25% to 50% smaller than plain text and can be easily shared
-                        around.<br>
                         The data can also be added to an existing image.
+                    </div>
+                    <div class="clickMe">click</div>
+                </div>
+            </div>
+                        <div class="row">
+                <div class="cell" onclick="showHiddenDiv(this)">
+                    <div class="middleText">
+                        <div class="projectText">EatSchool</div>
+                        <img class="logo" src="images/eatSchool.png">
+                    </div>
+
+                    <div class="centerText smallText">
+                        A webapp created for my school to help food ordering during the COVID-19 pandemic.
+                    </div>
+                    <div class="hiddenDiv">
+                        <div class="smallMiddleText" style="color:#DA0363">
+                            Features
+                        </div>
+                        <div class="smallText">
+                            The app has an account system where each class has it's own account to order food to.
+                            <br>
+                            An user first logs in, then creates an order and accepts it, after it's accepted it will be sent to
+                            the school's bar where it will be packaged and served. 
+                        </div>
+                    </div>
+                    <div class="clickMe">click</div>
+                </div>
+                <div class="cell"
+                    onclick="redirect('play.google.com/store/apps/details?id=com.specy.quicksafenotes',false)">
+                    <div class="middleText">
+                        <div class="projectText">Quick safe notes</div>
+                        <img class="logo" src="images/QFN.png">
+                    </div>
+                    <div class="centerText smallText">
+                        An app created with react native to save create and organize notes, it has authentication and notes folders
+                        together with a simple UI. 
                     </div>
                     <div class="clickMe">click</div>
                 </div>
@@ -214,43 +254,6 @@
                 </div>
             </div>
             <div class="row">
-                <div class="cell" onclick="showHiddenDiv(this)">
-                    <div class="middleText">
-                        <div class="projectText">Lista digitale App</div>
-                        <img class="logo" src="images/ListaDigitale.png">
-                    </div>
-
-                    <div class="centerText smallText">
-                        An app created for my school to make it easier to order food from the school's bar
-                    </div>
-                    <div class="hiddenDiv">
-                        <div class="smallMiddleText" style="color:#DA0363">
-                            Features
-                        </div>
-                        <div class="smallText">
-                            The app has an account system connected to firebase to manage each student orders.
-                            Each class has an account, each students does the login with their name, class name and
-                            password, they can
-                            then place orders which will then get sorted and displayed in a single place to make it
-                            easier to order at the school's bar.
-                        </div>
-                    </div>
-                    <div class="clickMe">click</div>
-                </div>
-
-                <div class="cell"
-                    onclick="redirect('play.google.com/store/apps/details?id=io.kodular.dionea2002.Spongify',false)">
-                    <div class="middleText">
-                        <div class="projectText">Spongify App</div>
-                        <img class="logo" src="images/Spongify.png">
-                    </div>
-                    <div class="centerText smallText">
-                        A fun app to turn any text into "ThE sPoNgEboB mEmE"
-                    </div>
-                    <div class="clickMe">click</div>
-                </div>
-            </div>
-            <div class="row">
                 <div class="cell" onclick="redirect('/apps/pixelArt/pixelArt.html',true)">
                     <div class="middleText">
                         <div class="projectText" style="margin-left: -45px;">Pixel art</div>
@@ -289,19 +292,31 @@
                         <img class="logo" src="images/SpeSkin.png">
                     </div>
                     <div class="centerText smallText">
-                        A website to find skings for gota.io, similar concept to the skin extension but as a standalone WebApp
+                        A website to find skings for gota.io, similar concept to the skin extension but as a standalone WebApp 
+                        made with React
                     </div>
                     <div class="clickMe">click</div>
                 </div>
             </div>
             <div class="row">
+                <div class="cell"
+                    onclick="redirect('play.google.com/store/apps/details?id=io.kodular.dionea2002.Spongify',false)">
+                    <div class="middleText">
+                        <div class="projectText">Spongify App</div>
+                        <img class="logo" src="images/Spongify.png">
+                    </div>
+                    <div class="centerText smallText">
+                        A fun app to turn any text into "ThE sPoNgEboB mEmE"
+                    </div>
+                    <div class="clickMe">click</div>
+                </div>
                 <div class="cell" onclick="redirect('specy.altervista.org',false)">
                     <div class="middleText">
                         <div class="projectText">Other projects</div>
                         <img class="logo" src="favicon.png">
                     </div>
                     <div class="centerText smallText">
-                        I've made other smaller projects that you can find here, together with the school homework i got
+                        I've made other projects that you can find here, together with the school homework i got
                         assigned
                     </div>
                     <div class="clickMe">click</div>
