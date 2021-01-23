@@ -76,18 +76,20 @@
                 <div class="smallMiddleText leftText">
                     I'm Specy, an italian student born in 2002 with a passion in building, reparing and
                     developing. <br><br>
-                    I have experience in 3D printing, 3D scanning and development of Websites, Apps and Userscripts. <br><br>
+                    I have experience in 3D printing, 3D scanning and development of Websites, Apps, Webapps and Userscripts. <br><br>
                     I'm currently proficient in:<br><br>
                     <ul>
                         <li>JavaScript</li>
                         <li>Html</li>
                         <li>Css</li>
                         <li>Node.js</li>
+                        <li>React</li>
+                        <li>React Native</li>
+                        <li>Electron</li>
                     </ul><br>
                     And learning:<br><br>
                     <ul>
-                        <li>React</li>
-                        <li>React Native</li>
+
                         <li>Php</li>
                     </ul><br>
                     I'm able to build, repair, troubleshoot and upgrade FDM 3D printers of any kind, doing 3D scans
@@ -110,20 +112,41 @@
                     </div>
                     <div class="clickMe">click</div>
                 </div>
-                <div class="cell" onclick="redirect('/apps/SP_Code/index.html',true)">
+                <div class="cell" onclick="showHiddenDiv(this)">
                     <div class="middleText">
-                        <div class="projectText">SP Code</div>
-                        <img class="logo" src="/images/SP_Code.png">
+                        <div class="projectText">Scapix</div>
+                        <img class="logo" src="images/scapix.png" style="border-radius: unset;">
                     </div>
+
                     <div class="centerText smallText">
-                        A Javascript library for steganography that turns any text into an image that can be then converted back to
-                        text.<br>
-                        The data can also be added to an existing image.
+                        A machine learning image/gif upscaling and denoiser made with
+                        react + electron for windows.
+
+                    </div>
+                    <div class="hiddenDiv">
+                        <br>
+                        <div class="smallMiddleText" style="color:#DA0363">
+                            Features
+                        </div>
+                        
+                        <ul class="smallText">
+                            <li>Image upscaling with no size limit </li>
+                            <li>Denoise any kind of drawing or normal image</li>
+                            <li>Upscale and denoise gifs </li> 
+                            <li>Change file formats </li>
+                            <li>Dark / White mode </li>
+                            <li>Completely Open source and 100% offline  </li>
+                        </ul>
+                        <br>
+                        <a  class="smallText" style="color:#DA0363" href="https://github.com/Specy-wot/Scapix">
+                            Click here to visit on github
+                        </a>
                     </div>
                     <div class="clickMe">click</div>
                 </div>
+
             </div>
-                        <div class="row">
+            <div class="row">
                 <div class="cell" onclick="showHiddenDiv(this)">
                     <div class="middleText">
                         <div class="projectText">EatSchool</div>
@@ -160,59 +183,15 @@
                 </div>
             </div>
             <div class="row">
-                <div class="cell" onclick="showHiddenDiv(this)">
+                <div class="cell" onclick="redirect('/apps/SP_Code/index.html',true)">
                     <div class="middleText">
-                        <div class="projectText">Discord bots</div>
-                        <img class="logo" src="images/discord.jpg">
+                        <div class="projectText">SP Code</div>
+                        <img class="logo" src="/images/SP_Code.png">
                     </div>
                     <div class="centerText smallText">
-                        I've crated many discord bots, to manage my school class homework, utils bots and fun bots
-                    </div>
-                    <div class="hiddenDiv">
-                        <div class="smallMiddleText" style="color:#DA0363">
-                            Speskin bot
-                        </div>
-                        <div class="smallText">
-                            A bot that is meant to replace the gota.io bot, it has skin acception notifications and
-                            connects with the
-                            <a href="/apps/Speskin/index.html">Speskin website</a> to show skin lists.
-                        </div>
-                        <div class="smallMiddleText" style="color:#DA0363">
-                            Guessing words!
-                        </div>
-                        <div class="smallText">
-                            A bot that links to a server used as a dictionary, it has minigames in 5 different languages
-                            such as:<br><br>
-                            <ul>
-                                <li>Translating a word from english to the other language or vice versa</li>
-                                <li>Giving 5 or more random words that you can learn</li>
-                            </ul><br>
-                            and also gives moderation for the open dictionary, deleting duplicates
-                        </div>
-                        <div class="smallMiddleText" style="color:#DA0363">
-                            Spongify!
-                        </div>
-                        <div class="smallText">
-                            A bot that turns text into the SpOnGeBoB mEmE
-                        </div>
-                        <div class="smallMiddleText" style="color:#DA0363">
-                            Compitazzi!
-                        </div>
-                        <div class="smallText">
-                            A bot used in my class discord server to manage homework given out by teachers, alerting the
-                            day before all the
-                            homework/tests that will be due the day after
-                        </div>
-                        <div class="smallMiddleText" style="color:#DA0363">
-                            skyMusic
-                        </div>
-                        <div class="smallText">
-                            A bot used to manage server-side errors of the
-                            <a href="https://sky-music.herokuapp.com">Sky music</a> website and allow users to send the
-                            songs they have made
-                            so to be uploaded to the <a href="https://sky-music.herokuapp.com/songLibrary.html">
-                                Library</a>
-                        </div>
+                        A Javascript library for steganography that turns any text into an image that can be then converted back to
+                        text.<br>
+                        The data can also be added to an existing image.
                     </div>
                     <div class="clickMe">click</div>
                 </div>
@@ -249,26 +228,79 @@
                             get mad.
                             All expressions are random, each biased differently.
                         </div>
+                        <br><br>
                     </div>
                     <div class="clickMe">click</div>
                 </div>
             </div>
             <div class="row">
+                <div class="cell" onclick="showHiddenDiv(this)">
+                    <div class="middleText">
+                        <div class="projectText">Discord bots</div>
+                        <img class="logo" src="images/discord.jpg">
+                    </div>
+                    <div class="centerText smallText">
+                        I've crated many discord bots, to manage my school class homework, utils bots and fun bots
+                    </div>
+                    <div class="hiddenDiv">
+                        <br>
+                        <div class="smallMiddleText" style="color:#DA0363">
+                            Speskin bot
+                        </div>
+                        <div class="smallText">
+                            A bot that is meant to replace the gota.io bot, it has skin acception notifications and
+                            connects with the
+                            <a href="/apps/Speskin/index.html">Speskin website</a> to show skin lists.
+                        </div>
+                        <br>
+                        <div class="smallMiddleText" style="color:#DA0363">
+                            Guessing words!
+                        </div>
+                        <div class="smallText">
+                            A bot that links to a server used as a dictionary, it has minigames in 5 different languages
+                            such as:<br><br>
+                            <ul>
+                                <li>Translating a word from english to the other language or vice versa</li>
+                                <li>Giving 5 or more random words that you can learn</li>
+                            </ul><br>
+                            and also gives moderation for the open dictionary, deleting duplicates
+                        </div>
+                        <br>
+                        <div class="smallMiddleText" style="color:#DA0363">
+                            Spongify!
+                        </div>
+                        <div class="smallText">
+                            A bot that turns text into the SpOnGeBoB mEmE
+                        </div>
+                        <br>
+                        <div class="smallMiddleText" style="color:#DA0363">
+                            Compitazzi!
+                        </div>
+                        <div class="smallText">
+                            A bot used in my class discord server to manage homework given out by teachers, alerting the
+                            day before all the
+                            homework/tests that will be due the day after
+                        </div>
+                        <br>
+                        <div class="smallMiddleText" style="color:#DA0363">
+                            SkyMusic
+                        </div>
+                        <div class="smallText">
+                            A bot used to manage server-side errors of the
+                            <a href="https://sky-music.herokuapp.com">Sky music</a> website and allow users to send the
+                            songs they have made
+                            so to be uploaded to the <a href="https://sky-music.herokuapp.com/songLibrary.html">
+                                Library</a>
+                        </div>
+                    </div>
+                    <div class="clickMe">click</div>
+                </div>
                 <div class="cell" onclick="redirect('/apps/pixelArt/pixelArt.html',true)">
                     <div class="middleText">
                         <div class="projectText" style="margin-left: -45px;">Pixel art</div>
                     </div>
                     <div class="centerText smallText">
                         A website to create simple pixel art and download it as a .png
-                    </div>
-                    <div class="clickMe">click</div>
-                </div>
-                <div class="cell" onclick="redirect('greasyfork.org/en/scripts/405789-artprice-getter',false)">
-                    <div class="middleText">
-                        <div class="projectText" style="margin-left: -45px;">Art data downloader</div>
-                    </div>
-                    <div class="centerText smallText">
-                        An userscript used for downloading data from "artprice.com" in .csv
                     </div>
                     <div class="clickMe">click</div>
                 </div>
