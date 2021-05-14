@@ -1,0 +1,26 @@
+{
+  "name": "Genshin Music Nightly",
+  "description": "A program to record, practice and share music",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "fullscreen",
+  "orientation":  "landscape",
+  "theme_color": "#63aea7",
+  "background_color": "#495466"
+}

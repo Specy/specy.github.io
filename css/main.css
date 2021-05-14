@@ -257,10 +257,32 @@ ul {
 .smallText {
     font-size: 1rem;
 }
-
+.bmc-btn-text{
+    color: black;
+}
+::-webkit-scrollbar {
+	width: 5px;
+    background: rgba(44, 44, 44, 0.9)
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+	background: none;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+	background: #DA0363;
+	border-radius: 2px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+	background: #555;
+  }
 .bigText {
     padding:1rem;
-    background-color: rgba(40, 48, 73, 0.95);
+    text-shadow: 3px 3px 9px rgba(0,0,0 , 1);
     border-radius: 2vh;
     text-align: center;
     font-size: 2.5rem;
@@ -296,7 +318,11 @@ ul {
     height: 3rem;
     filter: invert(1);
 }
-
+.skills-wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+}
 
 @media only screen and (orientation: portrait) {
 

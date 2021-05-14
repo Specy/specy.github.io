@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "./static/css/main.221a2168.chunk.css",
+    "main.js": "./static/js/main.79ad169a.chunk.js",
+    "main.js.map": "./static/js/main.79ad169a.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.0872505a.js",
+    "runtime-main.js.map": "./static/js/runtime-main.0872505a.js.map",
+    "static/js/2.eddb429b.chunk.js": "./static/js/2.eddb429b.chunk.js",
+    "static/js/2.eddb429b.chunk.js.map": "./static/js/2.eddb429b.chunk.js.map",
+    "index.html": "./index.html",
+    "service-worker.js": "./service-worker.js",
+    "service-worker.js.map": "./service-worker.js.map",
+    "static/css/main.221a2168.chunk.css.map": "./static/css/main.221a2168.chunk.css.map",
+    "static/js/2.eddb429b.chunk.js.LICENSE.txt": "./static/js/2.eddb429b.chunk.js.LICENSE.txt",
+    "static/media/App.css": "./static/media/Cronos.768fa9e0.otf",
+    "static/media/addCell.73b6c8e9.svg": "./static/media/addCell.73b6c8e9.svg",
+    "static/media/composer.76adcf72.png": "./static/media/composer.76adcf72.png",
+    "static/media/mainpage.114ce51f.png": "./static/media/mainpage.114ce51f.png",
+    "static/media/removeCell.e266ba1a.svg": "./static/media/removeCell.e266ba1a.svg",
+    "static/media/rotate.e7c0f107.svg": "./static/media/rotate.e7c0f107.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0872505a.js",
+    "static/js/2.eddb429b.chunk.js",
+    "static/css/main.221a2168.chunk.css",
+    "static/js/main.79ad169a.chunk.js"
+  ]
+}
