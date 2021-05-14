@@ -71,35 +71,74 @@
             <div id="scrollDown"></div>
         </div>
         <div id="aboutMe" style="margin-bottom: 10vh;">
-            <div class="bigText" style="margin-bottom: 10vh;">About Me</div>
+            <div class="bigText" style="margin-bottom: 2vh;">About Me</div>
             <div class="cell" style="min-height: unset;">
                 <div class="smallMiddleText leftText">
-                    I'm Specy, an italian student born in 2002 with a passion in building, reparing and
+                    I'm <div class="projectText" style="display: inline;">Specy</div>, an italian student born in 2002 with a passion in building, reparing and
                     developing. <br><br>
-                    I have experience in 3D printing, 3D scanning and development of Websites, Apps, Webapps and Userscripts. <br><br>
-                    I'm currently proficient in:<br><br>
-                    <ul>
-                        <li>JavaScript</li>
-                        <li>Html</li>
-                        <li>Css</li>
-                        <li>Node.js</li>
-                        <li>React</li>
-                        <li>React Native</li>
-                        <li>Electron</li>
-                    </ul><br>
-                    And learning:<br><br>
-                    <ul>
+                    I have experience in 3D printing, 3D scanning and development of Websites, Apps, Webapps and
+                    Userscripts. <br><br>
+                    <div class="skills-wrapper">
+                        <div>
+                            <div class="projectText">Proficient in:</div>
+                            <br><br>
+                            <ul>
+                                <li>JavaScript</li>
+                                <li>Html</li>
+                                <li>Css</li>
+                                <li>Node.js</li>
+                                <li>React</li>
+                                <li>React Native</li>
+                                <li>Electron</li>
+                            </ul><br>
+                        </div>
+                        <div>
+                            <div class="projectText">Learning:</div>
+                            <br><br>
+                            <ul>
+                                <li>Python</li>
+                                <li>C++</li>
+                                <li>Php</li>
+                            </ul><br>
+                        </div>
+                    </div>
 
-                        <li>Php</li>
-                    </ul><br>
+
                     I'm able to build, repair, troubleshoot and upgrade FDM 3D printers of any kind, doing 3D scans
                     using photogrammetry
-                    and 3D printing any 3D model.
+                    and 3D printing any 3D model. <br> <br>
+                    I've made many tools to simplify and automate tasks that would otherwise be very 
+                    tiresome, especially when it comes to game features.
                 </div>
             </div>
         </div>
         <div id="myProjects">
             <div class="bigText" style="margin-bottom: 5vh;"> My Projects</div>
+            <div class="row">
+                <div class="cell" onclick="redirect('/skyMusic',true)">
+                    <div class="middleText">
+                        <div class="projectText">Sky Music Nightly</div>
+                        <img class="logo" src="images/skyMusicNightly.png">
+                    </div>
+                    <div class="centerText smallText">
+                        The refined version of the sky music webapp built with react and pixi.js
+                    </div>
+                    <div class="clickMe">click</div>
+                </div>
+                <div class="cell" onclick="redirect('genshin-music.herokuapp.com/',false)">
+                    <div class="middleText">
+                        <div class="projectText">Genshin Music Nightly</div>
+                        <img class="logo" src="images/genshinMusicNightly.png">
+                    </div>
+                    <div class="centerText smallText">
+                        Sky music nightly, but for genshin.
+                    </div>
+                    <div class="clickMe">click</div>
+                </div>
+            </div>
+
+
+
             <div class="row">
                 <div class="cell" onclick="redirect('sky-music.herokuapp.com',false)">
                     <div class="middleText">
@@ -107,8 +146,9 @@
                         <img class="logo" src="images/Sky.png">
                     </div>
                     <div class="centerText smallText">
-                        A webApp made to help players of the game Sky children of light to learn, practice, compose
-                        and share songs
+                        A webApp with 200k users made to help players of the game Sky children of light to learn,
+                        practice, compose
+                        and share songs.
                     </div>
                     <div class="clickMe">click</div>
                 </div>
@@ -128,17 +168,17 @@
                         <div class="smallMiddleText" style="color:#DA0363">
                             Features
                         </div>
-                        
+
                         <ul class="smallText">
                             <li>Image upscaling with no size limit </li>
                             <li>Denoise any kind of drawing or normal image</li>
-                            <li>Upscale and denoise gifs </li> 
+                            <li>Upscale and denoise gifs </li>
                             <li>Change file formats </li>
                             <li>Dark / White mode </li>
-                            <li>Completely Open source and 100% offline  </li>
+                            <li>Completely Open source and 100% offline </li>
                         </ul>
                         <br>
-                        <a  class="smallText" style="color:#DA0363" href="https://github.com/Specy/Scapix">
+                        <a class="smallText" style="color:#DA0363" href="https://github.com/Specy/Scapix">
                             Click here to visit on github
                         </a>
                     </div>
@@ -163,8 +203,9 @@
                         <div class="smallText">
                             The app has an account system where each class has it's own account to order food to.
                             <br>
-                            An user first logs in, then creates an order and accepts it, after it's accepted it will be sent to
-                            the school's bar where it will be packaged and served. 
+                            An user first logs in, then creates an order and accepts it, after it's accepted it will be
+                            sent to
+                            the school's bar where it will be packaged and served.
                         </div>
                     </div>
                     <div class="clickMe">click</div>
@@ -176,8 +217,9 @@
                         <img class="logo" src="images/QFN.png">
                     </div>
                     <div class="centerText smallText">
-                        An app created with react native to save create and organize notes, it has authentication and notes folders
-                        together with a simple UI. 
+                        An app created with react native to save create and organize notes, it has authentication and
+                        notes folders
+                        together with a simple UI.
                     </div>
                     <div class="clickMe">click</div>
                 </div>
@@ -189,7 +231,8 @@
                         <img class="logo" src="/images/SP_Code.png">
                     </div>
                     <div class="centerText smallText">
-                        A Javascript library for steganography that turns any text into an image that can be then converted back to
+                        A Javascript library for steganography that turns any text into an image that can be then
+                        converted back to
                         text.<br>
                         The data can also be added to an existing image.
                     </div>
@@ -324,7 +367,8 @@
                         <img class="logo" src="images/SpeSkin.png">
                     </div>
                     <div class="centerText smallText">
-                        A website to find skings for gota.io, similar concept to the skin extension but as a standalone WebApp 
+                        A website to find skings for gota.io, similar concept to the skin extension but as a standalone
+                        WebApp
                         made with React
                     </div>
                     <div class="clickMe">click</div>
@@ -381,6 +425,10 @@
             <a href="https://github.com/Specy">
                 <img src="/images/github.png">
             </a>
+            <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js"
+                data-name="bmc-button" data-slug="Specy" data-color="#FFDD00" data-emoji="🥔" data-font="Lato"
+                data-text="Buy me a potato" data-outline-color="#000000" data-font-color="#000000"
+                data-coffee-color="#ffffff"></script>
         </div>
     </div>
 </body>
