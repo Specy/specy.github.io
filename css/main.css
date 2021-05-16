@@ -79,12 +79,6 @@ body {
     overscroll-behavior: none
 }
 
-#fps {
-    position: fixed;
-    bottom: 0.5em;
-    left: 1vw;
-    z-index: -1;
-}
 
 .clickMe {
     position: absolute;
@@ -146,7 +140,7 @@ body {
     border: none;
     border-radius: 1vh;
     background-color: #7b0e3f;
-    font-size: 0.8em;
+    font-size: 0.8rem;
     word-break: break-all
 }
 
@@ -215,7 +209,6 @@ ul {
     position: relative;
     text-align: center;
     min-height: 22vh;
-    font-size: 1.5em;
     padding: 1.2rem;
     border-radius: 2vh;
     margin: 2vh;
@@ -228,6 +221,7 @@ ul {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin: 0;
 }
 
 .logo {
@@ -338,6 +332,8 @@ ul {
     }
     .footer{
         padding-bottom: 4rem;
+        flex-direction: column;
+        align-items: center;
     }
     #utils {
         width: 12vw;
@@ -348,7 +344,7 @@ ul {
     }
 
     .cell {
-        font-size: 1.2em;
+        font-size: 1.2rem;
         flex: none;
         margin-bottom: 0;
     }
