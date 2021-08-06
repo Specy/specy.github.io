@@ -1,0 +1,22 @@
+[
+	{
+		"relation": ["delegate_permission/common.handle_all_urls"],
+		"target": {
+			"namespace": "android_app",
+			"package_name": "genshin.specy.twa",
+			"sha256_cert_fingerprints": [
+				"A5:9C:B8:65:71:81:F0:7A:34:A6:A2:2D:19:38:2B:E0:57:5E:26:28:63:CC:E8:2B:34:A5:4E:6E:1B:09:52:01"
+			]
+		}
+	},
+	{
+		"relation": ["delegate_permission/common.handle_all_urls"],
+		"target": {
+			"namespace": "android_app",
+			"package_name": "skynightly.specy.twa",
+			"sha256_cert_fingerprints": [
+				"9A:9B:A4:6C:DB:AC:76:85:B9:4D:CB:B4:48:A8:45:CE:A5:C3:CD:42:DA:00:B6:25:94:D6:78:F4:9A:B0:FB:8E"
+			]
+		}
+	}
+]
