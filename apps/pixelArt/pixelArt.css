@@ -75,12 +75,13 @@ body,html {
 }
 
 td {
-  border: solid 1px black;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
 }
 
 @media only screen and (orientation: portrait) {
   .top {
-    width: 90%;
+    width: calc(100vw - 2rem);
   }
 
   input {
@@ -95,9 +96,8 @@ td {
     max-width: 100px;
   }
   .colorChoser {
-    width: 90%;
-    position: absolute;
-    top:78%;
+    width: calc(100vw - 2rem);
+    position: unset;
     height: 20%;
     left:4%;
     padding-top: 1em;
