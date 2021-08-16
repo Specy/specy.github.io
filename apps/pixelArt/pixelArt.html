@@ -1,6 +1,8 @@
 <html>
-<link rel="stylesheet" href="./pixelArt.css">
-</link>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+<link rel="stylesheet" href="./pixelArt.css"></link>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/spectrum-colorpicker2@2.0.0/dist/spectrum.min.js"> </script>
 <link rel="stylesheet" type="text/css"
@@ -11,12 +13,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=0.8">
 
 <body>
-    <center>
-        <div class="foreground top">
-            <input type=text class="form-control" style="width:15%;" placeholder="width" id="widthIn" value="64">
-            <input type=text class="form-control" style="width:15%;" placeholder="height" id="heightIn" value="64">
-            <input type=text class="form-control" style="width:30%;" placeholder="cell size in px" id="cellSizeIn"
-                value="10">
+        <div class="foreground top nav-wrapper">
+            <div class="nav-prop">
+                <div>
+                    Width
+                </div>
+                <input type=text class="form-control" placeholder="width" id="widthIn" value="64">
+            </div>
+            <div class="nav-prop">
+                <div>
+                    Height
+                </div>
+                <input type=text class="form-control" placeholder="height" id="heightIn" value="64">
+            </div>
+            <div class="nav-prop">
+                <div>
+                    Width
+                </div>
+                <input type=text class="form-control" placeholder="cell size in px" id="cellSizeIn" value="10">
+            </div>   
+            
+   
+
             <input type=button id="generate" class="btn btn-primary" value="Generate" onclick="generate()">
             <input type=button id="saveImage" class="btn btn-success" value="Save Image" onclick="saveImage()">
         </div>
@@ -29,7 +47,6 @@
             </div>
             <table id=canvasTable></table>
         </div>
-    </center>
     <div align=center class="foreground colorChoser">
         <input type="button" class="btn btn-success" value="Add color" id="btnAddColor" onclick="addColor()">
         <div id=colorsDiv>
@@ -53,7 +70,6 @@
         div.style = "display:inline-block"
         div.className = "colorPickerDiv"
         checkBox = document.createElement("input");
-        checkBox.style = "float:left; margin:0.6em; margin-top: 0.7em;"
         checkBox.setAttribute("type", "checkbox");
         checkBox.setAttribute("numberId", numOfColors)
         checkBox.id = "color" + numOfColors
@@ -76,17 +92,16 @@
         var Xbutton = document.createElement("div")
         Xbutton.innerHTML = "❌"
         Xbutton.setAttribute("numberId", numOfColors)
-        Xbutton.style = "float:right; height: 1em; width: 1em; margin:0.3em; cursor: pointer; font-size: 0.8em"
         Xbutton.addEventListener("click", function () {
             this.parentNode.parentNode.removeChild(this.parentNode)
         })
-        div.appendChild(Xbutton)
+
         colorsDiv.appendChild(div)
         colorPicker.value = color
         var StarButton = document.createElement("div")
         StarButton.innerHTML = "★"
+        StarButton.style = 'color:white'
         StarButton.setAttribute("numberId", numOfColors)
-        StarButton.style = "float:right; height: 1em; width: 1em; margin:0.3em; cursor: pointer; font-size: 0.8em"
         StarButton.addEventListener("click", function () {
             let savedColorsStorage = localStorage.getItem("savedColors")
             let savedColors = []
@@ -111,6 +126,7 @@
         })
         if (isSaved) StarButton.innerHTML = "⭐"
         div.appendChild(StarButton)
+        div.appendChild(Xbutton)
         $(".spectrumPicker").spectrum({
             type: "color"
         });
