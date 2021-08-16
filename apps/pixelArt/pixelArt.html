@@ -1,18 +1,24 @@
 <html>
-<link rel="stylesheet" href="./pixelArt.css"></link>
+<link rel="stylesheet" href="./pixelArt.css">
+</link>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/spectrum-colorpicker2@2.0.0/dist/spectrum.min.js"> </script>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/spectrum-colorpicker2@2.0.0/dist/spectrum.min.css"> <link>
-
+<link rel="stylesheet" type="text/css"
+    href="https://cdn.jsdelivr.net/npm/spectrum-colorpicker2@2.0.0/dist/spectrum.min.css">
+<link>
+<link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+<link rel="shortcut icon" href="/assets/images/favicon.png?v=2" type="image/x-icon" />
 <meta name="viewport" content="width=device-width, initial-scale=0.8">
+
 <body>
     <center>
         <div class="foreground top">
-                <input type=text class="form-control" style="width:15%;" placeholder="width" id="widthIn" value="64">
-                <input type=text class="form-control" style="width:15%;" placeholder="height" id="heightIn" value="64">
-                <input type=text class="form-control" style="width:30%;" placeholder="cell size in px" id="cellSizeIn" value="10">
-                <input type=button id="generate" class="btn btn-primary" value="Generate" onclick="generate()">
-                <input type=button id="saveImage" class="btn btn-success" value="Save Image" onclick="saveImage()">
+            <input type=text class="form-control" style="width:15%;" placeholder="width" id="widthIn" value="64">
+            <input type=text class="form-control" style="width:15%;" placeholder="height" id="heightIn" value="64">
+            <input type=text class="form-control" style="width:30%;" placeholder="cell size in px" id="cellSizeIn"
+                value="10">
+            <input type=button id="generate" class="btn btn-primary" value="Generate" onclick="generate()">
+            <input type=button id="saveImage" class="btn btn-success" value="Save Image" onclick="saveImage()">
         </div>
         <div class="foreground drawingTable">
             <div id="canvasParent" style="border:solid 2px #375a7f; margin:2em; display: none;">
@@ -33,15 +39,15 @@
 <script>
     var mousePressed = false;
     var selectedColor = "black";
-    document.body.onpointerdown = function() {
+    document.body.onpointerdown = function () {
         mousePressed = true;
     }
-    document.body.onpointerup = function() {
+    document.body.onpointerup = function () {
         mousePressed = false;
     }
     var numOfColors = 0
-        function addColor(color,isSaved) {
-        if(color == undefined) color = "white"
+    function addColor(color, isSaved) {
+        if (color == undefined) color = "white"
         numOfColors++;
         var div = document.createElement("div")
         div.style = "display:inline-block"
@@ -51,16 +57,16 @@
         checkBox.setAttribute("type", "checkbox");
         checkBox.setAttribute("numberId", numOfColors)
         checkBox.id = "color" + numOfColors
-        checkBox.addEventListener("click", function() {
+        checkBox.addEventListener("click", function () {
             changeColor(this.getAttribute("numberId"))
         })
         div.appendChild(checkBox)
         colorPicker = document.createElement("input");
-        colorPicker.setAttribute("type","text")
+        colorPicker.setAttribute("type", "text")
         colorPicker.className = "spectrumPicker"
         colorPicker.setAttribute("numberId", numOfColors)
         colorPicker.id = "pickercolor" + numOfColors;
-        colorPicker.addEventListener("change", function() {
+        colorPicker.addEventListener("change", function () {
             changeColor(this.getAttribute("numberId"))
 
         });
@@ -71,8 +77,8 @@
         Xbutton.innerHTML = "❌"
         Xbutton.setAttribute("numberId", numOfColors)
         Xbutton.style = "float:right; height: 1em; width: 1em; margin:0.3em; cursor: pointer; font-size: 0.8em"
-        Xbutton.addEventListener("click",function(){
-            this.parentNode.parentNode.removeChild(this.parentNode) 
+        Xbutton.addEventListener("click", function () {
+            this.parentNode.parentNode.removeChild(this.parentNode)
         })
         div.appendChild(Xbutton)
         colorsDiv.appendChild(div)
@@ -81,29 +87,29 @@
         StarButton.innerHTML = "★"
         StarButton.setAttribute("numberId", numOfColors)
         StarButton.style = "float:right; height: 1em; width: 1em; margin:0.3em; cursor: pointer; font-size: 0.8em"
-        StarButton.addEventListener("click",function(){
+        StarButton.addEventListener("click", function () {
             let savedColorsStorage = localStorage.getItem("savedColors")
             let savedColors = []
             let thisColor = document.getElementById("pickercolor" + this.getAttribute("numberId")).value
-            if(this.innerHTML == "★"){
-                if(savedColorsStorage != undefined){
-                savedColors = JSON.parse(savedColorsStorage)
-                savedColors.push(thisColor)
-                localStorage.setItem("savedColors",JSON.stringify(savedColors))
-                }else{
-                savedColors.push(thisColor)
-                localStorage.setItem("savedColors",JSON.stringify(savedColors))
+            if (this.innerHTML == "★") {
+                if (savedColorsStorage != undefined) {
+                    savedColors = JSON.parse(savedColorsStorage)
+                    savedColors.push(thisColor)
+                    localStorage.setItem("savedColors", JSON.stringify(savedColors))
+                } else {
+                    savedColors.push(thisColor)
+                    localStorage.setItem("savedColors", JSON.stringify(savedColors))
                 }
-                    this.innerHTML="⭐"   
-            }else{
+                this.innerHTML = "⭐"
+            } else {
                 savedColors = JSON.parse(savedColorsStorage)
                 let index = savedColors.indexOf(thisColor)
                 savedColors.splice(index, 1);
-                localStorage.setItem("savedColors",JSON.stringify(savedColors))
-                this.innerHTML="★"  
+                localStorage.setItem("savedColors", JSON.stringify(savedColors))
+                this.innerHTML = "★"
             }
         })
-        if(isSaved) StarButton.innerHTML="⭐"  
+        if (isSaved) StarButton.innerHTML = "⭐"
         div.appendChild(StarButton)
         $(".spectrumPicker").spectrum({
             type: "color"
@@ -111,18 +117,18 @@
     }
     colorsToLoadStorage = localStorage.getItem("savedColors")
     let thereAreSaved = true;
-    if(colorsToLoadStorage !=undefined){
+    if (colorsToLoadStorage != undefined) {
         colorsToLoad = JSON.parse(colorsToLoadStorage)
-        if(colorsToLoad.length == 0) colorsToLoad = ["transparent","#FFFF00","#FFA500","#FF0000","#A52A2A","#008000","#0000FF","#FFFFFF","#000000"], thereAreSaved = false;
-    }else{
-        colorsToLoad = ["transparent","#FFFF00","#FFA500","#FF0000","#A52A2A","#008000","#0000FF","#FFFFFF","#000000"], thereAreSaved = false;
+        if (colorsToLoad.length == 0) colorsToLoad = ["transparent", "#FFFF00", "#FFA500", "#FF0000", "#A52A2A", "#008000", "#0000FF", "#FFFFFF", "#000000"], thereAreSaved = false;
+    } else {
+        colorsToLoad = ["transparent", "#FFFF00", "#FFA500", "#FF0000", "#A52A2A", "#008000", "#0000FF", "#FFFFFF", "#000000"], thereAreSaved = false;
     }
-        for(var i = 0; i<colorsToLoad.length;i++){
-            addColor(colorsToLoad[i],thereAreSaved)
-        }
+    for (var i = 0; i < colorsToLoad.length; i++) {
+        addColor(colorsToLoad[i], thereAreSaved)
+    }
     function changeColor(colorNum) {
         colorArray = document.getElementById("colorsDiv").childNodes
-        for (var i = 0; i < colorArray.length-1; i++) {
+        for (var i = 0; i < colorArray.length - 1; i++) {
             document.getElementById("color" + (i + 1)).checked = false;
         }
         document.getElementById("color" + colorNum).checked = true;
@@ -147,23 +153,23 @@
                 td.setAttribute("id", i + "_" + j)
                 td.style.height = size + "px"
                 td.style.width = size + "px"
-                td.ondragstart = function() {
+                td.ondragstart = function () {
                     return false;
                 };
-                td.addEventListener("pointermove", function(event) {
+                td.addEventListener("pointermove", function (event) {
                     if (mousePressed) {
                         this.style.backgroundColor = selectedColor
                     }
                     event.preventDefault()
                 })
-                td.addEventListener("click", function(event) {
-                        this.style.backgroundColor = selectedColor
+                td.addEventListener("click", function (event) {
+                    this.style.backgroundColor = selectedColor
                     event.preventDefault()
                 })
-                td.addEventListener("touchmove", function(event) {
+                td.addEventListener("touchmove", function (event) {
                     let x = event.touches[0].clientX
                     let y = event.touches[0].clientY
-                    document.elementFromPoint(x,y).click()
+                    document.elementFromPoint(x, y).click()
                     this.style.backgroundColor = selectedColor
                     event.preventDefault()
                 })

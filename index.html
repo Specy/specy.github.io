@@ -14,18 +14,18 @@
     <meta property="og:title" content="Specy">
     <meta property="og:url" content="https://spe.github.io/">
     <meta property="og:description" content="Specy's portfolio website">
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <link rel="shortcut icon" href="/favicon.png?v=2" type="image/x-icon" />
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+    <link rel="shortcut icon" href="/assets/images/favicon.png?v=2" type="image/x-icon" />
     <link rel='manifest' href='/manifest.json'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="/scripts/requestAnimationFrame.js"></script>
+    <script src="/assets/requestAnimationFrame.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
         integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport"
         content="user-scalable=no, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
     <title>Specy's portfolio</title>
-    <link rel="stylesheet" href="/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/assets/main.css" type="text/css">
 </head>
 
 <body>
@@ -51,15 +51,14 @@
             </div>
             <button onclick="toggleUtils()" id="toggleUtils">Settings</button>
             <div id="utils" class="hide">
-                <button onclick="toggleTrail()" id="trailBtn">
-                    Trail
+                <button onclick="toggleTrail()" id="trailBtn" style="background-image:url('/assets/icons/trail.svg');">
                 </button>
-                <button onclick="stop()" id="stopBtn" style="background-image:url('/icons/pause.svg');">
+                <button onclick="stop()" id="stopBtn" style="background-image:url('/assets/icons/pause.svg');">
                 </button>
-                <button onclick="random()" style="background-image:url('/icons/random.svg');">
+                <button onclick="random()" style="background-image:url('/assets/icons/random.svg');">
 
                 </button>
-                <button onclick="erase()" style="background-image:url('/icons/erase.svg');">
+                <button onclick="erase()" style="background-image:url('/assets/icons/erase.svg');">
 
                 </button>
             </div>
@@ -75,7 +74,7 @@
                 <div class="smallMiddleText leftText">
                     I'm <div class="projectText" style="display: inline;">Specy</div>, an italian student born in 2002 with a passion in building, reparing and
                     developing. <br><br>
-                    I have experience in 3D printing, 3D scanning and development of Websites, Apps, Webapps and
+                    I have experience in 3D printing, DIY and development of Websites, Apps, Webapps and
                     Userscripts. <br><br>
                     <div class="skills-wrapper">
                         <div>
@@ -87,7 +86,7 @@
                                 <li>Css</li>
                                 <li>Node.js</li>
                                 <li>React</li>
-                                <li>React Native</li>
+
                                 <li>Electron</li>
                             </ul><br>
                         </div>
@@ -95,6 +94,7 @@
                             <div class="projectText">Learning:</div>
                             <br><br>
                             <ul>
+                                <li>React Native</li>
                                 <li>Python</li>
                                 <li>C++</li>
                                 <li>Php</li>
@@ -102,12 +102,12 @@
                         </div>
                     </div>
 
+                    I specialise in creating tools to solve common problems or to help automate certain tasks.
+                    I've done so for many games to expand their functionality 
+                    <br> <br>
+                    I'm also able to build, repair, troubleshoot and upgrade FDM 3D printers, doing 3D scans
+                    using photogrammetry. 
 
-                    I'm able to build, repair, troubleshoot and upgrade FDM 3D printers of any kind, doing 3D scans
-                    using photogrammetry
-                    and 3D printing any 3D model. <br> <br>
-                    I've made many tools to simplify and automate tasks that would otherwise be very 
-                    tiresome, especially when it comes to game features.
                 </div>
             </div>
         </div>
@@ -117,20 +117,20 @@
                 <div class="cell" onclick="redirect('/skyMusic',true)">
                     <div class="middleText">
                         <div class="projectText">Sky Music Nightly</div>
-                        <img class="logo" src="images/skyMusicNightly.png">
+                        <img class="logo" src="/assets/images/skyMusicNightly.png">
                     </div>
                     <div class="centerText smallText">
-                        The refined version of the sky music webapp built with react and pixi.js
+                        The refined version of a webApp i made called sky music, built with react and pixi.js
                     </div>
                     <div class="clickMe">open</div>
                 </div>
                 <div class="cell" onclick="redirect('/genshinMusic',true)">
                     <div class="middleText">
                         <div class="projectText">Genshin Music Nightly</div>
-                        <img class="logo" src="images/genshinMusicNightly.png">
+                        <img class="logo" src="/assets/images/genshinMusicNightly.png">
                     </div>
                     <div class="centerText smallText">
-                        Sky music nightly, but for genshin.
+                        Sky music nightly but adapted to work for the game Genshin Impact, the codebase is the same
                     </div>
                     <div class="clickMe">open</div>
                 </div>
@@ -142,23 +142,22 @@
                 <div class="cell" onclick="redirect('sky-music.herokuapp.com',false)">
                     <div class="middleText">
                         <div class="projectText">Sky music</div>
-                        <img class="logo" src="images/Sky.png">
+                        <img class="logo" src="/assets/images/Sky.png">
                     </div>
                     <div class="centerText smallText">
-                        A webApp with 200k users made to help players of the game Sky children of light to learn,
-                        practice, compose
-                        and share songs.
+                        A webApp with 200k users, made to help players of the game Sky children of light to learn,
+                        practice, compose and share songs.
                     </div>
                     <div class="clickMe">open</div>
                 </div>
                 <div class="cell" onclick="showHiddenDiv(this)">
                     <div class="middleText">
                         <div class="projectText">Scapix</div>
-                        <img class="logo" src="images/scapix.png" style="border-radius: unset;">
+                        <img class="logo" src="/assets/images/scapix.png" style="border-radius: unset;">
                     </div>
 
                     <div class="centerText smallText">
-                        A machine learning image/gif upscaling and denoiser made with
+                        A machine learning image/gif/video upscaling and denoiser app made with
                         react + electron for windows.
 
                     </div>
@@ -189,7 +188,7 @@
                 <div class="cell" onclick="showHiddenDiv(this)">
                     <div class="middleText">
                         <div class="projectText">EatSchool</div>
-                        <img class="logo" src="images/eatSchool.png">
+                        <img class="logo" src="/assets/images/eatSchool.png">
                     </div>
 
                     <div class="centerText smallText">
@@ -202,18 +201,17 @@
                         <div class="smallText">
                             The app has an account system where each class has it's own account to order food to.
                             <br>
-                            An user first logs in, then creates an order and accepts it, after it's accepted it will be
-                            sent to
-                            the school's bar where it will be packaged and served.
+                            Each class in the school is given an account in which the students can place orders.
+                            <br>All those orders will be visible by the school's bar employees who will package the goods.
                         </div>
                     </div>
-                    <div class="clickMe">open</div>
+                    <div class="clickMe">read more</div>
                 </div>
                 <div class="cell"
-                    onclick="redirect('play.google.com/store/apps/details?id=com.specy.quicksafenotes',false)">
+                    onclick="redirect('github.com/Specy/Quick-safe-notes/releases/tag/v1.0.0',false)">
                     <div class="middleText">
                         <div class="projectText">Quick safe notes</div>
-                        <img class="logo" src="images/QFN.png">
+                        <img class="logo" src="/assets/images/QFN.png">
                     </div>
                     <div class="centerText smallText">
                         An app created with react native to save create and organize notes, it has authentication and
@@ -227,7 +225,7 @@
                 <div class="cell" onclick="redirect('/apps/SP_Code/index.html',true)">
                     <div class="middleText">
                         <div class="projectText">SP Code</div>
-                        <img class="logo" src="/images/SP_Code.png">
+                        <img class="logo" src="/assets/images//SP_Code.png">
                     </div>
                     <div class="centerText smallText">
                         A Javascript library for steganography that turns any text into an image that can be then
@@ -240,7 +238,7 @@
                 <div class="cell" onclick="showHiddenDiv(this)">
                     <div class="middleText">
                         <div class="projectText">OwO pet</div>
-                        <img class="logo" src="images/owo.jpg">
+                        <img class="logo" src="/assets/images/owo.jpg">
                     </div>
 
                     <div class="centerText smallText">
@@ -259,12 +257,12 @@
                                 Expressions
                             </div>
                             <div>
-                                <img src="/images/d-d.png" class="owoImg">
-                                <img src="/images/-w-.png" class="owoImg">
-                                <img src="/images/^w^.png" class="owoImg"><br>
-                                <img src="/images/cry.png" class="owoImg">
-                                <img src="/images/x-x.png" class="owoImg">
-                                <img src="/images/owo.png" class="owoImg">
+                                <img src="/assets/images//d-d.png" class="owoImg">
+                                <img src="/assets/images//-w-.png" class="owoImg">
+                                <img src="/assets/images//^w^.png" class="owoImg"><br>
+                                <img src="/assets/images//cry.png" class="owoImg">
+                                <img src="/assets/images//x-x.png" class="owoImg">
+                                <img src="/assets/images//owo.png" class="owoImg">
                             </div>
                             If not being petted for too long it will start to cry, but if petted for too long it will
                             get mad.
@@ -279,7 +277,7 @@
                 <div class="cell" onclick="showHiddenDiv(this)">
                     <div class="middleText">
                         <div class="projectText">Discord bots</div>
-                        <img class="logo" src="images/discord.jpg">
+                        <img class="logo" src="/assets/images/discord.jpg">
                     </div>
                     <div class="centerText smallText">
                         I've crated many discord bots, to manage my school class homework, utils bots and fun bots
@@ -353,7 +351,7 @@
                     onclick="redirect('play.google.com/store/apps/details?id=io.kodular.dionea2002.Spongify',false)">
                     <div class="middleText">
                         <div class="projectText">Spongify App</div>
-                        <img class="logo" src="images/Spongify.png">
+                        <img class="logo" src="/assets/images/Spongify.png">
                     </div>
                     <div class="centerText smallText">
                         A fun app to turn any text into "ThE sPoNgEboB mEmE"
@@ -363,7 +361,7 @@
                 <div class="cell" onclick="redirect('specy.altervista.org',false)">
                     <div class="middleText">
                         <div class="projectText">Other projects</div>
-                        <img class="logo" src="favicon.png">
+                        <img class="logo" src="/assets/images/favicon.png">
                     </div>
                     <div class="centerText smallText">
                         I've made other projects that you can find here.
@@ -396,18 +394,19 @@
         </div>
         <div class="footer">
             <a href="https://github.com/Specy">
-                <img src="/images/github.png">
+                <img src="/assets/images/github.png">
             </a>
             <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js"
                 data-name="bmc-button" data-slug="Specy" data-color="#FFDD00" data-emoji="🥔" data-font="Lato"
                 data-text="Buy me a potato" data-outline-color="#000000" data-font-color="#000000"
-                data-coffee-color="#ffffff"></script>
+                data-coffee-color="#ffffff">
+            </script>
         </div>
     </div>
 </body>
 <div id="fps" style="display: none;">
     0
 </div>
-<script src="/javascript/main.js"></script>
+<script src="/assets/main.js"></script>
 
 </html>
