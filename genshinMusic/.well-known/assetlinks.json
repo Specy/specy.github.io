@@ -1,5 +1,12 @@
-[{
-      "relation": ["delegate_permission/common.handle_all_urls"],
-      "target" : { "namespace": "android_app", "package_name": "genshinnightly.specy.twa",
-                   "sha256_cert_fingerprints": ["06:BC:03:15:5E:E4:67:28:3B:F6:7C:DE:54:C8:A3:7A:AA:20:FB:F3:93:9A:14:D9:1E:8C:31:30:C1:1C:5E:9B"] }
-    }]
+[
+	{
+		"relation": ["delegate_permission/common.handle_all_urls"],
+		"target": {
+			"namespace": "android_app",
+			"package_name": "genshinmusic.specy.twa",
+			"sha256_cert_fingerprints": [
+				"F6:26:C6:FE:23:CC:00:A2:13:9F:F9:BA:8E:E9:A6:D9:6E:3D:82:78:EA:50:62:9D:29:CB:47:AF:12:D4:4E:F9"
+			]
+		}
+	}
+]

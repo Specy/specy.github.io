@@ -3,9 +3,9 @@
 		"relation": ["delegate_permission/common.handle_all_urls"],
 		"target": {
 			"namespace": "android_app",
-			"package_name": "skynightly.specy.twa",
+			"package_name": "skymusicnightly.specy.twa",
 			"sha256_cert_fingerprints": [
-				"4F:AA:73:6B:80:EF:05:29:CD:21:7D:18:25:A7:4C:E6:60:E4:E2:89:16:97:09:63:24:62:C8:4F:B5:82:5D:E2"
+				"41:83:4F:51:CB:9B:2E:5D:B3:64:DE:B9:2F:50:6E:25:60:43:80:EF:C6:E2:49:C8:FE:FE:96:DF:92:14:C5:4C"
 			]
 		}
 	}
