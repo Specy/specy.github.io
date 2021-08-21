@@ -1,12 +1,10 @@
-[
-	{
-		"relation": ["delegate_permission/common.handle_all_urls"],
-		"target": {
-			"namespace": "android_app",
-			"package_name": "skymusicnightly.specy.twa",
-			"sha256_cert_fingerprints": [
-				"65:35:70:0E:28:B5:8B:40:91:20:2D:E3:F0:F0:73:2A:AC:B4:FA:73:6E:85:A9:43:15:5E:86:04:59:38:54:60"
-			]
-		}
-	}
-]
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "io.github.specy.twa",
+    "sha256_cert_fingerprints": [
+      "0F:03:0B:8D:F7:88:79:7A:B8:F3:A4:B0:4A:0B:2F:8B:C1:5C:0E:E9:56:31:F2:7D:DA:F6:D1:55:FD:90:4D:42"
+    ]
+  }
+}]
