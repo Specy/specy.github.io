@@ -1,0 +1,6 @@
+[{
+        "relation": ["delegate_permission/common.handle_all_urls"],
+        "target" : { "namespace": "android_app", "package_name": "genshinmusic.specy.twa",
+                     "sha256_cert_fingerprints": ["BF:AD:D7:63:00:96:A2:5C:B6:41:C1:00:EF:F8:85:D0:65:1C:6A:6E:D9:7A:CB:6E:62:99:78:28:4C:99:09:67"] }
+      }
+]
