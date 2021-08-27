@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+
+
+
+
+    <style>
+        /* 
+        using a . you can select a class, classes can be given
+        to multiple elements. the name that you give will be the identifier
+        of the class, all elements that have the class='class-name' propriety
+        will have that style to it
+        */
+        .class-selector{
+
+        }
+        /*
+        using a # you can select an element by it's ID, ID's are UNIQUE
+        THERE SHOULDNT BE MORE THAN 1 ELEMENT WITH THE SAME ID. 
+        */
+        #id-selector{
+
+        }
+        /*
+        this selects all elements with that tag name. tags are <tagName>, like
+        <div> <body> <input> etc... you dont need to specify anything in the actual 
+        elements, the style is automatically applied
+
+        here i'm also using a "," commas are used to apply the style to multiple selectors
+        can be class, id, tag, etc...
+        */
+        body,html{
+            width: 100%;
+            height: 100%;
+            background-color: #12181b;
+            margin: 0;
+            padding: 0;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            /*
+            this bottom part is to center things, justify-content specifies X axis
+            align-items specifies Y axis, flex-direction specifies if the children elements
+            should be placed in a row or column, in case you specify column, justify-content will become
+            Y axis and align-items the X axis
+            */
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        /*
+        Just to understand something in IT which is very often used. the parent/children structure.
+        It's really easy to understand, the children is the element that is contained within a parent.
+
+        Watchout! an element can be both a parent and a children:
+
+        Parent1
+            Parent2 but also children of "Parent1"
+                Child
+                Child
+                Parent3 but also children of "Parent2"
+                    Child
+                    etc...
+        
+        */
+        /*actual code starts here*/
+
+        .calculator{
+            background-color: #262630;
+            width: 300px;
+            padding: 0.6rem;
+            border-radius: 0.5rem;
+        }
+
+        .row{
+            display: flex;
+            flex-direction: row;
+        }
+        .column{
+            display: flex;
+            flex-direction: column;
+        }
+
+        /*i'm doing different types of ways you can set an element's size with it's own pro and cons*/
+        .keyboard-row-percentage, .keyboard-row-rem{
+            display: flex;
+            justify-content: space-between; /*this is really useful, will space the elements evenly*/
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+
+        /*You can select the children of a certain element by adding two selectors
+        one after the other. this selects the children buttons of the element that has 
+        ".keyboard-row-percentage" as class
+        */
+
+
+
+        .keyboard-row-rem button{
+            /*This is the easiest and probably best approach in this scenario
+            there is an even better approach, which is also more modern, but it's harder
+            to use and needs a different structure to work so i'm skipping it for now.
+            */
+            height: 3rem;
+            width: 4.3rem;
+        }
+
+        .keyboard-row-percentage button{
+            /* here comes first issue with %, it uses the parent's propriety value.
+                in this case, you can set the width easily, but if you set it's height, it wont be
+                the same as the width, so i set it using rem instead.
+            */
+            width: 23%;
+            height: 3rem;
+
+        }
+
+        .keyboard-row-percentage button,
+        .keyboard-row-rem button{
+            background-color: #3c3c4a;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            border-radius: 0.5rem;
+            padding: 0;
+        }
+        #result{
+            background-color: #d8d8d8;
+            color: #12181b;
+            width: 100%;
+            height: 100px;
+            overflow: auto;
+            display: flex;
+            padding: 0.3rem;
+            box-sizing: border-box; /*ignore this for now, it basically make so the padding
+            is included in the width of the element
+            */
+            word-break: break-all;
+            justify-content: flex-end;
+            align-items: flex-end;
+            /*
+            what goes inside classes are called proprieties, proprieties have
+            different values based on what they do, you just need to learn them 
+            but the names are pretty self descriptive.
+
+            For values which require a number, there are various "measures" you can use
+            which have different effects. Here are the most used: 
+
+            -> px= most straight forward, it specifies how many pixels to use, dont use this often
+            as the web is becoming more "fluid", where elements should rarely use fixed values. They dont 
+            adapt well to different screen sizes etc.
+
+            -> rem= this is the modern alternative to px, the value is a shorter version to say "16px", but
+            it has a charatteristic, it's value changes based on the device, some devices can set the value of rem to be
+            20,32, etc, but 99% of the time it's 16px. 0.5rem = 8px, 2rem = 32px etc...
+
+            -> % = uses the parent's sizing to determine it's size, say u have a parent that is 100px wide,
+            if you use 50%, your element will be 50px. Watchout when using pixels as they can often become
+            messy and ruin your mood because they dont behave like you want
+
+            -> vw and vh = this is the same as % but instead of using the parent's size, it uses the actual device
+            screen size. vw = % of width of the screen, vh = % of height of the screen. This has very specific
+            use cases, like you want to put the size of a side menu and want it to be a bit "responsive".
+            Try not to use this as it's hard to manage, like %.
+
+
+            */
+            font-size: 1.3rem;
+            border-radius: 0.3rem;
+        }
+        .clear{
+            /* i use !important to ignore the css order rules, you can look at the image below
+            for the order in which style is ordered, proprieties can be overriden by this order
+            and !important is the one with highest priority
+            https://cdn.discordapp.com/attachments/771432833034092554/880878720334823505/unnamed.jpg
+            */
+            width: 100% !important;
+        }
+    </style>
+
+
+</head>
+
+
+<body>
+
+    <!--You can set multiple classes in the same element, the order of the style
+    will be set like the order that it's placed in the css, not the order of the classes here-->
+    <div class="calculator column"> 
+        <div id="result">
+
+        </div>
+        <div class="column">
+            <div class="keyboard-row-rem">
+                <button onclick="addNumber(this)">7</button>
+                <button onclick="addNumber(this)">8</button>
+                <button onclick="addNumber(this)">9</button>
+                <button onclick="addNumber(this)">/</button>
+            </div>
+            <div class="keyboard-row-percentage">
+                <button onclick="addNumber(this)">4</button>
+                <button onclick="addNumber(this)">5</button>
+                <button onclick="addNumber(this)">6</button>
+                <button onclick="addNumber(this)">*</button>
+            </div>
+            <div class="keyboard-row-rem">
+                <button onclick="addNumber(this)">1</button>
+                <button onclick="addNumber(this)">2</button>
+                <button onclick="addNumber(this)">3</button>
+                <button onclick="addNumber(this)">-</button>
+            </div>
+            <div class="keyboard-row-rem">
+                <button onclick="addNumber(this)">.</button>
+                <button onclick="addNumber(this)">0</button>
+                <button onclick="addNumber(this)">+</button>
+                <button onclick="calculate()">=</button>
+            </div>
+            <div class="keyboard-row-rem">
+                <button onclick="clearResult()" class="clear">Clear</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+
+<script>
+
+    /*
+    -----------SCOPES------------
+
+    There is something that might be hard to understand in programming languages which is
+    "variable scoping", which means where a variable is accessible.
+    You first have to understand what a scope is, it's basically whenever there is a {} somewhere.
+    Examples:
+
+    function someFunction(){
+        scope 1
+        if(someCondition){
+            scope 2
+            etc...
+        }
+    }
+
+
+    -----ASSIGNING A VARIABLE------
+    A variable needs to be assigned, you do that by doing:
+
+    let variableName
+    "let" is the keyword to create a new variable, you can also give it a initial value with
+    let variableName = "your value"
+
+    You learnt about scopes before, when you create a new variable, it's value can be accessed
+    ONLY from it's scope and the child scopes. Trying to access a variable outside it's scope
+    will return "undefined" because the variable doesn't exist in it.
+    Example:
+    
+    function someFunction(){ scope 1
+        let variable1 = 1
+
+        if(someCondition){  scope 2
+            let variable2 = 2
+            let variable3 = variable1 + variable2 
+            //variable3 has it's value as 3, you can access variable1 as this scope is a child of scope1
+            variable1 = 10 //we can also change it's value
+
+        }
+        here if we try to access variable2 or variable3, we will get undefined because it's out of it's scope
+    }
+
+
+    --------VARIABLES TYPES--------
+    Variable types in javascript are pretty easy, there are only few ones:
+
+    boolean: true or false
+    number: (in other languages this means: int, double, float, etc...) a number with or without decimal
+    string: (in other languages this can be a char, string etc...) a character or text
+    array:  a list of elements that can contain whatever type of data in it
+    object: a key/value pair. it's basically a variable of variables
+    function: it executes code inside of it, it can accept values as it's input and can return a value
+
+    Examples: between () is the result, it's not actual code
+
+    -> BOOLEAN:
+        let a = true
+        let b = false
+
+        they are true or false, they can also be gotten as a result of logical operation like equal
+        more than, less than, etc...
+        They are mainly used inside of if statements and for loops.
+
+
+    -> NUMBERS:
+        let a = 1
+        let b = 0.2
+        let c = a+b (1.2)
+
+    -> STRINGS:
+        let a = "A"
+        let b = "some text"
+        let c = a + b (Asome text)
+
+    -> OBJECTS: 
+        let anObject = { //watchout, this is not a scope
+            keyName: "value",
+            aNumber: 1,
+            anotherObject: {
+                aName: "mario"
+            }
+        }
+
+        you access values of an object using a "." and then write the key name
+        anObject.keyName ("value")
+        anObject.keyName = "another value"
+
+        you can also stack objects inside other objects, this is REALLY common:
+        anObject.anotherObject.aName ("mario")
+
+        objects and variables in general don't contain only a number, string, array or object,
+        they can also include functions, which will be executed by adding ()
+        example:
+        someObject.withSomeFunction() //this executes the function insi
+
+    -> ARRAYS:
+        let a = 1
+        let b = 'b'
+        let c = [1,2,3,4,5]
+        let array = [a,b,c] (1,'b',[1,2,3,4,5])
+
+        Arrays are one of the most important data types. 
+        They are lists which contain values inside of them, they can be accessed
+        using an index. indexes is the position of the element inside of the array.
+        WATCHOUT: arrays indexes start from 0, so the first element will be at index 0.
+
+        to access an element you use someArray[index]
+        Example:
+        let someArray = [10,20,30]
+        someArray[0] += 1 (11)
+        someArray[3] = 40 ([10,20,30,40])
+
+        arrays have different ways to remove or add elements, you can search for more on google.
+        An example is to add an element to the array, you can do that with someArray.push(value)
+
+    -> FUNCTIONS:
+
+        We saw them before in the scopes, they are blocks of code that can be executed whenever you want.
+        You can give them some values and you can return a value.
+        Values passed are inside the ()
+        Example:
+
+        function sum(variable1,variable2){
+            let variable3 = variable1 + variable2
+            return variable3
+        }
+        let result = sum(1,2)
+
+        As you can see, variable1 and variable2 will get the values you passed when you called the 
+        sum() function, the values are set in order in which u give them.
+        you can use the "return" keyword to return a value from the function.
+        a function can or not have a return value, it's not a must.
+        The returned value will basically be the value of the function you called
+        Example:
+        let summed = sum(1,2) <- here the result of the function will return 3, and the value of summed will be 3
+
+
+        --------MATHEMATICAL SYMBOLS AND LOGIC OPERATORS--------
+        with variables you can: compare, change, add, sum, etc...
+
+        MATHEMATICAL SYMBOLS:
+        + plus
+        - minus
+        * multiplication
+        / division
+        % modulo
+        () parenthesis, watchout, square brackets dont exist, only normal ones
+
+        The beginner way of doing things, like adding values to a variable, is this:
+
+        let a = 1
+        let b = 2
+        a = a + b (now a will be 3)
+
+        but there is a faster and much more readable way which automatically includes the value of 
+        the variable, you do this by adding a "=" after the mathematical operation. please use this
+        Example:
+        let a = 1
+        let b = 2
+        a += b (now a will be 3)
+
+        there are also ways to quickly increase and decrese a variable, using:
+        let a = 0
+        a++ (1)
+        a-- (0)
+        LOGICAL OPERATORS:
+        with those you can compare variables to each other
+        === equal 
+        > more than
+        < less than 
+        ! not
+        || or
+        && and
+
+        those return two values, true or false and can be used in conditional statements like
+        if, for, while, etc...
+        Example:
+
+        if(1===2){ //this is false so it will execute the "else" code
+            if the condition is true, execute this code
+        }else{
+            if the condition is false, execute this.
+        }
+
+
+        --------IF/ELSE--------
+        those are statements that execute code based on the value of the condition that you give it.
+        if the condition is true, it will execute the first part of the if statement,
+        if not, it will execute the second, if it's present.
+
+        if(condition){
+            execute this if condition is true
+        }else{
+            execute this if condition is false, it's not a must to include the "else"
+            if not needed
+        }
+        Example:
+
+        let a = 1
+        let b = 2
+        let c //create a variable without giving it a value
+        if(a > b){
+            c = a + b
+        }else{
+            c = a - b
+        }
+
+        in this case, c will be -2 because a > b returns false, if a was 3, then the result
+        would have been 5, as a+b = 5
+        
+
+        --------FOR LOOPS--------
+        the for loop is also a very important part of coding, it executes a code untill the condition is not
+        true anymore. It's mainly used to go through arrays or do something N times.
+
+        for(initialValue; condition; increment){
+
+        }
+
+        "initialValue" is the variable that will be created in that moment to be used in the for loop.
+        It will be accessible only inside the for loop. 
+        "condition" is the value that will be checked to decide if running the loop or not, if the value
+        is true, then it will continue execution, if it's false, it will stop
+        "increment", it's a part of code that gets executed everytime a single loop is finished, usually used
+        to incrememnt the initialValue.
+        Example:
+
+        let array = []
+        for(let i = 0; i < 5; i++){
+            array.push(i) //add value to array
+        }
+        at the end, the array will look like: [0,1,2,3,4]
+        the loop stopped when i was equal to 5 because 5 is not less than 5
+
+
+
+        Now that the basics are introduced, you should be able to code pretty much everything already
+        you just need to put stuff togheter. Every language has different functions which do different
+        things which u will have to learn or google.
+    */
+
+
+    /*to explain shortly, you will see often this "document", it basically means the whole
+    HTML structure, the html becomes a "tree" of elements where u can get elements
+    to modify or get their proprieties.
+
+    the function below uses the same logic as css to get the first element with id result.
+    WATCHOUT, this returns only the FIRST ELEMENT, not all, if you want all elements, you
+    can use document.querySelectorAll('your selector here')
+    also, 
+    */
+    let resultElement = document.querySelector('#result')
+
+    function addNumber(element){
+        //when we called the addNumber() function, we passed "this" inside of it
+        //the "this" keyword is kind of hard to understand but in that case, we basically passed
+        //the html element that calls the function
+        let value = element.innerText //gets the text of the button that executed the function
+        resultElement.innerText += value // adds the value of the button to the result element
+    }
+    function calculate(){
+        //this eval basically executes text as code, since we pass numbers, it will just
+        //return the result of the numbers we gave it
+        let calculationResult = eval(resultElement.innerText)
+        resultElement.innerText = calculationResult
+    }
+    function clearResult(){
+        resultElement.innerText = ''
+    }
+</script>
+
+
+</html>
