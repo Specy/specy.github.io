@@ -12,7 +12,9 @@
     user-select: none;
     -webkit-tap-highlight-color: transparent;
 }
-
+a{
+    text-decoration: none;
+}
 html {
     height: 100%;
     overflow: hidden;
