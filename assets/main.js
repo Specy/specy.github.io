@@ -2,7 +2,7 @@ const canvas = document.getElementById("canvas")
 const ctx = canvas.getContext("2d")
 const canvas2 = document.getElementById("canvas2")
 const ctx2 = canvas2.getContext("2d")
-let body = document.getElementsByTagName("body")[0]
+let body = document.querySelector("body")
 var positionInfo = document.getElementById("canvas").getBoundingClientRect();
 let screenWidth = positionInfo.width
 let screenHeight = positionInfo.height
@@ -144,14 +144,14 @@ function drawMatrix(x, y, noise) {
     } catch (e) { }
 }
 
-async function calculateGeneration(data) {
+function calculateGeneration(data) {
     return new Promise(res => {
         worker.postMessage({
-            matrix:data,
-            width:width,
-            height:height
+            matrix: data,
+            width: width,
+            height: height
         })
-        worker.onmessage = result => { res(result.data)}
+        worker.onmessage = result => { res(result.data) }
     })
 }
 
@@ -167,40 +167,50 @@ function getRandomColor() {
     //function that returns a random color from the palette
     return palette[0][Math.floor(Math.random() * palette[0].length)]
 }
+
+let fpsController = 48;
+let currentTime;
+let nextTime = Date.now();
+let rafInterval = 1000 / fpsController;
+let deltaTime;
+
 let every30 = 0
 let secondContextColor = getRandomColor()
 let generations = []
 
 async function handleFrame() {
-    //function that handles each frame, it clears the canvas and redraws on top of it
-
-    if (isStopped) {
-        //if it's stopped, continue to render but don't calculate the next generations
-        drawCanvas(matrix, ctx, "#DA0363", true)
-    } else {
-        let nextGen = await calculateGeneration(matrix)
-        eraseCanvas(ctx)
-        every30++
-        if (every30 > 30) {
-            //change color every 30 frames
-            secondContextColor = getRandomColor()
-            every30 = 0
+    window.requestAnimationFrame(handleFrame);
+    currentTime = Date.now();
+    deltaTime = currentTime - nextTime;
+    if (deltaTime > rafInterval) {
+        nextTime = currentTime - (deltaTime % rafInterval);
+        //function that handles each frame, it clears the canvas and redraws on top of it
+        if (isStopped) {
+            //if it's stopped, continue to render but don't calculate the next generations
+            drawCanvas(matrix, ctx, "#DA0363", true)
+        } else {
+            let nextGen = await calculateGeneration(matrix)
+            eraseCanvas(ctx)
+            if (every30++ > 30) {
+                //change color every 30 frames
+                secondContextColor = getRandomColor()
+                every30 = 0
+            }
+            //adds each generation to an array, this is made to have some space between the current generation and the next one
+            if (generations.length > 15) generations.shift()
+            generations.push(nextGen)
+            if (trailToggled) {
+                //if the trail is toggled, draw on the second canvas the trail
+                drawCanvas(generations[0], ctx2, secondContextColor, false)
+            }
+            drawCanvas(nextGen, ctx, "#DA0363", true)
+            matrix = nextGen
         }
-        //adds each generation to an array, this is made to have some space between the current generation and the next one
-        if (generations.length > 15) generations.shift()
-        generations.push(nextGen)
-        if (trailToggled) {
-            //if the trail is toggled, draw on the second canvas the trail
-            drawCanvas(generations[0], ctx2, secondContextColor, false)
-        }
-        drawCanvas(nextGen, ctx, "#DA0363", true)
-        matrix = nextGen
+        calcFps()
     }
-    window.requestAnimationFrame(handleFrame)
-    calcFps()
 }
 
-let trailToggled = false
+let trailToggled = true
 
 function toggleTrail() {
     //function to toggle the trail animation
@@ -247,25 +257,21 @@ function erase() {
 }
 
 async function showHiddenDiv(div) {
-    //hides all the cells information and displays the current one
-    let toHide = div.getElementsByClassName("hiddenDiv")[0]
-    if (toHide.style.display != "block") {
-        $(".hiddenDiv").css({
-            display: "none"
-        })
-        $(toHide).fadeIn(400)
-        goToElement(div, 0.98)
+    //hides all the cells information and displays the current onec
+    console.log(div)
+    let toHide = div.querySelector(".hiddenDiv")
+    if (toHide.style.display !== "block") {
+        toHide.style.display = 'block'
+        return goToElement(div, 0.98)
     }
+    toHide.style.display = 'none'
 }
 
 
 function goToElement(element, scroll = 0.9) {
     //function to scroll the body to a selected element, scroll is the offset
-    let container = document.getElementById("mainContent")
     if (typeof element == "string") element = document.getElementById(element)
-    $(container).animate({
-        scrollTop: ($(element).offset().top - $(container).offset().top + $(container).scrollTop()) * scroll
-    })
+    element.scrollIntoView({behavior: "smooth", block: "start"})
 }
 
 function toggleUtils() {
@@ -296,7 +302,6 @@ async function drawS() {
     //function to draw the S when the page loads
     let drawing = await fetch("/assets/drawing.json").then(file => file.json())
     //fetches the array containing the positions to draw
-    toggleTrail()
     for (let i = 0; i < drawing.length; i++) {
         //iterates through all the points and gives an offset according if the device is a mobile phone or pc
         //positions are in percentage
