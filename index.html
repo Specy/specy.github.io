@@ -17,15 +17,12 @@
     <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
     <link rel="shortcut icon" href="/assets/images/favicon.png?v=2" type="image/x-icon" />
     <link rel='manifest' href='/manifest.json'>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="/assets/requestAnimationFrame.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
-        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+    <script src="/assets/RAF-Polyfill.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport"
         content="user-scalable=no, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
     <title>Specy's portfolio</title>
-    <link rel="stylesheet" href="/assets/main.css" type="text/css">
+    <link rel="stylesheet" href="/assets/index.css" type="text/css">
 </head>
 
 <body>
@@ -38,7 +35,7 @@
     <div id="mainContent">
         <div class="navBar">
             <div class="navBarLogo" onclick="drawS()"></div>
-            <div style="margin-left: 2vw; display: inline-flex;">
+            <div class="navBarOptionWrapper">
                 <div class="navBarOption" style="margin-left: 0;" onclick="goToElement('contact')">
                     Contact
                 </div>
@@ -50,7 +47,7 @@
                 </div>
             </div>
             <button onclick="toggleUtils()" id="toggleUtils">Settings</button>
-            <div id="utils" class="hide">
+            <div id="utils">
                 <button onclick="toggleTrail()" id="trailBtn" style="background-image:url('/assets/icons/trail.svg');">
                 </button>
                 <button onclick="stop()" id="stopBtn" style="background-image:url('/assets/icons/pause.svg');">
@@ -65,109 +62,92 @@
         </div>
         <div class="presentation" id="presentation">
         </div>
-        <div style="height: 15%; position: relative;" id="scrollDownWrapper">
-            <div id="scrollDown"></div>
-        </div>
-        <div id="aboutMe" style="margin-bottom: 10vh;">
-            <div class="bigText" style="margin-bottom: 2vh;">About Me</div>
-            <div class="cell" style="min-height: unset; cursor: default;">
-                <div class="smallMiddleText leftText">
-                    I'm <div class="projectText" style="display: inline;">Specy</div>, an italian student born in 2002 with a passion in building, reparing and
-                    developing. <br><br>
-                    I have experience in 3D printing, DIY and development of Websites, Apps, Webapps and
-                    Userscripts. <br><br>
+        <div id="scrollDown"></div>
+        <div id="aboutMe" style="margin-bottom: 5rem;">
+            <div class="bigText" style="margin-bottom: 0.5rem;">About Me</div>
+            <div class="about-me-wrapper" style="min-height: unset; cursor: default;">
+                <div class="smallMiddleText">
+                    <div style="padding: 0.5rem; margin-bottom: 1rem;">
+                        I'm <div style="color:#DA0363; display: inline;">Specy</div>, an italian student
+                        with a passion in building, reparing and developing. <br><br>
+                        I have experience in 3D printing, DIY, and development of Websites, Apps and Webapps 
+                        currently exploring the REST world.
+                        <br/><br/>
+                        I specialise in creating tools to solve common problems or to help automate certain tasks.
+                        I've done so for many games to expand their functionality and to make their features more accessible.
+                    </div>
                     <div class="skills-wrapper">
                         <div>
-                            <div class="projectText">Proficient in:</div>
-                            <br><br>
+                            <div class="accent-text">Proficient in:</div>
                             <ul>
                                 <li>JavaScript</li>
                                 <li>Html</li>
                                 <li>Css</li>
                                 <li>Node.js</li>
                                 <li>React</li>
-
                                 <li>Electron</li>
-                            </ul><br>
+                            </ul>
                         </div>
                         <div>
-                            <div class="projectText">Learning:</div>
-                            <br><br>
+                            <div class="accent-text">Learning:</div>
                             <ul>
                                 <li>React Native</li>
+                                <li>Nest.js</li>
+                                <li>Svelte</li>
                                 <li>Python</li>
                                 <li>C++</li>
-                                <li>Php</li>
-                            </ul><br>
+                            </ul>
                         </div>
                     </div>
-
-                    I specialise in creating tools to solve common problems or to help automate certain tasks.
-                    I've done so for many games to expand their functionality 
-                    <br> <br>
-                    I'm also able to build, repair, troubleshoot and upgrade FDM 3D printers, doing 3D scans
-                    using photogrammetry. 
-
                 </div>
             </div>
         </div>
+        <div class="bigText" style="margin-bottom: 0.5rem;"> My Projects</div>
         <div id="myProjects">
-            <div class="bigText" style="margin-bottom: 5vh;"> My Projects</div>
-            <div class="row">
-                <a class="cell" href="/skyMusic" target="_blank">
-                    <div class="middleText">
-                        <div class="projectText">Sky Music Nightly</div>
-                        <img class="logo" src="/assets/images/skyMusicNightly.png">
-                    </div>
-                    <div class="centerText smallText">
+            <a class="project" href="/skyMusic" target="_blank">
+                <img src='/assets/images/apps/SMN.png' class="project-image">
+                <div class="project-content">
+                    <div class="project-title">Sky Music Nightly</div>
+                    <div class="project-text-border">
                         The refined version of a webApp i made called sky music, built with react and pixi.js
                     </div>
-                    <div class="clickMe">open</div>
-                </a>
-                <a class="cell" href="/genshinMusic" target="_blank">
-                    <div class="middleText">
-                        <div class="projectText">Genshin Music Nightly</div>
-                        <img class="logo" src="/assets/images/genshinMusicNightly.png">
-                    </div>
-                    <div class="centerText smallText">
+                </div>
+            </a>
+            <a class="project" href="/genshinMusic" target="_blank">
+                <img src='/assets/images/apps/GMN.png' class="project-image">
+                <div class="project-content">
+                    <div class="project-title">Genshin Music Nightly</div>
+                    <div class="project-text-border">
                         Sky music nightly but adapted to work for the game Genshin Impact, the codebase is the same
                     </div>
-                    <div class="clickMe">open</div>
-                </a>
-            </div>
+                </div>
+            </a>
 
-
-            
-            <div class="row">
-                <a class="cell" href="https://sky-music.herokuapp.com" target="_blank">
-                    <div class="middleText">
-                        <div class="projectText">Sky music</div>
-                        <img class="logo" src="/assets/images/Sky.png">
-                    </div>
-                    <div class="centerText smallText">
-                        A webApp with 200k users, made to help players of the game Sky children of light to learn,
+            <a class="project" href="https://sky-music.herokuapp.com" target="_blank">
+                <img src='/assets/images/apps/SM.png' class="project-image">
+                <div class="project-content">
+                    <div class="project-title">Sky music</div>
+                    <div class="project-text-border">
+                        A webApp with over 300k users, made to help players of the game Sky children of light to learn,
                         practice, compose and share songs.
                     </div>
-                    <div class="clickMe">open</div>
-                </a>
-                <div class="cell" onclick="showHiddenDiv(this)">
-                    <div class="middleText">
-                        <div class="projectText">Scapix</div>
-                        <img class="logo" src="/assets/images/scapix.png" style="border-radius: unset;">
-                    </div>
-
-                    <div class="centerText smallText">
+                </div>
+            </a>
+            <div class="project" onclick="showHiddenDiv(this)">
+                <img src='/assets/images/apps/Scapix.png' class="project-image">
+                <div class="project-content">
+                    <div class="project-title">Scapix</div>
+                    <div class="project-text-border">
                         A machine learning image/gif/video upscaling and denoiser app made with
                         react + electron for windows.
-
                     </div>
                     <div class="hiddenDiv">
                         <br>
                         <div class="smallMiddleText" style="color:#DA0363">
                             Features
                         </div>
-
-                        <ul class="smallText">
+    
+                        <ul class="project-text">
                             <li>Image upscaling with no size limit </li>
                             <li>Denoise any kind of drawing or normal image</li>
                             <li>Upscale and denoise gifs </li>
@@ -176,201 +156,192 @@
                             <li>Completely Open source and 100% offline </li>
                         </ul>
                         <br>
-                        <a class="smallText" style="color:#DA0363" href="https://github.com/Specy/Scapix">
+                        <a class="project-button" href="https://github.com/Specy/Scapix">
                             Click here to visit on github
                         </a>
                     </div>
-                    <div class="clickMe">read more</div>
                 </div>
 
             </div>
-            <div class="row">
-                <div class="cell" onclick="showHiddenDiv(this)">
-                    <div class="middleText">
-                        <div class="projectText">EatSchool</div>
-                        <img class="logo" src="/assets/images/eatSchool.png">
-                    </div>
 
-                    <div class="centerText smallText">
-                        A webapp created for my school to help food ordering during the COVID-19 pandemic.
-                    </div>
-                    <div class="hiddenDiv">
-                        <div class="smallMiddleText" style="color:#DA0363">
-                            Features
-                        </div>
-                        <div class="smallText">
-                            The app has an account system where each class has it's own account to order food to.
-                            <br>
-                            Each class in the school is given an account in which the students can place orders.
-                            <br>All those orders will be visible by the school's bar employees who will package the goods.
-                        </div>
-                    </div>
-                    <div class="clickMe">read more</div>
+            <div class="cell" onclick="showHiddenDiv(this)">
+                <div class="middleText">
+                    <img class="logo" src="/assets/images/eatSchool.png">
+                    <div class="project-title">EatSchool</div>
                 </div>
-                <a class="cell"
-                    href="https://github.com/Specy/Quick-safe-notes/releases/tag/v1.0.0" target="_blank"
-                >
-                    <div class="middleText">
-                        <div class="projectText">Quick safe notes</div>
-                        <img class="logo" src="/assets/images/QFN.png">
-                    </div>
-                    <div class="centerText smallText">
-                        An app created with react native to save create and organize notes, it has authentication and
-                        notes folders
-                        together with a simple UI.
-                    </div>
-                    <div class="clickMe">open</div>
-                </a>
-            </div>
-            <div class="row">
-                <a class="cell" href="/apps/SP_Code/index.html" target="_blank">
-                    <div class="middleText">
-                        <div class="projectText">SP Code</div>
-                        <img class="logo" src="/assets/images//SP_Code.png">
-                    </div>
-                    <div class="centerText smallText">
-                        A Javascript library for steganography that turns any text into an image that can be then
-                        converted back to
-                        text.<br>
-                        The data can also be added to an existing image.
-                    </div>
-                    <div class="clickMe">open</div>
-                </a>
-                <div class="cell" onclick="showHiddenDiv(this)">
-                    <div class="middleText">
-                        <div class="projectText">OwO pet</div>
-                        <img class="logo" src="/assets/images/owo.jpg">
-                    </div>
 
-                    <div class="centerText smallText">
-                        An arduino project for a cat pet, it uses a small oled screen, touch module and vibration to
-                        purr and show expressions
+                <div class="project-text">
+                    A webapp created for my school to help food ordering during the COVID-19 pandemic.
+                </div>
+                <div class="hiddenDiv">
+                    <div class="smallMiddleText" style="color:#DA0363">
+                        Features
                     </div>
-                    <div class="hiddenDiv">
-                        <div class="smallMiddleText" style="color:#DA0363">
-                            Description
-                        </div>
-                        <div class="smallText" style="display: inline-flex; flex-direction: column;">
-                            This is an interactive arduino nano project that i made to learn the
-                            basics of arduino and electronics. The finished product was soldered to a pcb
-                            <br><br>
-                            <div class="smallMiddleText" style="color:#DA0363">
-                                Expressions
-                            </div>
-                            <div>
-                                <img src="/assets/images//d-d.png" class="owoImg">
-                                <img src="/assets/images//-w-.png" class="owoImg">
-                                <img src="/assets/images//^w^.png" class="owoImg"><br>
-                                <img src="/assets/images//cry.png" class="owoImg">
-                                <img src="/assets/images//x-x.png" class="owoImg">
-                                <img src="/assets/images//owo.png" class="owoImg">
-                            </div>
-                            If not being petted for too long it will start to cry, but if petted for too long it will
-                            get mad.
-                            All expressions are random, each biased differently.
-                        </div>
+                    <div class="project-text">
+                        The app has an account system where each class has it's own account to order food to.
+                        <br>
+                        Each class in the school is given an account in which the students can place orders.
+                        <br>All those orders will be visible by the school's bar employees who will package the goods.
+                    </div>
+                </div>
+                <div class="clickMe">read more</div>
+            </div>
+            <a class="cell" href="https://github.com/Specy/Quick-safe-notes/releases/tag/v1.0.0" target="_blank">
+                <div class="middleText">
+                    <img class="logo" src="/assets/images/QFN.png">
+                    <div class="project-title">Quick safe notes</div>
+                </div>
+                <div class="project-text">
+                    An app created with react native to save create and organize notes, it has authentication and
+                    notes folders
+                    together with a simple UI.
+                </div>
+                <div class="clickMe">open</div>
+            </a>
+            <a class="cell" href="/apps/SP_Code/index.html" target="_blank">
+                <div class="middleText">
+                    <img class="logo" src="/assets/images//SP_Code.png">
+                    <div class="project-title">SP Code</div>
+                </div>
+                <div class="project-text">
+                    A Javascript library for steganography that turns any text into an image that can be then
+                    converted back to
+                    text.<br>
+                    The data can also be added to an existing image.
+                </div>
+                <div class="clickMe">open</div>
+            </a>
+            <div class="cell" onclick="showHiddenDiv(this)">
+                <div class="middleText">
+                    <img class="logo" src="/assets/images/owo.jpg">
+                    <div class="project-title">OwO pet</div>
+                </div>
+
+                <div class="project-text">
+                    An arduino project for a cat pet, it uses a small oled screen, touch module and vibration to
+                    purr and show expressions
+                </div>
+                <div class="hiddenDiv">
+                    <div class="smallMiddleText" style="color:#DA0363">
+                        Description
+                    </div>
+                    <div class="project-text" style="display: inline-flex; flex-direction: column;">
+                        This is an interactive arduino nano project that i made to learn the
+                        basics of arduino and electronics. The finished product was soldered to a pcb
                         <br><br>
+                        <div class="smallMiddleText" style="color:#DA0363">
+                            Expressions
+                        </div>
+                        <div>
+                            <img src="/assets/images//d-d.png" class="owoImg">
+                            <img src="/assets/images//-w-.png" class="owoImg">
+                            <img src="/assets/images//^w^.png" class="owoImg"><br>
+                            <img src="/assets/images//cry.png" class="owoImg">
+                            <img src="/assets/images//x-x.png" class="owoImg">
+                            <img src="/assets/images//owo.png" class="owoImg">
+                        </div>
+                        If not being petted for too long it will start to cry, but if petted for too long it will
+                        get mad.
+                        All expressions are random, each biased differently.
                     </div>
-                    <div class="clickMe">read more</div>
+                    <br><br>
                 </div>
-            </div>
-            <div class="row">
-                <div class="cell" onclick="showHiddenDiv(this)">
-                    <div class="middleText">
-                        <div class="projectText">Discord bots</div>
-                        <img class="logo" src="/assets/images/discord.jpg">
-                    </div>
-                    <div class="centerText smallText">
-                        I've created many discord bots, to manage my school class homework, utils bots and fun bots
-                    </div>
-                    <div class="hiddenDiv">
-                        <br>
-                        <div class="smallMiddleText" style="color:#DA0363">
-                            Speskin bot
-                        </div>
-                        <div class="smallText">
-                            A bot that is meant to replace the gota.io bot, it has skin acception notifications and
-                            connects with the
-                            <a href="/apps/Speskin/index.html">Speskin website</a> to show skin lists.
-                        </div>
-                        <br>
-                        <div class="smallMiddleText" style="color:#DA0363">
-                            Guessing words!
-                        </div>
-                        <div class="smallText">
-                            A bot that links to a server used as a dictionary, it has minigames in 5 different languages
-                            such as:<br><br>
-                            <ul>
-                                <li>Translating a word from english to the other language or vice versa</li>
-                                <li>Giving 5 or more random words that you can learn</li>
-                            </ul><br>
-                            and also gives moderation for the open dictionary, deleting duplicates
-                        </div>
-                        <br>
-                        <div class="smallMiddleText" style="color:#DA0363">
-                            Spongify!
-                        </div>
-                        <div class="smallText">
-                            A bot that turns text into the SpOnGeBoB mEmE
-                        </div>
-                        <br>
-                        <div class="smallMiddleText" style="color:#DA0363">
-                            Compitazzi!
-                        </div>
-                        <div class="smallText">
-                            A bot used in my class discord server to manage homework given out by teachers, alerting the
-                            day before all the
-                            homework/tests that will be due the day after
-                        </div>
-                        <br>
-                        <div class="smallMiddleText" style="color:#DA0363">
-                            SkyMusic
-                        </div>
-                        <div class="smallText">
-                            A bot used to manage server-side errors of the
-                            <a href="https://sky-music.herokuapp.com">Sky music</a> website and allow users to send the
-                            songs they have made
-                            so to be uploaded to the <a href="https://sky-music.herokuapp.com/songLibrary.html">
-                                Library</a>
-                        </div>
-                    </div>
-                    <div class="clickMe">read more</div>
-                </div>
-                <a class="cell" href="/apps/pixelArt/pixelArt.html" target="_blank">
-                    <div class="middleText">
-                        <div class="projectText" style="margin-left: -45px;">Pixel art</div>
-                    </div>
-                    <div class="centerText smallText">
-                        A website to create simple pixel art and download it as a .png
-                    </div>
-                    <div class="clickMe">open</div>
-                </a>
+                <div class="clickMe">read more</div>
             </div>
 
-            <div class="row">
-                <a class="cell"
-                    href="https://play.google.com/store/apps/details?id=io.kodular.dionea2002.Spongify" target="_blank"
-                >
-                    <div class="middleText">
-                        <div class="projectText">Spongify App</div>
-                        <img class="logo" src="/assets/images/Spongify.png">
+            <div class="cell" onclick="showHiddenDiv(this)">
+                <div class="middleText">
+                    <img class="logo" src="/assets/images/discord.jpg">
+                    <div class="project-title">Discord bots</div>
+                </div>
+                <div class="project-text">
+                    I've created many discord bots, to manage my school class homework, utils bots and fun bots
+                </div>
+                <div class="hiddenDiv">
+                    <br>
+                    <div class="smallMiddleText" style="color:#DA0363">
+                        Speskin bot
                     </div>
-                    <div class="centerText smallText">
-                        A fun app to turn any text into "ThE sPoNgEboB mEmE"
+                    <div class="project-text">
+                        A bot that is meant to replace the gota.io bot, it has skin acception notifications and
+                        connects with the
+                        <a href="/apps/Speskin/index.html">Speskin website</a> to show skin lists.
                     </div>
-                    <div class="clickMe">open</div>
-                </a>
-                <a class="cell" href="https://specy.altervista.org" target="_blank">
-                    <div class="middleText">
-                        <div class="projectText">Other projects</div>
-                        <img class="logo" src="/assets/images/favicon.png">
+                    <br>
+                    <div class="smallMiddleText" style="color:#DA0363">
+                        Guessing words!
                     </div>
-                    <div class="centerText smallText">
-                        I've made other projects that you can find here.
+                    <div class="project-text">
+                        A bot that links to a server used as a dictionary, it has minigames in 5 different languages
+                        such as:<br><br>
+                        <ul>
+                            <li>Translating a word from english to the other language or vice versa</li>
+                            <li>Giving 5 or more random words that you can learn</li>
+                        </ul><br>
+                        and also gives moderation for the open dictionary, deleting duplicates
                     </div>
-                    <div class="clickMe">open</div>
-                </a>
+                    <br>
+                    <div class="smallMiddleText" style="color:#DA0363">
+                        Spongify!
+                    </div>
+                    <div class="project-text">
+                        A bot that turns text into the SpOnGeBoB mEmE
+                    </div>
+                    <br>
+                    <div class="smallMiddleText" style="color:#DA0363">
+                        Compitazzi!
+                    </div>
+                    <div class="project-text">
+                        A bot used in my class discord server to manage homework given out by teachers, alerting the
+                        day before all the
+                        homework/tests that will be due the day after
+                    </div>
+                    <br>
+                    <div class="smallMiddleText" style="color:#DA0363">
+                        SkyMusic
+                    </div>
+                    <div class="project-text">
+                        A bot used to manage server-side errors of the
+                        <a href="https://sky-music.herokuapp.com">Sky music</a> website and allow users to send the
+                        songs they have made
+                        so to be uploaded to the <a href="https://sky-music.herokuapp.com/songLibrary.html">
+                            Library</a>
+                    </div>
+                </div>
+                <div class="clickMe">read more</div>
             </div>
+            <a class="cell" href="/apps/pixelArt/pixelArt.html" target="_blank">
+                <div class="middleText" style="margin-left: 0;">
+                    <img class="logo" src="/assets/images/favicon.png">
+                    <div class="project-title">Pixel art</div>
+                </div>
+                <div class="project-text">
+                    A website to create simple pixel art and download it as a .png
+                </div>
+                <div class="clickMe">open</div>
+            </a>
+
+            <a class="cell" href="https://play.google.com/store/apps/details?id=io.kodular.dionea2002.Spongify"
+                target="_blank">
+                <div class="middleText">
+                    <img class="logo" src="/assets/images/Spongify.png">
+                    <div class="project-title">Spongify App</div>
+                </div>
+                <div class="project-text">
+                    A fun app to turn any text into "ThE sPoNgEboB mEmE"
+                </div>
+                <div class="clickMe">open</div>
+            </a>
+            <a class="cell" href="https://specy.altervista.org" target="_blank">
+                <div class="middleText">
+                    <img class="logo" src="/assets/images/favicon.png">
+                    <div class="project-title">Other projects</div>
+                </div>
+                <div class="project-text">
+                    I've made other projects that you can find here.
+                </div>
+                <div class="clickMe">open</div>
+            </a>
         </div>
 
         <div id="contact">
@@ -395,20 +366,21 @@
             </div>
         </div>
         <div class="footer">
-            <a href="https://github.com/Specy">
+            <a href="https://github.com/Specy" style="display: flex; align-items: center;">
                 <img src="/assets/images/github.png">
             </a>
             <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js"
                 data-name="bmc-button" data-slug="Specy" data-color="#FFDD00" data-emoji="🥔" data-font="Lato"
                 data-text="Buy me a potato" data-outline-color="#000000" data-font-color="#000000"
                 data-coffee-color="#ffffff">
-            </script>
+                </script>
         </div>
     </div>
+    <div id="fps" style="display: none;">
+        0
+    </div>
+    <script src="/assets/app.js"></script>
 </body>
-<div id="fps" style="display: none;">
-    0
-</div>
-<script src="/assets/main.js"></script>
+
 
 </html>

@@ -260,23 +260,22 @@ async function showHiddenDiv(div) {
     //hides all the cells information and displays the current onec
     console.log(div)
     let toHide = div.querySelector(".hiddenDiv")
-    if (toHide.style.display !== "block") {
-        toHide.style.display = 'block'
-        return goToElement(div, 0.98)
+    if (toHide.style.display !== "flex") {
+        toHide.style.display = 'flex'
+        return goToElement(div)
     }
     toHide.style.display = 'none'
 }
 
 
-function goToElement(element, scroll = 0.9) {
+function goToElement(element) {
     //function to scroll the body to a selected element, scroll is the offset
     if (typeof element == "string") element = document.getElementById(element)
-    element.scrollIntoView({behavior: "smooth", block: "start"})
+    element.scrollIntoView({behavior: "smooth", block: "center"})
 }
 
 function toggleUtils() {
-    let utils = document.getElementById("utils")
-    utils.classList.toggle("hide")
+    document.getElementById("utils").classList.toggle("utils-visible")
 }
 
 let fps = 0
