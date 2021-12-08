@@ -27,37 +27,68 @@
 
 <body>
     <div class="background">
-        <canvas id="canvas2">
-        </canvas>
-        <canvas id="canvas">
-        </canvas>
+        <canvas id="canvas2"></canvas>
+        <canvas id="canvas"></canvas>
     </div>
     <div id="mainContent">
-        <div class="navBar">
-            <div class="navBarLogo" onclick="drawS()"></div>
-            <div class="navBarOptionWrapper">
-                <div class="navBarOption" style="margin-left: 0;" onclick="goToElement('contact')">
-                    Contact
+        <div class="navbar">
+            <div class="navbar-content">
+                <div class="navBarLogo" onclick="drawS()">
+                    <img src="/assets/images/favicon.png" />
                 </div>
-                <div class="navBarOption" onclick="goToElement('aboutMe')">
-                    About me
+                <div class="navbar-options">
+                    <div  style="margin-left: 0;" onclick="goToElement('contact')">
+                        Contact
+                    </div>
+                    <div  onclick="goToElement('aboutMe')">
+                        About me
+                    </div>
+                    <div  onclick="goToElement('myProjects',0.95)">
+                        My projects
+                    </div>
                 </div>
-                <div class="navBarOption" onclick="goToElement('myProjects',0.95)">
-                    My projects
+                <button onclick="toggleUtils()" id="toggleUtils">Settings</button>
+                <div id="utils">
+                    <button onclick="toggleTrail()" class="trailBtn" style="background-image:url('/assets/icons/trail.svg');"/>
+                    <button onclick="stop()" class="stopBtn" style="background-image:url('/assets/icons/pause.svg');"/>
+                    <button onclick="random()" style="background-image:url('/assets/icons/random.svg');"/>
+                    <button onclick="erase()" style="background-image:url('/assets/icons/erase.svg');"/>
+                    <button onclick="takePicture()" class="take-picture" />
                 </div>
             </div>
-            <button onclick="toggleUtils()" id="toggleUtils">Settings</button>
-            <div id="utils">
-                <button onclick="toggleTrail()" id="trailBtn" style="background-image:url('/assets/icons/trail.svg');">
-                </button>
-                <button onclick="stop()" id="stopBtn" style="background-image:url('/assets/icons/pause.svg');">
-                </button>
-                <button onclick="random()" style="background-image:url('/assets/icons/random.svg');">
-
-                </button>
-                <button onclick="erase()" style="background-image:url('/assets/icons/erase.svg');">
-
-                </button>
+            <div class="navbar-content-mobile">
+                <div class="navBarLogo" onclick="drawS()">
+                    <img src="/assets/images/favicon.png" />
+                </div>
+                <div class="navbar-name">
+                    Specy
+                </div>
+                <div class="hamburger" onclick="toggleDropdown()">
+                    <div class="hamburger-open">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#dad8b3"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg>
+                    </div>
+                    <div class="hamburger-x">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#dad8b3"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+                    </div>
+                </div>
+            </div>
+            <div class="navbar-dropdown">
+                <div onclick="goToElement('contact')">
+                    Contact
+                </div>
+                <div onclick="goToElement('aboutMe')">
+                    About me
+                </div>
+                <div onclick="goToElement('myProjects',0.95)">
+                    My projects
+                </div>
+                <div class="dropdown-buttons">
+                    <button onclick="toggleTrail()" class="trailBtn" style="background-image:url('/assets/icons/trail.svg');"/>
+                    <button onclick="stop()" class="stopBtn" style="background-image:url('/assets/icons/pause.svg');"/>
+                    <button onclick="random()" style="background-image:url('/assets/icons/random.svg');"/>
+                    <button onclick="erase()" style="background-image:url('/assets/icons/erase.svg');"/>
+                    <button onclick="takePicture()" class="take-picture" />
+                </div>
             </div>
         </div>
         <div class="presentation" id="presentation">

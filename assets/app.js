@@ -3,7 +3,7 @@ const ctx = canvas.getContext("2d")
 const canvas2 = document.getElementById("canvas2")
 const ctx2 = canvas2.getContext("2d")
 let body = document.querySelector("body")
-var positionInfo = document.getElementById("canvas").getBoundingClientRect();
+let positionInfo = document.getElementById("canvas").getBoundingClientRect();
 let screenWidth = positionInfo.width
 let screenHeight = positionInfo.height
 let height = Math.floor(screenHeight / 1.5)
@@ -64,12 +64,7 @@ function drawCanvas(toDraw, context, color, erase) {
     let drawHeight = toDraw.length
     let drawWidth = toDraw[0].length
     let rgbObj = hexToRgb(color)
-    let data
-    if (erase) {
-        data = new Uint8ClampedArray(width * height * 4).fill(0)
-    } else {
-        data = secondCanvasData
-    }
+    let data = erase ? new Uint8ClampedArray(width * height * 4).fill(0) : secondCanvasData
     //the counter is the individual pixel position in the image, divided in 4, r g b a, 
     let counter = 0
     for (let i = 0; i < drawHeight; i++) {
@@ -122,12 +117,36 @@ document.addEventListener("touchmove", event => {
     drawMatrix(x, y, noise)
 })
 
+function takePicture(){
+    const finalCanvas = document.createElement("canvas")
+    finalCanvas.width = width
+    finalCanvas.height = height 
+    const finalContext = finalCanvas.getContext("2d")
+    finalContext.fillStyle = "rgb(15, 13, 25)"
+    finalContext.fillRect(0, 0, width, height)
+    finalContext.drawImage(canvas, 0, 0)
+    finalContext.drawImage(canvas2, 0, 0)
+    const a = document.createElement("a")
+    a.href = finalCanvas.toDataURL("image/png")
+    a.download = "picture.png"
+    a.click()
+}
+let mouseScreenWidth = screenWidth
+let mouseScreenHeight = screenHeight
+window.addEventListener('resize',() => {
+    let positionInfo = document.getElementById("canvas").getBoundingClientRect();
+    mouseScreenWidth = positionInfo.width
+    mouseScreenHeight = positionInfo.height
 
+})
 window.addEventListener("mousemove", event => {
     //listen to the mouse moves on the screen and add the selected cells to the matrix
     if (!canDraw) return
-    let x = Math.floor((event.pageX / screenWidth) * width)
-    let y = Math.floor(((event.pageY - window.scrollY) / screenHeight) * height)
+    try{
+        if(event.path.map(e => e.className).includes("navbar")) return
+    }catch(e){}
+    let x = Math.floor((event.pageX / mouseScreenWidth) * width)
+    let y = Math.floor(((event.pageY - window.scrollY) / mouseScreenHeight) * height)
     let noise = Math.round(Math.random() * 10 + 30)
     drawMatrix(x, y, noise)
 })
@@ -215,25 +234,35 @@ let trailToggled = true
 function toggleTrail() {
     //function to toggle the trail animation
     trailToggled = !trailToggled
-    let btn = document.getElementById("trailBtn")
-    if (trailToggled) {
-        btn.style.backgroundColor = palette[0][0]
-    } else {
-        btn.style.backgroundColor = ""
-    }
+    let btns = document.querySelectorAll(".trailBtn")
+    btns.forEach(btn => {
+        if (trailToggled) {
+            btn.style.backgroundColor = palette[0][0]
+        } else {
+            btn.style.backgroundColor = ""
+        }
+    })
+
 }
 
+function toggleDropdown(){
+    document.querySelector('.navbar-dropdown').classList.toggle('dropdown-visible');
+    document.querySelector('.hamburger').classList.toggle('x-visible');
+}
 let isStopped = false
 
 function stop() {
     //function that stops/plays the calculation of the generation 
     isStopped = !isStopped
-    let stopButton = document.getElementById("stopBtn")
-    if (isStopped) {
-        stopButton.style.backgroundImage = "url('/assets/icons/play.svg')"
-    } else {
-        stopButton.style.backgroundImage = "url('/assets/icons/pause.svg')"
-    }
+    let stopButtons = document.querySelectorAll(".stopBtn")
+    stopButtons.forEach(btn => {
+        if (isStopped) {
+            btn.style.backgroundImage = "url('/assets/icons/play.svg')"
+        } else {
+            btn.style.backgroundImage = "url('/assets/icons/pause.svg')"
+        }
+    })
+
 }
 document.getElementById("mainContent").addEventListener("scroll", function () {
     //when scrolling down the page, if it reached the "about me", start blurring the canvas to make it easier to see the text
@@ -334,7 +363,7 @@ function download() {
 function bounceArrow() {
     //function that makes the "scroll down" icon bounce
     setTimeout(function () {
-        document.getElementById("scrollDown").classList.add('hidden')
+        document.getElementById("scrollDown").remove()
     }, 14000)
 }
 bounceArrow()
