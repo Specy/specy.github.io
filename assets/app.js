@@ -14,14 +14,13 @@ let width = Math.floor(screenWidth / 1.5)
 const worker = new Worker('/assets/service-worker.js')
 
 //limiting the matrix size to increase performance
-let isMobile = false
-if (screenHeight > screenWidth) {
-    isMobile = true
-}
+let isMobile = screenHeight > screenWidth
 if (screenWidth > 1400) {
+    console.log("Screen limit")
     height = Math.floor(screenHeight / 1.8)
     width = Math.floor(screenWidth / 1.8)
 }
+
 canvas.height = height
 canvas.width = width
 canvas2.height = height
@@ -119,25 +118,29 @@ document.addEventListener("touchmove", event => {
 
 function takePicture(){
     const finalCanvas = document.createElement("canvas")
-    finalCanvas.width = width
-    finalCanvas.height = height 
+    finalCanvas.width = screenWidth * 2
+    finalCanvas.height = screenHeight * 2
+    finalCanvas.style.imageRendering = "pixelated"
+
     const finalContext = finalCanvas.getContext("2d")
+    finalContext.imageSmoothingEnabled = false;
     finalContext.fillStyle = "rgb(15, 13, 25)"
-    finalContext.fillRect(0, 0, width, height)
-    finalContext.drawImage(canvas, 0, 0)
-    finalContext.drawImage(canvas2, 0, 0)
+    finalContext.fillRect(0, 0, finalCanvas.width, finalCanvas.height)
+    finalContext.drawImage(canvas2, 0, 0, finalCanvas.width, finalCanvas.height)
+    finalContext.drawImage(canvas, 0, 0, finalCanvas.width, finalCanvas.height)
+
     const a = document.createElement("a")
-    a.href = finalCanvas.toDataURL("image/png")
+    a.href = finalCanvas.toDataURL("image/png",1)
     a.download = "picture.png"
     a.click()
 }
+
 let mouseScreenWidth = screenWidth
 let mouseScreenHeight = screenHeight
 window.addEventListener('resize',() => {
     let positionInfo = document.getElementById("canvas").getBoundingClientRect();
     mouseScreenWidth = positionInfo.width
     mouseScreenHeight = positionInfo.height
-
 })
 window.addEventListener("mousemove", event => {
     //listen to the mouse moves on the screen and add the selected cells to the matrix
@@ -176,15 +179,15 @@ function calculateGeneration(data) {
 
 let palette = {
     0: ['#283049', '#404B69', '#278EA5'],
-    1: ['#4b5d67', '#1f4068', '#30475e', '#3282b8'],
+    1: ['#283049', '#404B69' ,'#278EA5',"#134753"],
     2: ['', '', '', ''],
     3: ['', '', '', ''],
     4: ['', '', '', '']
 }
 
-function getRandomColor() {
+function getRandomColor(index = 0) {
     //function that returns a random color from the palette
-    return palette[0][Math.floor(Math.random() * palette[0].length)]
+    return palette[index][Math.floor(Math.random() * palette[index].length)]
 }
 
 let fpsController = 48;
@@ -193,8 +196,8 @@ let nextTime = Date.now();
 let rafInterval = 1000 / fpsController;
 let deltaTime;
 
-let every30 = 0
-let secondContextColor = getRandomColor()
+let every25 = 0
+let secondContextColor = getRandomColor(1)
 let generations = []
 
 async function handleFrame() {
@@ -210,10 +213,10 @@ async function handleFrame() {
         } else {
             let nextGen = await calculateGeneration(matrix)
             eraseCanvas(ctx)
-            if (every30++ > 30) {
+            if (every25++ > 25) {
                 //change color every 30 frames
-                secondContextColor = getRandomColor()
-                every30 = 0
+                secondContextColor = getRandomColor(1)
+                every25 = 0
             }
             //adds each generation to an array, this is made to have some space between the current generation and the next one
             if (generations.length > 15) generations.shift()
@@ -266,8 +269,9 @@ function stop() {
 }
 document.getElementById("mainContent").addEventListener("scroll", function () {
     //when scrolling down the page, if it reached the "about me", start blurring the canvas to make it easier to see the text
+    return //disabled
     let blur = ((this.scrollTop - screenHeight + 100) / 200).toFixed(2)
-    if (blur > 1.5 || isMobile) return
+    if (blur > 1.5 || isMobile) return  
     canvas.style.filter = 'blur(' + blur + 'px)'
     canvas2.style.filter = 'blur(' + blur + 'px)'
 })
@@ -291,16 +295,16 @@ async function showHiddenDiv(div) {
     let toHide = div.querySelector(".hiddenDiv")
     if (toHide.style.display !== "flex") {
         toHide.style.display = 'flex'
-        return goToElement(div)
+        return goToElement(div,"center")
     }
     toHide.style.display = 'none'
 }
 
 
-function goToElement(element) {
+function goToElement(element, position = 'nearest') {
     //function to scroll the body to a selected element, scroll is the offset
     if (typeof element == "string") element = document.getElementById(element)
-    element.scrollIntoView({behavior: "smooth", block: "center"})
+    element.scrollIntoView({behavior: "smooth", block: position})
 }
 
 function toggleUtils() {
@@ -328,6 +332,7 @@ setInterval(() => {
 let canDraw = false
 async function drawS() {
     //function to draw the S when the page loads
+    const offsets = { x: 0, y: 0 }
     let drawing = await fetch("/assets/drawing.json").then(file => file.json())
     //fetches the array containing the positions to draw
     for (let i = 0; i < drawing.length; i++) {
@@ -343,7 +348,7 @@ async function drawS() {
         let y = Math.floor(pos[1] / 100 * height)
         let noise = Math.round(Math.random() * 10 + 30)
         await delay(4)
-        drawMatrix(x, y, noise)
+        drawMatrix(x + offsets.x, y + offsets.y, noise)
     }
     canDraw = true
     setTimeout(() => {
@@ -351,14 +356,6 @@ async function drawS() {
     }, 3000);
 }
 drawS()
-
-function download() {
-    //function to download the canvas data to a png
-    var link = document.createElement('a');
-    link.download = 'CGOLdrawing.png';
-    link.href = document.getElementById('canvas').toDataURL()
-    link.click();
-}
 
 function bounceArrow() {
     //function that makes the "scroll down" icon bounce

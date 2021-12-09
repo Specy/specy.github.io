@@ -314,7 +314,7 @@ ul {
 	border-radius: 0.6rem;
     width: 20rem;
     transition: all 0.2s;
-	background-color: rgba(31, 29, 37, 0.85);
+	background-color: rgba(31, 29, 37, 0.9);
 }
 .project{
     overflow: hidden;
