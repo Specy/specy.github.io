@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <meta name="theme-color" content="#DA0363">
+    <meta name="theme-color" content="var(--accent)">
     <meta name="description" content="Specy's portfolio website">
     <meta name="keywords" content="Specy,portfolio,website,conway,game,projects">
     <meta name="author" content="Specy">
@@ -99,7 +99,7 @@
             <div class="about-me-wrapper" style="min-height: unset; cursor: default;">
                 <div class="smallMiddleText">
                     <div style="padding: 0.5rem; margin-bottom: 1rem;">
-                        I'm <div style="color:#DA0363; display: inline;">Specy</div>, an italian student
+                        I'm <div style="color:var(--accent); display: inline;">Specy</div>, an italian student
                         with a passion in building, reparing and developing. <br><br>
                         I have experience in 3D printing, DIY, and development of Websites, Apps and Webapps 
                         currently exploring the REST world.
@@ -174,7 +174,7 @@
                     </div>
                     <div class="hiddenDiv">
                         <br>
-                        <div class="smallMiddleText" style="color:#DA0363">
+                        <div class="smallMiddleText" style="color:var(--accent)">
                             Features
                         </div>
     
@@ -205,7 +205,7 @@
                     A webapp created for my school to help food ordering during the COVID-19 pandemic.
                 </div>
                 <div class="hiddenDiv">
-                    <div class="smallMiddleText" style="color:#DA0363">
+                    <div class="smallMiddleText" style="color:var(--accent)">
                         Features
                     </div>
                     <div class="project-text">
@@ -253,14 +253,14 @@
                     purr and show expressions
                 </div>
                 <div class="hiddenDiv">
-                    <div class="smallMiddleText" style="color:#DA0363">
+                    <div class="smallMiddleText" style="color:var(--accent)">
                         Description
                     </div>
                     <div class="project-text" style="display: inline-flex; flex-direction: column;">
                         This is an interactive arduino nano project that i made to learn the
                         basics of arduino and electronics. The finished product was soldered to a pcb
                         <br><br>
-                        <div class="smallMiddleText" style="color:#DA0363">
+                        <div class="smallMiddleText" style="color:var(--accent)">
                             Expressions
                         </div>
                         <div>
@@ -290,7 +290,7 @@
                 </div>
                 <div class="hiddenDiv">
                     <br>
-                    <div class="smallMiddleText" style="color:#DA0363">
+                    <div class="smallMiddleText" style="color:var(--accent)">
                         Speskin bot
                     </div>
                     <div class="project-text">
@@ -299,7 +299,7 @@
                         <a href="/apps/Speskin/index.html">Speskin website</a> to show skin lists.
                     </div>
                     <br>
-                    <div class="smallMiddleText" style="color:#DA0363">
+                    <div class="smallMiddleText" style="color:var(--accent)">
                         Guessing words!
                     </div>
                     <div class="project-text">
@@ -312,14 +312,14 @@
                         and also gives moderation for the open dictionary, deleting duplicates
                     </div>
                     <br>
-                    <div class="smallMiddleText" style="color:#DA0363">
+                    <div class="smallMiddleText" style="color:var(--accent)">
                         Spongify!
                     </div>
                     <div class="project-text">
                         A bot that turns text into the SpOnGeBoB mEmE
                     </div>
                     <br>
-                    <div class="smallMiddleText" style="color:#DA0363">
+                    <div class="smallMiddleText" style="color:var(--accent)">
                         Compitazzi!
                     </div>
                     <div class="project-text">
@@ -328,7 +328,7 @@
                         homework/tests that will be due the day after
                     </div>
                     <br>
-                    <div class="smallMiddleText" style="color:#DA0363">
+                    <div class="smallMiddleText" style="color:var(--accent)">
                         SkyMusic
                     </div>
                     <div class="project-text">
@@ -379,7 +379,7 @@
             <div class="bigText">Contact me!</div>
             <div class="cell contactCell" style="cursor: default;">
                 <div style="display: flex; justify-content: space-between; margin-bottom:1rem; user-select: auto;">
-                    <div class="smallMiddleText" style="margin-right: 5px; color: #DA0363">
+                    <div class="smallMiddleText" style="margin-right: 5px; color: var(--accent)">
                         Discord:
                     </div>
                     <a style="user-select:all; cursor: pointer;">
@@ -387,7 +387,7 @@
                     </a>
                 </div>
                 <div style="display: flex; justify-content: space-between;">
-                    <div class="smallMiddleText" style="margin-right: 5px; color: #DA0363">
+                    <div class="smallMiddleText" style="margin-right: 5px; color: var(--accent)">
                         E-mail:
                     </div>
                     <a style="user-select:all; cursor: pointer;">
@@ -397,14 +397,26 @@
             </div>
         </div>
         <div class="footer">
-            <a href="https://github.com/Specy" style="display: flex; align-items: center;">
-                <img src="/assets/images/github.png">
-            </a>
-            <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js"
-                data-name="bmc-button" data-slug="Specy" data-color="#FFDD00" data-emoji="🥔" data-font="Lato"
-                data-text="Buy me a potato" data-outline-color="#000000" data-font-color="#000000"
-                data-coffee-color="#ffffff">
-                </script>
+            <div class="footer-element">
+                <a href="https://github.com/Specy" class="github" target="_blank" rel="noreferrer">
+                    <img src="/assets/images/github.png">
+                </a>
+                <a href="https://specy.app" class="footer-link" target="_blank" rel="noreferrer">
+                    Specy.app
+                </a>
+            </div>
+
+            <div class="donation-wrapper">
+                <a href="https://paypal.me/specyDev" target="_blank" class="paypal" rel="noreferrer">
+                    <img src='/assets/images/paypalme.png' alt="paypalme" />
+                </a>
+                <a href="https://ko-fi.com/specy" target="_blank" class="kofi" rel="noreferrer" style="background-color: white;">
+                    <img src='/assets/images/kofi.png' alt="kofi" />
+                </a>
+                <a href="https://www.buymeacoffee.com/specy" target="_blank" rel="noreferrer">
+                    <img src='/assets/images/buymeacoffee.svg' alt="buymeacoffee" />
+                </a>
+            </div>
         </div>
     </div>
     <div id="fps" style="display: none;">
@@ -412,6 +424,4 @@
     </div>
     <script src="/assets/app.js"></script>
 </body>
-
-
 </html>

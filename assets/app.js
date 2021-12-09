@@ -332,10 +332,10 @@ setInterval(() => {
 let canDraw = false
 async function drawS() {
     //function to draw the S when the page loads
-    const offsets = { x: 0, y: 0 }
+    const offsets = { x: 0, y: -5 }
     let drawing = await fetch("/assets/drawing.json").then(file => file.json())
     //fetches the array containing the positions to draw
-    for (let i = 0; i < drawing.length; i++) {
+    for (let i = 0; i < drawing.length - 5; i++) {
         //iterates through all the points and gives an offset according if the device is a mobile phone or pc
         //positions are in percentage
         let pos = drawing[i]
