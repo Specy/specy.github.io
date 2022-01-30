@@ -3,7 +3,7 @@ const ctx = canvas.getContext("2d")
 const canvas2 = document.getElementById("canvas2")
 const ctx2 = canvas2.getContext("2d")
 let body = document.querySelector("body")
-let positionInfo = document.getElementById("canvas").getBoundingClientRect();
+let positionInfo = document.getElementById("canvas").getBoundingClientRect()
 let screenWidth = positionInfo.width
 let screenHeight = positionInfo.height
 let height = Math.floor(screenHeight / 1.5)
@@ -49,7 +49,7 @@ function redirect(url, samePage) {
 
 function hexToRgb(hex) {
     //converts the hex color to RGB, this is then used in the drawing of the canvas
-    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
     return {
         r: parseInt(result[1], 16),
         g: parseInt(result[2], 16),
@@ -96,7 +96,7 @@ function drawCanvas(toDraw, context, color, erase) {
 
 function eraseCanvas(context) {
     //function to erase the canvas
-    context.clearRect(0, 0, width, height);
+    context.clearRect(0, 0, width, height)
 }
 
 function generateRandomMatrix(bias) {
@@ -116,38 +116,38 @@ document.addEventListener("touchmove", event => {
     drawMatrix(x, y, noise)
 })
 
-function takePicture(){
+function takePicture() {
     const finalCanvas = document.createElement("canvas")
     finalCanvas.width = screenWidth * 2
     finalCanvas.height = screenHeight * 2
     finalCanvas.style.imageRendering = "pixelated"
 
     const finalContext = finalCanvas.getContext("2d")
-    finalContext.imageSmoothingEnabled = false;
+    finalContext.imageSmoothingEnabled = false
     finalContext.fillStyle = "rgb(15, 13, 25)"
     finalContext.fillRect(0, 0, finalCanvas.width, finalCanvas.height)
     finalContext.drawImage(canvas2, 0, 0, finalCanvas.width, finalCanvas.height)
     finalContext.drawImage(canvas, 0, 0, finalCanvas.width, finalCanvas.height)
 
     const a = document.createElement("a")
-    a.href = finalCanvas.toDataURL("image/png",1)
+    a.href = finalCanvas.toDataURL("image/png", 1)
     a.download = "picture.png"
     a.click()
 }
 
 let mouseScreenWidth = screenWidth
 let mouseScreenHeight = screenHeight
-window.addEventListener('resize',() => {
-    let positionInfo = document.getElementById("canvas").getBoundingClientRect();
+window.addEventListener('resize', () => {
+    let positionInfo = document.getElementById("canvas").getBoundingClientRect()
     mouseScreenWidth = positionInfo.width
     mouseScreenHeight = positionInfo.height
 })
 window.addEventListener("mousemove", event => {
     //listen to the mouse moves on the screen and add the selected cells to the matrix
     if (!canDraw) return
-    try{
-        if(event.path.map(e => e.className).includes("navbar")) return
-    }catch(e){}
+    try {
+        if (event.path.map(e => e.className).includes("navbar")) return
+    } catch (e) { }
     let x = Math.floor((event.pageX / mouseScreenWidth) * width)
     let y = Math.floor(((event.pageY - window.scrollY) / mouseScreenHeight) * height)
     let noise = Math.round(Math.random() * 10 + 30)
@@ -179,7 +179,7 @@ function calculateGeneration(data) {
 
 let palette = {
     0: ['#283049', '#404B69', '#278EA5'],
-    1: ['#283049', '#404B69' ,'#278EA5',"#134753"],
+    1: ['#283049', '#404B69', '#278EA5', "#134753"],
     2: ['', '', '', ''],
     3: ['', '', '', ''],
     4: ['', '', '', '']
@@ -190,22 +190,22 @@ function getRandomColor(index = 0) {
     return palette[index][Math.floor(Math.random() * palette[index].length)]
 }
 
-let fpsController = 48;
-let currentTime;
-let nextTime = Date.now();
-let rafInterval = 1000 / fpsController;
-let deltaTime;
+let fpsController = 48
+let currentTime
+let nextTime = Date.now()
+let rafInterval = 1000 / fpsController
+let deltaTime
 
 let every25 = 0
 let secondContextColor = getRandomColor(1)
 let generations = []
 
 async function handleFrame() {
-    window.requestAnimationFrame(handleFrame);
-    currentTime = Date.now();
-    deltaTime = currentTime - nextTime;
+    window.requestAnimationFrame(handleFrame)
+    currentTime = Date.now()
+    deltaTime = currentTime - nextTime
     if (deltaTime > rafInterval) {
-        nextTime = currentTime - (deltaTime % rafInterval);
+        nextTime = currentTime - (deltaTime % rafInterval)
         //function that handles each frame, it clears the canvas and redraws on top of it
         if (isStopped) {
             //if it's stopped, continue to render but don't calculate the next generations
@@ -248,9 +248,9 @@ function toggleTrail() {
 
 }
 
-function toggleDropdown(){
-    document.querySelector('.navbar-dropdown').classList.toggle('dropdown-visible');
-    document.querySelector('.hamburger').classList.toggle('x-visible');
+function toggleDropdown() {
+    document.querySelector('.navbar-dropdown').classList.toggle('dropdown-visible')
+    document.querySelector('.hamburger').classList.toggle('x-visible')
 }
 let isStopped = false
 
@@ -271,7 +271,7 @@ document.getElementById("mainContent").addEventListener("scroll", function () {
     //when scrolling down the page, if it reached the "about me", start blurring the canvas to make it easier to see the text
     return //disabled
     let blur = ((this.scrollTop - screenHeight + 100) / 200).toFixed(2)
-    if (blur > 1.5 || isMobile) return  
+    if (blur > 1.5 || isMobile) return
     canvas.style.filter = 'blur(' + blur + 'px)'
     canvas2.style.filter = 'blur(' + blur + 'px)'
 })
@@ -295,7 +295,7 @@ async function showHiddenDiv(div) {
     let toHide = div.querySelector(".hiddenDiv")
     if (toHide.style.display !== "flex") {
         toHide.style.display = 'flex'
-        return goToElement(div,"center")
+        return goToElement(div, "center")
     }
     toHide.style.display = 'none'
 }
@@ -304,7 +304,7 @@ async function showHiddenDiv(div) {
 function goToElement(element, position = 'nearest') {
     //function to scroll the body to a selected element, scroll is the offset
     if (typeof element == "string") element = document.getElementById(element)
-    element.scrollIntoView({behavior: "smooth", block: position})
+    element.scrollIntoView({ behavior: "smooth", block: position })
 }
 
 function toggleUtils() {
@@ -317,17 +317,17 @@ let lastTime = 0
 function calcFps() {
     //function to calculate the current fps of the canvas, mainly for debugging
     if (!lastTime) {
-        lastTime = Date.now();
-        fps = 0;
-        return;
+        lastTime = Date.now()
+        fps = 0
+        return
     }
-    let delta = (Date.now() - lastTime) / 1000;
-    lastTime = Date.now();
+    let delta = (Date.now() - lastTime) / 1000
+    lastTime = Date.now()
     fps = Math.floor(1 / delta)
 }
 setInterval(() => {
     document.getElementById("fps").innerHTML = fps
-}, 1000);
+}, 1000)
 
 let canDraw = false
 async function drawS() {
@@ -353,7 +353,7 @@ async function drawS() {
     canDraw = true
     setTimeout(() => {
         if (trailToggled) toggleTrail()
-    }, 3000);
+    }, 3000)
 }
 drawS()
 

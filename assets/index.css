@@ -277,7 +277,7 @@ ul {
 	max-height: 2rem;
 }
 
-.cell, .about-me-wrapper, .project{
+.cell, .about-me-wrapper, .project, .contactCell{
 	cursor: pointer;
 	height: fit-content;
 	position: relative;
@@ -301,7 +301,11 @@ ul {
 
 .project:hover, .cell:hover{
     transform: scale(1.02);
+	filter: brightness(1.1);
+	background-color: rgba(31, 29, 37, 0.95);
+
 }
+
 .project:active, .cell:active{
     transform: scale(1.02);
 }
@@ -442,14 +446,15 @@ ul {
 	width: 100%;
 }
 
-.skills-wrapper div{
-    background-color: rgba(36, 34, 39, 0.5);
+.skills-wrapper > div{
+    background-color: rgb(33, 29, 37, 0.5);
     padding: 0.4rem;
     border-radius: 0.5rem;
 }
 .skills-wrapper .accent-text{
     margin-bottom: 0.5rem;
     font-size: 1.4rem;
+    padding: 0.4rem;
 }
 .skills-wrapper ul{
     margin-left: 2rem;

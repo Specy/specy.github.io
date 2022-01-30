@@ -4,7 +4,7 @@
 <head>
     <meta name="theme-color" content="var(--accent)">
     <meta name="description" content="Specy's portfolio website">
-    <meta name="keywords" content="Specy,portfolio,website,conway,game,projects">
+    <meta name="keywords" content="Specy,portfolio,website,conway,game,projects, Sky cotl, Genshin, Genshin music nightly, Sky music nightly, Scapix">
     <meta name="author" content="Specy">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Specy's portfolio">
@@ -20,7 +20,7 @@
     <script src="/assets/RAF-Polyfill.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport"
-        content="user-scalable=no, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+        content="width=device-width, initial-scale=1.0" />
     <title>Specy's portfolio</title>
     <link rel="stylesheet" href="/assets/index.css" type="text/css">
 </head>
@@ -37,22 +37,23 @@
                     <img src="/assets/images/favicon.png" />
                 </div>
                 <div class="navbar-options">
-                    <div  onclick="goToElement('contact')">
+                    <div onclick="goToElement('contact')">
                         Contact
                     </div>
-                    <div  onclick="goToElement('aboutMe')">
+                    <div onclick="goToElement('aboutMe')">
                         About me
                     </div>
-                    <div  onclick="goToElement('myProjects')">
+                    <div onclick="goToElement('myProjects')">
                         My projects
                     </div>
                 </div>
                 <button onclick="toggleUtils()" id="toggleUtils">Settings</button>
                 <div id="utils">
-                    <button onclick="toggleTrail()" class="trailBtn" style="background-image:url('/assets/icons/trail.svg');"/>
-                    <button onclick="stop()" class="stopBtn" style="background-image:url('/assets/icons/pause.svg');"/>
-                    <button onclick="random()" style="background-image:url('/assets/icons/random.svg');"/>
-                    <button onclick="erase()" style="background-image:url('/assets/icons/erase.svg');"/>
+                    <button onclick="toggleTrail()" class="trailBtn"
+                        style="background-image:url('/assets/icons/trail.svg');" />
+                    <button onclick="stop()" class="stopBtn" style="background-image:url('/assets/icons/pause.svg');" />
+                    <button onclick="random()" style="background-image:url('/assets/icons/random.svg');" />
+                    <button onclick="erase()" style="background-image:url('/assets/icons/erase.svg');" />
                     <button onclick="takePicture()" class="take-picture" />
                 </div>
             </div>
@@ -65,10 +66,16 @@
                 </div>
                 <div class="hamburger" onclick="toggleDropdown()">
                     <div class="hamburger-open">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#dad8b3"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#dad8b3">
+                            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+                        </svg>
                     </div>
                     <div class="hamburger-x">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#dad8b3"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#dad8b3">
+                            <path
+                                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z">
+                            </path>
+                        </svg>
                     </div>
                 </div>
             </div>
@@ -83,10 +90,11 @@
                     My projects
                 </div>
                 <div class="dropdown-buttons">
-                    <button onclick="toggleTrail()" class="trailBtn" style="background-image:url('/assets/icons/trail.svg');"/>
-                    <button onclick="stop()" class="stopBtn" style="background-image:url('/assets/icons/pause.svg');"/>
-                    <button onclick="random()" style="background-image:url('/assets/icons/random.svg');"/>
-                    <button onclick="erase()" style="background-image:url('/assets/icons/erase.svg');"/>
+                    <button onclick="toggleTrail()" class="trailBtn"
+                        style="background-image:url('/assets/icons/trail.svg');" />
+                    <button onclick="stop()" class="stopBtn" style="background-image:url('/assets/icons/pause.svg');" />
+                    <button onclick="random()" style="background-image:url('/assets/icons/random.svg');" />
+                    <button onclick="erase()" style="background-image:url('/assets/icons/erase.svg');" />
                     <button onclick="takePicture()" class="take-picture" />
                 </div>
             </div>
@@ -96,35 +104,36 @@
         <div id="scrollDown"></div>
         <div id="aboutMe" style="margin-bottom: 5rem;">
             <div class="bigText" style="margin-bottom: 0.5rem;">About Me</div>
-            <div class="about-me-wrapper" style="min-height: unset; cursor: default;">
+            <div class="about-me-wrapper" style="min-height: unset; cursor: unset;">
                 <div class="smallMiddleText">
                     <div style="padding: 0.5rem; margin-bottom: 1rem;">
                         I'm <div style="color:var(--accent); display: inline;">Specy</div>, an italian student
                         with a passion in building, reparing and developing. <br><br>
-                        I have experience in 3D printing, DIY, and development of Websites, Apps and Webapps 
+                        I have experience in 3D printing, DIY, and development of Websites, Apps and Webapps
                         currently exploring the REST world.
-                        <br/><br/>
+                        <br /><br />
                         I specialise in creating tools to solve common problems or to help automate certain tasks.
-                        I've done so for many games to expand their functionality and to make their features more accessible.
+                        I've done so for many games to expand their functionality and to make their features more
+                        accessible.
                     </div>
                     <div class="skills-wrapper">
                         <div>
                             <div class="accent-text">Proficient in:</div>
                             <ul>
                                 <li>JavaScript</li>
-                                <li>Html</li>
-                                <li>Css</li>
+                                <li>HTML 5</li>
+                                <li>CSS 3</li>
                                 <li>Node.js</li>
                                 <li>React</li>
-                                <li>Electron</li>
+                                <li>Svelte</li>
                             </ul>
                         </div>
                         <div>
                             <div class="accent-text">Learning:</div>
                             <ul>
                                 <li>React Native</li>
+                                <li>Electron</li>
                                 <li>Nest.js</li>
-                                <li>Svelte</li>
                                 <li>Python</li>
                                 <li>C++</li>
                             </ul>
@@ -135,31 +144,32 @@
         </div>
         <div class="bigText" style="margin-bottom: 0.5rem;"> My Projects</div>
         <div id="myProjects">
-            <a class="project" href="/skyMusic" target="_blank">
-                <img src='/assets/images/apps/SMN.png' class="project-image">
-                <div class="project-content">
-                    <div class="project-title">Sky Music Nightly</div>
-                    <div class="project-text-border">
-                        The refined version of a webApp i made called sky music, built with react and pixi.js
-                    </div>
-                </div>
-            </a>
+
             <a class="project" href="/genshinMusic" target="_blank">
                 <img src='/assets/images/apps/GMN.png' class="project-image">
                 <div class="project-content">
                     <div class="project-title">Genshin Music Nightly</div>
                     <div class="project-text-border">
-                        Sky music nightly but adapted to work for the game Genshin Impact, the codebase is the same
+                        A musical app inspired by the game Genshin Impact, used by thousands daily, built with react and
+                        pixi.js
                     </div>
                 </div>
             </a>
-
+            <a class="project" href="/skyMusic" target="_blank">
+                <img src='/assets/images/apps/SMN.png' class="project-image">
+                <div class="project-content">
+                    <div class="project-title">Sky Music Nightly</div>
+                    <div class="project-text-border">
+                        Similar as Genshin Music Nightly but adapted for the game Sky Cotl
+                    </div>
+                </div>
+            </a>
             <a class="project" href="https://sky-music.herokuapp.com" target="_blank">
                 <img src='/assets/images/apps/SM.png' class="project-image">
                 <div class="project-content">
                     <div class="project-title">Sky music</div>
                     <div class="project-text-border">
-                        A webApp with over 300k users, made to help players of the game Sky children of light to learn,
+                        A webApp with over 300k users, made to help players of the game Sky Cotl to
                         practice, compose and share songs.
                     </div>
                 </div>
@@ -177,11 +187,11 @@
                         <div class="smallMiddleText" style="color:var(--accent)">
                             Features
                         </div>
-    
+
                         <ul class="project-text">
                             <li>Image upscaling with no size limit </li>
                             <li>Denoise any kind of drawing or normal image</li>
-                            <li>Upscale and denoise gifs </li>
+                            <li>Upscale and denoise gifs and videos</li>
                             <li>Change file formats </li>
                             <li>Dark / White mode </li>
                             <li>Completely Open source and 100% offline </li>
@@ -206,13 +216,14 @@
                 </div>
                 <div class="hiddenDiv">
                     <div class="smallMiddleText" style="color:var(--accent)">
-                        Features
+                        How it works
                     </div>
                     <div class="project-text">
-                        The app has an account system where each class has it's own account to order food to.
+                        Each class in the school owns an account which can be used to place orders to the school's bar
                         <br>
-                        Each class in the school is given an account in which the students can place orders.
-                        <br>All those orders will be visible by the school's bar employees who will package the goods.
+                        Once an order is placed, the bar owner can see the orders made by the classes and organise the
+                        delivery
+                        inside the school.
                     </div>
                 </div>
                 <div class="clickMe">read more</div>
@@ -242,6 +253,7 @@
                 </div>
                 <div class="clickMe">open</div>
             </a>
+            <!--    
             <div class="cell" onclick="showHiddenDiv(this)">
                 <div class="middleText">
                     <img class="logo" src="/assets/images/owo.jpg">
@@ -363,21 +375,31 @@
                 </div>
                 <div class="clickMe">open</div>
             </a>
+        -->
+            <a class="cell" href="https://specy.app" target="_blank">
+                <div class="middleText">
+                    <img class="logo" src="/assets/images/favicon.png">
+                    <div class="project-title">Specy.app</div>
+                </div>
+                <div class="project-text">
+                    The website where i host my websites and all future projects
+                </div>
+                <div class="clickMe">open</div>
+            </a>
             <a class="cell" href="https://specy.altervista.org" target="_blank">
                 <div class="middleText">
                     <img class="logo" src="/assets/images/favicon.png">
                     <div class="project-title">Other projects</div>
                 </div>
                 <div class="project-text">
-                    I've made other projects that you can find here.
+                    I've made other small projects that you can find here.
                 </div>
                 <div class="clickMe">open</div>
             </a>
         </div>
-
         <div id="contact">
             <div class="bigText">Contact me!</div>
-            <div class="cell contactCell" style="cursor: default;">
+            <div class="contactCell" style="cursor: unset;">
                 <div style="display: flex; justify-content: space-between; margin-bottom:1rem; user-select: auto;">
                     <div class="smallMiddleText" style="margin-right: 5px; color: var(--accent)">
                         Discord:
@@ -410,7 +432,8 @@
                 <a href="https://paypal.me/specyDev" target="_blank" class="paypal" rel="noreferrer">
                     <img src='/assets/images/paypalme.png' alt="paypalme" />
                 </a>
-                <a href="https://ko-fi.com/specy" target="_blank" class="kofi" rel="noreferrer" style="background-color: white;">
+                <a href="https://ko-fi.com/specy" target="_blank" class="kofi" rel="noreferrer"
+                    style="background-color: white;">
                     <img src='/assets/images/kofi.png' alt="kofi" />
                 </a>
                 <a href="https://www.buymeacoffee.com/specy" target="_blank" rel="noreferrer">
@@ -424,4 +447,5 @@
     </div>
     <script src="/assets/app.js"></script>
 </body>
+
 </html>
