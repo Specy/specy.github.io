@@ -2,19 +2,19 @@ const canvas = document.getElementById("canvas")
 const ctx = canvas.getContext("2d")
 const canvas2 = document.getElementById("canvas2")
 const ctx2 = canvas2.getContext("2d")
-let body = document.querySelector("body")
-let positionInfo = document.getElementById("canvas").getBoundingClientRect()
-let screenWidth = positionInfo.width
-let screenHeight = positionInfo.height
+const body = document.querySelector("body")
+const positionInfo = document.getElementById("canvas").getBoundingClientRect()
+const screenWidth = positionInfo.width
+const screenHeight = positionInfo.height
 let height = Math.floor(screenHeight / 1.5)
 let width = Math.floor(screenWidth / 1.5)
 
 //using service worker to offload the computationally hard parts to another thread and leave
 //the UI responsive
-const worker = new Worker('/assets/service-worker.js')
+const worker = new Worker('/assets/conway-worker.js')
 
 //limiting the matrix size to increase performance
-let isMobile = screenHeight > screenWidth
+const isMobile = screenHeight > screenWidth
 if (screenWidth > 1400) {
     console.log("Screen limit")
     height = Math.floor(screenHeight / 1.8)
@@ -37,15 +37,6 @@ function createMatrix() {
 }
 //main matrix, this will store all the current generation data that will be drawn
 let matrix = createMatrix()
-
-function redirect(url, samePage) {
-    //function to redirect to a new URL 
-    if (samePage) {
-        location.href = window.location.origin + url
-    } else {
-        location.href = "https://" + url
-    }
-}
 
 function hexToRgb(hex) {
     //converts the hex color to RGB, this is then used in the drawing of the canvas
@@ -95,7 +86,6 @@ function drawCanvas(toDraw, context, color, erase) {
 }
 
 function eraseCanvas(context) {
-    //function to erase the canvas
     context.clearRect(0, 0, width, height)
 }
 
@@ -148,9 +138,9 @@ window.addEventListener("mousemove", event => {
     try {
         if (event.path.map(e => e.className).includes("navbar")) return
     } catch (e) { }
-    let x = Math.floor((event.pageX / mouseScreenWidth) * width)
-    let y = Math.floor(((event.pageY - window.scrollY) / mouseScreenHeight) * height)
-    let noise = Math.round(Math.random() * 10 + 30)
+    const x = Math.floor((event.pageX / mouseScreenWidth) * width)
+    const y = Math.floor(((event.pageY - window.scrollY) / mouseScreenHeight) * height)
+    const noise = Math.round(Math.random() * 10 + 30)
     drawMatrix(x, y, noise)
 })
 
@@ -167,13 +157,16 @@ function drawMatrix(x, y, noise) {
 }
 
 function calculateGeneration(data) {
+    const startingArray = matrix //TODO if i change to 2 arrays i need to remove this
     return new Promise(res => {
         worker.postMessage({
             matrix: data,
             width: width,
             height: height
         })
-        worker.onmessage = result => { res(result.data) }
+        worker.onmessage = result => { 
+           if(startingArray === matrix) res(result.data) 
+        }
     })
 }
 
@@ -190,12 +183,11 @@ function getRandomColor(index = 0) {
     return palette[index][Math.floor(Math.random() * palette[index].length)]
 }
 
-let fpsController = 48
-let currentTime
+const fpsController = 48
+const rafInterval = 1000 / fpsController
+let currentTime = 0
 let nextTime = Date.now()
-let rafInterval = 1000 / fpsController
-let deltaTime
-
+let deltaTime = 0
 let every25 = 0
 let secondContextColor = getRandomColor(1)
 let generations = []
@@ -212,7 +204,6 @@ async function handleFrame() {
             drawCanvas(matrix, ctx, "#DA0363", true)
         } else {
             let nextGen = await calculateGeneration(matrix)
-            eraseCanvas(ctx)
             if (every25++ > 25) {
                 //change color every 30 frames
                 secondContextColor = getRandomColor(1)
@@ -237,7 +228,7 @@ let trailToggled = true
 function toggleTrail() {
     //function to toggle the trail animation
     trailToggled = !trailToggled
-    let btns = document.querySelectorAll(".trailBtn")
+    const btns = document.querySelectorAll(".trailBtn")
     btns.forEach(btn => {
         if (trailToggled) {
             btn.style.backgroundColor = palette[0][0]
@@ -257,7 +248,7 @@ let isStopped = false
 function stop() {
     //function that stops/plays the calculation of the generation 
     isStopped = !isStopped
-    let stopButtons = document.querySelectorAll(".stopBtn")
+    const stopButtons = document.querySelectorAll(".stopBtn")
     stopButtons.forEach(btn => {
         if (isStopped) {
             btn.style.backgroundImage = "url('/assets/icons/play.svg')"
@@ -291,7 +282,6 @@ function erase() {
 
 async function showHiddenDiv(div) {
     //hides all the cells information and displays the current onec
-    console.log(div)
     let toHide = div.querySelector(".hiddenDiv")
     if (toHide.style.display !== "flex") {
         toHide.style.display = 'flex'
@@ -363,7 +353,7 @@ function bounceArrow() {
         document.getElementById("scrollDown").remove()
     }, 14000)
 }
-bounceArrow()
-drawCanvas(matrix, ctx, "#DA0363", true)
-window.requestAnimationFrame(handleFrame)
 const delay = ms => new Promise(res => setTimeout(res, ms))
+
+bounceArrow()
+window.requestAnimationFrame(handleFrame)

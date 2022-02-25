@@ -155,10 +155,10 @@ body {
 	background-size: contain;
 	height: 2rem;
 	width: 1.5rem;
-	right: 1rem;
+	right: calc(50vw - 0.75rem);
 	bottom: 0.5rem;
 	position: fixed;
-	animation: jump 1s;
+	animation: jump 1.2s;
 	animation-iteration-count: 16;
 }
 #scrollDown .hidden {
