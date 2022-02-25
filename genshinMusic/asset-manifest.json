@@ -1,32 +1,23 @@
 {
   "files": {
-    "main.css": "./static/css/main.24addd1a.chunk.css",
-    "main.js": "./static/js/main.2ae954ae.chunk.js",
-    "main.js.map": "./static/js/main.2ae954ae.chunk.js.map",
-    "runtime-main.js": "./static/js/runtime-main.69947048.js",
-    "runtime-main.js.map": "./static/js/runtime-main.69947048.js.map",
-    "static/js/2.98a2f550.chunk.js": "./static/js/2.98a2f550.chunk.js",
-    "static/js/2.98a2f550.chunk.js.map": "./static/js/2.98a2f550.chunk.js.map",
-    "index.html": "./index.html",
+    "main.css": "./static/css/main.38505170.css",
+    "main.js": "./static/js/main.a9944260.js",
+    "static/media/windsong-db.jpg": "./static/media/windsong-db.e533a22df0e0a8997824.jpg",
+    "static/media/mainpage.png": "./static/media/mainpage.53c2a740e2a8bfe2a9af.png",
+    "static/media/composer.png": "./static/media/composer.69d0b59ec6e13c0779c0.png",
+    "static/media/songs.png": "./static/media/songs.4892a6929c316c02caf8.png",
+    "static/media/Cronos.otf": "./static/media/Cronos.768fa9e02f9f530613e5.otf",
+    "static/media/BonoboBold.ttf": "./static/media/BonoboBold.8924d49e99d552021e1c.ttf",
     "service-worker.js": "./service-worker.js",
-    "service-worker.js.map": "./service-worker.js.map",
-    "static/css/main.24addd1a.chunk.css.map": "./static/css/main.24addd1a.chunk.css.map",
-    "static/js/2.98a2f550.chunk.js.LICENSE.txt": "./static/js/2.98a2f550.chunk.js.LICENSE.txt",
-    "static/media/App.css": "./static/media/Cronos.768fa9e0.otf",
-    "static/media/addCell.73b6c8e9.svg": "./static/media/addCell.73b6c8e9.svg",
-    "static/media/buymeacoffee.b124acdd.svg": "./static/media/buymeacoffee.b124acdd.svg",
-    "static/media/composer.69d0b59e.png": "./static/media/composer.69d0b59e.png",
-    "static/media/mainpage.53c2a740.png": "./static/media/mainpage.53c2a740.png",
-    "static/media/paypalme.45abe55e.png": "./static/media/paypalme.45abe55e.png",
-    "static/media/removeCell.e266ba1a.svg": "./static/media/removeCell.e266ba1a.svg",
-    "static/media/rotate.e7c0f107.svg": "./static/media/rotate.e7c0f107.svg",
-    "static/media/songs.4892a692.png": "./static/media/songs.4892a692.png",
-    "static/media/windsong-db.e533a22d.jpg": "./static/media/windsong-db.e533a22d.jpg"
+    "static/media/buymeacoffee.svg": "./static/media/buymeacoffee.b124acdd59c2283980fb8cb1cbbbfa6e.svg",
+    "static/media/paypalme.png": "./static/media/paypalme.45abe55e027e97a0c652.png",
+    "static/media/rotate.svg": "./static/media/rotate.e7c0f107a16d25ce5b7d025644e2672f.svg",
+    "index.html": "./index.html",
+    "main.38505170.css.map": "./static/css/main.38505170.css.map",
+    "main.a9944260.js.map": "./static/js/main.a9944260.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.69947048.js",
-    "static/js/2.98a2f550.chunk.js",
-    "static/css/main.24addd1a.chunk.css",
-    "static/js/main.2ae954ae.chunk.js"
+    "static/css/main.38505170.css",
+    "static/js/main.a9944260.js"
   ]
 }

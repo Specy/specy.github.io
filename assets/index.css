@@ -166,13 +166,13 @@ body {
 }
 @keyframes jump {
 	0% {
-		transform: translateY(0);
+		transform: translateY(0) rotate(90deg);
 	}
 	50% {
-		transform: translateY(-100%);
+		transform: translateY(-100%) rotate(90deg);
 	}
 	100% {
-		transform: translateY(0);
+		transform: translateY(0) rotate(90deg);
 	}
 }
 .presentation {
