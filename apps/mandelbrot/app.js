@@ -24,7 +24,7 @@ class Mandelbrot {
         this.offsetY = y
         this.setup()
     }
-    setup = () => {
+    setup(){
         const { options } = this
         delete this.minIteration
         ctx.clearRect(0, 0, options.width, options.height)
@@ -43,7 +43,7 @@ class Mandelbrot {
             }
         }
     };
-    draw = () => {
+    draw() {
         const { imgData, options } = this
         const data = imgData.data
         const rgba = options.colors.rgba(

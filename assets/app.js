@@ -291,7 +291,7 @@ async function showHiddenDiv(div) {
 }
 
 
-function goToElement(element, position = 'nearest') {
+function goToElement(element, position = 'start') {
     //function to scroll the body to a selected element, scroll is the offset
     if (typeof element == "string") element = document.getElementById(element)
     element.scrollIntoView({ behavior: "smooth", block: position })

@@ -14,7 +14,7 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: League Spartan;
+	font-family: League Spartan, Arial;
 	color: var(--text-color);
 	outline: none;
 	-webkit-tap-highlight-color: transparent;
@@ -22,19 +22,25 @@
 a {
 	text-decoration: none;
 }
-html {
-	height: 100%;
-	overflow: hidden;
-}
-body {
-	z-index: -2;
+
+body,html {
 	background-color: var(--background);
 	padding: 0;
 	margin: 0;
-	overflow-y: hidden;
 	overscroll-behavior: none;
+	width: 100%;
+	min-height: 100vh;
 }
-
+main,footer{
+	position: relative;
+}
+.background{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
 #canvas,
 #canvas2 {
 	position: fixed;
@@ -75,6 +81,7 @@ body {
 	padding-left: 1rem;
 	transform: translateY(calc(-100% - 3.2rem));
 	transition: all 0.2s ease-out;
+	z-index: 2;
 	opacity: 0;
 }
 .navbar-dropdown div{
@@ -107,13 +114,6 @@ body {
 	margin-left: 0 !important;	
 }
 
-.goBackUp {
-	font-size: 1.5rem;
-	color: var(--accent);
-	text-align: center;
-	cursor: pointer;
-	margin-bottom: 20vh;
-}
 
 .navBarLogo {
 	display: flex;
@@ -129,7 +129,7 @@ body {
 	display: flex;
 	align-items: center;
 	display: flex;
-	z-index: 2;
+	z-index: 4;
 }
 .navbar-content{
 	justify-content: space-between;
@@ -176,7 +176,7 @@ body {
 	}
 }
 .presentation {
-	height: 110%;
+	height: 105vh;
 }
 
 #toggleUtils {
@@ -202,7 +202,7 @@ body {
     gap: 0.25rem;
     grid-gap: 0.25rem;
 	position: fixed;
-	right: 0.25rem;
+	right: 0;
     background-color: var(--accent-darker);
     border-bottom-left-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
@@ -238,9 +238,9 @@ body {
 }
 
 
-#myProjects,
-#aboutMe,
-#contact {
+.myProjects,
+.aboutMe,
+.contact {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
@@ -249,7 +249,7 @@ body {
 	margin: 0 auto;
 }
 
-#myProjects{
+.myProjects{
     display: grid;
     width: fit-content;
     grid-template-columns: 1fr 1fr;
@@ -257,7 +257,7 @@ body {
     gap: 0.8rem;
     grid-gap: 0.8rem;
 }
-#contact {
+.contact {
 	width: 50%;
 	margin: auto;
 	margin-top: 5rem;
@@ -425,10 +425,7 @@ ul {
 	display: none !important;
 }
 
-#mainContent {
-	overflow-y: auto;
-	height: 100vh;
-}
+
 
 
 .skills-wrapper {
@@ -499,6 +496,7 @@ ul {
 	grid-template-columns: 1fr 2fr;
 	padding: 1rem 1.25rem;
 	padding-left: 1.5rem;
+	z-index: 2;
 }
 .footer-element{
 	display: flex;
@@ -563,12 +561,10 @@ ul {
 	::-webkit-scrollbar-thumb:hover {
 		background: #555;
 	}
-	.navbar{
-		width: calc(100% - 5px);
-	}
+
 }
 @media only screen and (orientation: portrait) {
-    #myProjects{
+    .myProjects{
         grid-template-columns: 1fr;
         width: calc(100% - 1.5rem);
         justify-items: center;
@@ -619,7 +615,7 @@ ul {
 	#fps {
 		margin-left: 2vw;
 	}
-	#contact {
+	.contact {
 		width: 100%;
 	}
 }

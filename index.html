@@ -29,56 +29,13 @@
         <canvas id="canvas2"></canvas>
         <canvas id="canvas"></canvas>
     </div>
-    <div id="mainContent">
-        <div class="navbar">
-            <div class="navbar-content">
-                <div class="navBarLogo" onclick="drawS()">
-                    <img src="/assets/images/favicon.png" />
-                </div>
-                <div class="navbar-options">
-                    <div onclick="goToElement('contact')">
-                        Contact
-                    </div>
-                    <div onclick="goToElement('aboutMe')">
-                        About me
-                    </div>
-                    <div onclick="goToElement('myProjects')">
-                        My projects
-                    </div>
-                </div>
-                <button onclick="toggleUtils()" id="toggleUtils">Settings</button>
-                <div id="utils">
-                    <button onclick="toggleTrail()" class="trailBtn"
-                        style="background-image:url('/assets/icons/trail.svg');" />
-                    <button onclick="stop()" class="stopBtn" style="background-image:url('/assets/icons/pause.svg');" />
-                    <button onclick="random()" style="background-image:url('/assets/icons/random.svg');" />
-                    <button onclick="erase()" style="background-image:url('/assets/icons/erase.svg');" />
-                    <button onclick="takePicture()" class="take-picture" />
-                </div>
+    <div id="scrollDown"></div>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="navBarLogo" onclick="drawS()">
+                <img src="/assets/images/favicon.png" alt="logo"/>
             </div>
-            <div class="navbar-content-mobile">
-                <div class="navBarLogo" onclick="drawS()">
-                    <img src="/assets/images/favicon.png" />
-                </div>
-                <div class="navbar-name">
-                    Specy
-                </div>
-                <div class="hamburger" onclick="toggleDropdown()">
-                    <div class="hamburger-open">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#dad8b3">
-                            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
-                        </svg>
-                    </div>
-                    <div class="hamburger-x">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#dad8b3">
-                            <path
-                                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z">
-                            </path>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-            <div class="navbar-dropdown">
+            <div class="navbar-options">
                 <div onclick="goToElement('contact')">
                     Contact
                 </div>
@@ -88,21 +45,63 @@
                 <div onclick="goToElement('myProjects')">
                     My projects
                 </div>
-                <div class="dropdown-buttons">
-                    <button onclick="toggleTrail()" class="trailBtn"
-                        style="background-image:url('/assets/icons/trail.svg');" />
-                    <button onclick="stop()" class="stopBtn" style="background-image:url('/assets/icons/pause.svg');" />
-                    <button onclick="random()" style="background-image:url('/assets/icons/random.svg');" />
-                    <button onclick="erase()" style="background-image:url('/assets/icons/erase.svg');" />
-                    <button onclick="takePicture()" class="take-picture" />
+            </div>
+            <button onclick="toggleUtils()" id="toggleUtils">Settings</button>
+            <div id="utils">
+                <button onclick="toggleTrail()" class="trailBtn"
+                    style="background-image:url('/assets/icons/trail.svg');" />
+                <button onclick="stop()" class="stopBtn" style="background-image:url('/assets/icons/pause.svg');" />
+                <button onclick="random()" style="background-image:url('/assets/icons/random.svg');" />
+                <button onclick="erase()" style="background-image:url('/assets/icons/erase.svg');" />
+                <button onclick="takePicture()" class="take-picture" />
+            </div>
+        </div>
+        <div class="navbar-content-mobile">
+            <div class="navBarLogo" onclick="drawS()">
+                <img src="/assets/images/favicon.png" alt="logo"/>
+            </div>
+            <div class="navbar-name">
+                Specy
+            </div>
+            <div class="hamburger" onclick="toggleDropdown()">
+                <div class="hamburger-open">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#dad8b3">
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+                    </svg>
+                </div>
+                <div class="hamburger-x">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#dad8b3">
+                        <path
+                            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z">
+                        </path>
+                    </svg>
                 </div>
             </div>
         </div>
-        <div class="presentation" id="presentation">
+        <div class="navbar-dropdown">
+            <div onclick="goToElement('contact')">
+                Contact
+            </div>
+            <div onclick="goToElement('aboutMe')">
+                About me
+            </div>
+            <div onclick="goToElement('myProjects')">
+                My projects
+            </div>
+            <div class="dropdown-buttons">
+                <button onclick="toggleTrail()" class="trailBtn"
+                    style="background-image:url('/assets/icons/trail.svg');" />
+                <button onclick="stop()" class="stopBtn" style="background-image:url('/assets/icons/pause.svg');" />
+                <button onclick="random()" style="background-image:url('/assets/icons/random.svg');" />
+                <button onclick="erase()" style="background-image:url('/assets/icons/erase.svg');" />
+                <button onclick="takePicture()" class="take-picture" />
+            </div>
         </div>
-        <div id="scrollDown"></div>
-        <div id="aboutMe" style="margin-bottom: 5rem;">
-            <div class="bigText" style="margin-bottom: 0.5rem;">About Me</div>
+    </nav>
+    <main id="mainContent">
+        <div class="presentation" id="presentation" ></div>
+        <section class="aboutMe" style="margin-bottom: 5rem;">
+            <h1 class="bigText" id="aboutMe" style="margin-bottom: 0.5rem;">About Me</h1>
             <div class="about-me-wrapper" style="min-height: unset; cursor: unset;">
                 <div class="smallMiddleText">
                     <div style="padding: 0.5rem; margin-bottom: 1rem;">
@@ -124,30 +123,29 @@
                                 <li>CSS 3</li>
                                 <li>Node.js</li>
                                 <li>React</li>
-                                <li>Svelte</li>
+                                <li>Svelte / kit</li>
                             </ul>
                         </div>
                         <div>
                             <div class="accent-text">Learning:</div>
                             <ul>
                                 <li>React Native</li>
+                                <li>Typescript</li>
                                 <li>Electron</li>
                                 <li>Nest.js</li>
-                                <li>Python</li>
                                 <li>C++</li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="bigText" style="margin-bottom: 0.5rem;"> My Projects</div>
-        <div id="myProjects">
-
+        </section>
+        <h1 class="bigText" id="myProjects" style="margin-bottom: 0.5rem;"> My Projects</h1>
+        <section class="myProjects">
             <a class="project" href="/genshinMusic" target="_blank">
-                <img src='/assets/images/apps/GMN.png' class="project-image">
+                <img src='/assets/images/apps/GMN.png' class="project-image" alt="Genshin music nightly image preview">
                 <div class="project-content">
-                    <div class="project-title">Genshin Music Nightly</div>
+                    <h2 class="project-title">Genshin Music Nightly</h2>
                     <div class="project-text-border">
                         A musical app inspired by the game Genshin Impact, used by thousands daily, built with react and
                         pixi.js
@@ -155,28 +153,28 @@
                 </div>
             </a>
             <a class="project" href="/skyMusic" target="_blank">
-                <img src='/assets/images/apps/SMN.png' class="project-image">
+                <img src='/assets/images/apps/SMN.png' class="project-image" alt="Sky music nightly image preview">
                 <div class="project-content">
-                    <div class="project-title">Sky Music Nightly</div>
+                    <h2 class="project-title">Sky Music Nightly</h2>
                     <div class="project-text-border">
-                        Similar as Genshin Music Nightly but adapted for the game Sky Cotl
+                        Similar as Genshin Music Nightly but adapted for the game Sky: Children of the Light
                     </div>
                 </div>
             </a>
             <a class="project" href="https://sky-music.herokuapp.com" target="_blank">
-                <img src='/assets/images/apps/SM.png' class="project-image">
+                <img src='/assets/images/apps/SM.png' class="project-image" alt="Sky Music image preview">
                 <div class="project-content">
-                    <div class="project-title">Sky music</div>
+                    <h2 class="project-title">Sky music</h2>
                     <div class="project-text-border">
                         A webApp with over 300k users, made to help players of the game Sky Cotl to
                         practice, compose and share songs.
                     </div>
                 </div>
             </a>
-            <div class="project" onclick="showHiddenDiv(this)">
-                <img src='/assets/images/apps/Scapix.png' class="project-image">
+            <article class="project" onclick="showHiddenDiv(this)">
+                <img src='/assets/images/apps/Scapix.png' class="project-image" alt="Scapix image preview">
                 <div class="project-content">
-                    <div class="project-title">Scapix</div>
+                    <h2 class="project-title">Scapix</h2>
                     <div class="project-text-border">
                         A machine learning image/gif/video upscaling and denoiser app made with
                         react + electron for windows.
@@ -201,13 +199,11 @@
                         </a>
                     </div>
                 </div>
-
-            </div>
-
-            <div class="cell" onclick="showHiddenDiv(this)">
+            </article>
+            <article class="cell" onclick="showHiddenDiv(this)">
                 <div class="middleText">
-                    <img class="logo" src="/assets/images/eatSchool.png">
-                    <div class="project-title">EatSchool</div>
+                    <img class="logo" src="/assets/images/eatSchool.png" alt="EatSchool logo">
+                    <h2 class="project-title">EatSchool</h2>
                 </div>
 
                 <div class="project-text">
@@ -226,11 +222,11 @@
                     </div>
                 </div>
                 <div class="clickMe">read more</div>
-            </div>
+            </article>
             <a class="cell" href="https://github.com/Specy/Quick-safe-notes/releases/tag/v1.0.0" target="_blank">
                 <div class="middleText">
-                    <img class="logo" src="/assets/images/QFN.png">
-                    <div class="project-title">Quick safe notes</div>
+                    <img class="logo" src="/assets/images/QFN.png" alt="Quick Safe Notes logo">
+                    <h2 class="project-title">Quick safe notes</h2>
                 </div>
                 <div class="project-text">
                     An app created with react native to save create and organize notes, it has authentication and
@@ -241,8 +237,8 @@
             </a>
             <a class="cell" href="/apps/SP_Code/index.html" target="_blank">
                 <div class="middleText">
-                    <img class="logo" src="/assets/images//SP_Code.png">
-                    <div class="project-title">SP Code</div>
+                    <img class="logo" src="/assets/images//SP_Code.png" alt="SP Code logo">
+                    <h2 class="project-title">SP Code</h2>
                 </div>
                 <div class="project-text">
                     A Javascript library for steganography that turns any text into an image that can be then
@@ -252,133 +248,10 @@
                 </div>
                 <div class="clickMe">open</div>
             </a>
-            <!--    
-            <div class="cell" onclick="showHiddenDiv(this)">
-                <div class="middleText">
-                    <img class="logo" src="/assets/images/owo.jpg">
-                    <div class="project-title">OwO pet</div>
-                </div>
-
-                <div class="project-text">
-                    An arduino project for a cat pet, it uses a small oled screen, touch module and vibration to
-                    purr and show expressions
-                </div>
-                <div class="hiddenDiv">
-                    <div class="smallMiddleText" style="color:var(--accent)">
-                        Description
-                    </div>
-                    <div class="project-text" style="display: inline-flex; flex-direction: column;">
-                        This is an interactive arduino nano project that i made to learn the
-                        basics of arduino and electronics. The finished product was soldered to a pcb
-                        <br><br>
-                        <div class="smallMiddleText" style="color:var(--accent)">
-                            Expressions
-                        </div>
-                        <div>
-                            <img src="/assets/images//d-d.png" class="owoImg">
-                            <img src="/assets/images//-w-.png" class="owoImg">
-                            <img src="/assets/images//^w^.png" class="owoImg"><br>
-                            <img src="/assets/images//cry.png" class="owoImg">
-                            <img src="/assets/images//x-x.png" class="owoImg">
-                            <img src="/assets/images//owo.png" class="owoImg">
-                        </div>
-                        If not being petted for too long it will start to cry, but if petted for too long it will
-                        get mad.
-                        All expressions are random, each biased differently.
-                    </div>
-                    <br><br>
-                </div>
-                <div class="clickMe">read more</div>
-            </div>
-
-            <div class="cell" onclick="showHiddenDiv(this)">
-                <div class="middleText">
-                    <img class="logo" src="/assets/images/discord.jpg">
-                    <div class="project-title">Discord bots</div>
-                </div>
-                <div class="project-text">
-                    I've created many discord bots, to manage my school class homework, utils bots and fun bots
-                </div>
-                <div class="hiddenDiv">
-                    <br>
-                    <div class="smallMiddleText" style="color:var(--accent)">
-                        Speskin bot
-                    </div>
-                    <div class="project-text">
-                        A bot that is meant to replace the gota.io bot, it has skin acception notifications and
-                        connects with the
-                        <a href="/apps/Speskin/index.html">Speskin website</a> to show skin lists.
-                    </div>
-                    <br>
-                    <div class="smallMiddleText" style="color:var(--accent)">
-                        Guessing words!
-                    </div>
-                    <div class="project-text">
-                        A bot that links to a server used as a dictionary, it has minigames in 5 different languages
-                        such as:<br><br>
-                        <ul>
-                            <li>Translating a word from english to the other language or vice versa</li>
-                            <li>Giving 5 or more random words that you can learn</li>
-                        </ul><br>
-                        and also gives moderation for the open dictionary, deleting duplicates
-                    </div>
-                    <br>
-                    <div class="smallMiddleText" style="color:var(--accent)">
-                        Spongify!
-                    </div>
-                    <div class="project-text">
-                        A bot that turns text into the SpOnGeBoB mEmE
-                    </div>
-                    <br>
-                    <div class="smallMiddleText" style="color:var(--accent)">
-                        Compitazzi!
-                    </div>
-                    <div class="project-text">
-                        A bot used in my class discord server to manage homework given out by teachers, alerting the
-                        day before all the
-                        homework/tests that will be due the day after
-                    </div>
-                    <br>
-                    <div class="smallMiddleText" style="color:var(--accent)">
-                        SkyMusic
-                    </div>
-                    <div class="project-text">
-                        A bot used to manage server-side errors of the
-                        <a href="https://sky-music.herokuapp.com">Sky music</a> website and allow users to send the
-                        songs they have made
-                        so to be uploaded to the <a href="https://sky-music.herokuapp.com/songLibrary.html">
-                            Library</a>
-                    </div>
-                </div>
-                <div class="clickMe">read more</div>
-            </div>
-            <a class="cell" href="/apps/pixelArt/pixelArt.html" target="_blank">
-                <div class="middleText" style="margin-left: 0;">
-                    <img class="logo" src="/assets/images/favicon.png">
-                    <div class="project-title">Pixel art</div>
-                </div>
-                <div class="project-text">
-                    A website to create simple pixel art and download it as a .png
-                </div>
-                <div class="clickMe">open</div>
-            </a>
-
-            <a class="cell" href="https://play.google.com/store/apps/details?id=io.kodular.dionea2002.Spongify"
-                target="_blank">
-                <div class="middleText">
-                    <img class="logo" src="/assets/images/Spongify.png">
-                    <div class="project-title">Spongify App</div>
-                </div>
-                <div class="project-text">
-                    A fun app to turn any text into "ThE sPoNgEboB mEmE"
-                </div>
-                <div class="clickMe">open</div>
-            </a>
-        -->
             <a class="cell" href="https://specy.app" target="_blank">
                 <div class="middleText">
-                    <img class="logo" src="/assets/images/favicon.png">
-                    <div class="project-title">Specy.app</div>
+                    <img class="logo" src="/assets/images/favicon.png" alt="Specy.app logo">
+                    <h2 class="project-title">Specy.app</h2>
                 </div>
                 <div class="project-text">
                     The website where i host my websites and all future projects
@@ -387,17 +260,17 @@
             </a>
             <a class="cell" href="https://specy.altervista.org" target="_blank">
                 <div class="middleText">
-                    <img class="logo" src="/assets/images/favicon.png">
-                    <div class="project-title">Other projects</div>
+                    <img class="logo" src="/assets/images/favicon.png" alt="Check other projects">
+                    <h2 class="project-title">Other projects</h2>
                 </div>
                 <div class="project-text">
                     I've made other small projects that you can find here.
                 </div>
                 <div class="clickMe">open</div>
             </a>
-        </div>
-        <div id="contact">
-            <div class="bigText">Contact me!</div>
+        </section>
+        <section class="contact">
+            <h1 class="bigText" id="contact">Contact me!</h1>
             <div class="contactCell" style="cursor: unset;">
                 <div style="display: flex; justify-content: space-between; margin-bottom:1rem; user-select: auto;">
                     <div class="smallMiddleText" style="margin-right: 5px; color: var(--accent)">
@@ -416,31 +289,31 @@
                     </a>
                 </div>
             </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer-element">
+            <a href="https://github.com/Specy" class="github" target="_blank" rel="noreferrer">
+                <img src="/assets/images/github.png" alt="Github">
+            </a>
+            <a href="https://specy.app" class="footer-link" target="_blank" rel="noreferrer">
+                Specy.app
+            </a>
         </div>
-        <div class="footer">
-            <div class="footer-element">
-                <a href="https://github.com/Specy" class="github" target="_blank" rel="noreferrer">
-                    <img src="/assets/images/github.png">
-                </a>
-                <a href="https://specy.app" class="footer-link" target="_blank" rel="noreferrer">
-                    Specy.app
-                </a>
-            </div>
 
-            <div class="donation-wrapper">
-                <a href="https://paypal.me/specyDev" target="_blank" class="paypal" rel="noreferrer">
-                    <img src='/assets/images/paypalme.png' alt="paypalme" />
-                </a>
-                <a href="https://ko-fi.com/specy" target="_blank" class="kofi" rel="noreferrer"
-                    style="background-color: white;">
-                    <img src='/assets/images/kofi.png' alt="kofi" />
-                </a>
-                <a href="https://www.buymeacoffee.com/specy" target="_blank" rel="noreferrer">
-                    <img src='/assets/images/buymeacoffee.svg' alt="buymeacoffee" />
-                </a>
-            </div>
+        <div class="donation-wrapper">
+            <a href="https://paypal.me/specyDev" target="_blank" class="paypal" rel="noreferrer">
+                <img src='/assets/images/paypalme.png' alt="Donate on paypal" />
+            </a>
+            <a href="https://ko-fi.com/specy" target="_blank" class="kofi" rel="noreferrer"
+                style="background-color: white;">
+                <img src='/assets/images/kofi.png' alt="Donate on kofi" />
+            </a>
+            <a href="https://www.buymeacoffee.com/specy" target="_blank" rel="noreferrer">
+                <img src='/assets/images/buymeacoffee.svg' alt='Donate on buy me a coffee'/>
+            </a>
         </div>
-    </div>
+    </footer>
     <div id="fps" style="display: none;">
         0
     </div>
