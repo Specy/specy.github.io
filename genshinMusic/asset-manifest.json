@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "./static/css/main.993fefa4.css",
-    "main.js": "./static/js/main.0898559e.js",
+    "main.js": "./static/js/main.7dcd71f8.js",
     "static/media/windsong-db.jpg": "./static/media/windsong-db.e533a22df0e0a8997824.jpg",
     "static/media/mainpage.png": "./static/media/mainpage.53c2a740e2a8bfe2a9af.png",
     "static/media/composer.png": "./static/media/composer.69d0b59ec6e13c0779c0.png",
@@ -13,10 +13,10 @@
     "index.html": "./index.html",
     "static/media/rotate.svg": "./static/media/rotate.e7c0f107a16d25ce5b7d025644e2672f.svg",
     "main.993fefa4.css.map": "./static/css/main.993fefa4.css.map",
-    "main.0898559e.js.map": "./static/js/main.0898559e.js.map"
+    "main.7dcd71f8.js.map": "./static/js/main.7dcd71f8.js.map"
   },
   "entrypoints": [
     "static/css/main.993fefa4.css",
-    "static/js/main.0898559e.js"
+    "static/js/main.7dcd71f8.js"
   ]
 }
