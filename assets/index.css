@@ -84,7 +84,7 @@ main,footer{
 	z-index: 2;
 	opacity: 0;
 }
-.navbar-dropdown div{
+.navbar-dropdown a{
 	font-size: 1.2rem;
 }
 
@@ -446,15 +446,12 @@ ul {
     font-size: 1.4rem;
     padding: 0.4rem;
 }
-.skills-wrapper ul{
-    margin-left: 2rem;
-}
 .navbar-options {
 	display: flex;
 	margin-left: 1rem;
 	height: 100%;
 }
-.navbar-options div{
+.navbar-options a{
 	display: flex;
 	align-items: center;
 	cursor: pointer;
@@ -542,7 +539,19 @@ ul {
     padding: 0.5rem 1rem;
 
 }
-
+.skills-list{
+	padding-left: 0.4rem;
+}
+.skills-list li{
+	display: flex;
+	align-items: center;
+	margin-top: 0.2rem;
+}
+.lang-icon{
+	width: 1.2rem;
+	height: 1.2rem;
+	margin-right: 0.5rem;
+}
 @media only screen and (min-width:480px) {
 	::-webkit-scrollbar {
 		width: 5px;
