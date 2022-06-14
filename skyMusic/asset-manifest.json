@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "./static/css/main.993fefa4.css",
-    "main.js": "./static/js/main.d46c7ab3.js",
+    "main.css": "./static/css/main.e63eb925.css",
+    "main.js": "./static/js/main.6771dd42.js",
     "static/media/windsong-db.jpg": "./static/media/windsong-db.e533a22df0e0a8997824.jpg",
     "static/media/mainpage.png": "./static/media/mainpage.53c2a740e2a8bfe2a9af.png",
     "static/media/composer.png": "./static/media/composer.69d0b59ec6e13c0779c0.png",
@@ -12,11 +12,11 @@
     "static/media/paypalme.png": "./static/media/paypalme.45abe55e027e97a0c652.png",
     "index.html": "./index.html",
     "static/media/rotate.svg": "./static/media/rotate.e7c0f107a16d25ce5b7d025644e2672f.svg",
-    "main.993fefa4.css.map": "./static/css/main.993fefa4.css.map",
-    "main.d46c7ab3.js.map": "./static/js/main.d46c7ab3.js.map"
+    "main.e63eb925.css.map": "./static/css/main.e63eb925.css.map",
+    "main.6771dd42.js.map": "./static/js/main.6771dd42.js.map"
   },
   "entrypoints": [
-    "static/css/main.993fefa4.css",
-    "static/js/main.d46c7ab3.js"
+    "static/css/main.e63eb925.css",
+    "static/js/main.6771dd42.js"
   ]
 }
