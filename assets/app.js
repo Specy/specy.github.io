@@ -156,18 +156,17 @@ function drawMatrix(x, y, noise) {
     } catch (e) { }
 }
 
-function calculateGeneration(data) {
-    const startingArray = matrix //TODO if i change to 2 arrays i need to remove this
-    return new Promise(res => {
-        worker.postMessage({
-            matrix: data,
-            width: width,
-            height: height
-        })
-        worker.onmessage = result => { 
-           if(startingArray === matrix) res(result.data) 
-        }
-    })
+let lastGen 
+let lastGenId = 0
+async function calculateGeneration(matrix) {
+    const res = await threds.send("calculateGeneration",{ matrix, width, height})
+    const [id, data] = res
+    if(id > lastGenId){
+        lastGenId = id
+        lastGen = data
+        return data
+    }
+    return lastGen
 }
 
 let palette = {
@@ -355,6 +354,47 @@ function bounceArrow() {
     }, 14000)
 }
 const delay = ms => new Promise(res => setTimeout(res, ms))
+
+class SyncThreads{
+    events = new Map()
+    id=0
+    worker
+    constructor(w) {
+        this.worker = w
+        this.worker.addEventListener("message", e => {
+            this.receive(e.data.id, e.data.data)
+        })
+    }
+    send = (message, data) => {
+        let resolve
+        this.id++
+        const promise = new Promise(res => {
+            this.worker.postMessage({data, message, id: this.id})
+            resolve = res
+        })
+        this.events.set(this.id, { id: this.id, message, promise, resolve })
+        return promise
+    }
+
+    transfer = (message, data, transfer) => {
+        let resolve
+        this.id++
+        const promise = new Promise(res => {
+            this.worker.postMessage({data, message, id: this.id}, transfer)
+            resolve = res
+        })
+        this.events.set(this.id, { id: this.id, message, promise, resolve })
+        return promise
+    }
+    receive = (id, data) => {
+        const event = this.events.get(id)
+        if (event) {
+            this.events.delete(id)
+            event.resolve([id, data])
+        }
+    }
+}
+const threds = new SyncThreads(worker)
 
 bounceArrow()
 window.requestAnimationFrame(handleFrame)

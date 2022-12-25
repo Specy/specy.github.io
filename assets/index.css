@@ -88,7 +88,6 @@ main,footer{
 	font-size: 1.2rem;
 }
 
-
 .dropdown-buttons{
 	display: flex;
 	flex-wrap: wrap;
@@ -296,8 +295,9 @@ ul {
 	border-radius: 0.6rem;
     width: 20rem;
     transition: all 0.2s;
-	background-color: rgba(31, 29, 37, 0.9);
+	background-color: rgb(26 24 31 / 90%);
 }
+
 .project{
     overflow: hidden;
     padding: 0;
@@ -325,6 +325,11 @@ ul {
     transition: all 0.2s;
     filter: brightness(0.7);
     opacity: 0.85;
+	margin-bottom: -1.5rem;
+	-webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0.85) 75%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0) 100%);
+	mask-image: linear-gradient(180deg, rgba(0,0,0,0.85) 75%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0) 100%);
+	-webkit-mask-mode: alpha;
+	mask-mode: alpha;
     object-position: center center;
 }
 .project:hover .project-image{
@@ -358,7 +363,7 @@ ul {
     line-height: 1.2rem;
 }
 .project-text-border{
-    border-left: solid 2px #3d4553;
+    border-left: solid 2px #242932;
     padding-top: 0.2rem;
 }
 .about-me-wrapper{
@@ -416,10 +421,24 @@ ul {
 .project-title{
 	flex: 1;
 	display: flex;
+	justify-content: space-between;
     font-size: 1.5rem;
     margin-left: 1rem;
-    margin-top: 0.2rem;
-	color: var(--accent);
+    margin-top: 0.2rem; 
+	color: var(--accent) !important;
+	text-shadow: 2px 2px 12px rgb(13 13 13)
+}
+.project-title * {
+	color: var(--accent) !important;
+}
+.tech{
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	gap: 0.6rem;
+}
+.tech img {
+	height: 1.2rem;
 }
 .hide {
 	display: none !important;

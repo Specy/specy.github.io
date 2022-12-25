@@ -1,11 +1,21 @@
 let height = 100
 let width = 100
-self.onmessage = (event) => {
-    let data = event.data
-    width = data.width
-    height = data.height
-    self.postMessage(calculateGeneration(data.matrix))
-};
+self.addEventListener("message", (event) => {
+    const data = event.data.data
+    const type = event.data.message
+    const id = event.data.id
+    if(type === "calculateGeneration") {
+        width = data.width
+        height = data.height
+        self.postMessage({
+            id,
+            data: calculateGeneration(data.matrix)
+        })
+    }
+    if(type === "drawMatrix"){
+
+    }
+})
 
 
 function createMatrix() {
