@@ -156,12 +156,12 @@ function drawMatrix(x, y, noise) {
     } catch (e) { }
 }
 
-let lastGen 
+let lastGen
 let lastGenId = 0
 async function calculateGeneration(matrix) {
-    const res = await threds.send("calculateGeneration",{ matrix, width, height})
+    const res = await threds.send("calculateGeneration", { matrix, width, height })
     const [id, data] = res
-    if(id > lastGenId){
+    if (id > lastGenId) {
         lastGenId = id
         lastGen = data
         return data
@@ -293,7 +293,7 @@ async function showHiddenDiv(div) {
 function goToElement(element, position = 'start') {
     //function to scroll the body to a selected element, scroll is the offset
     if (typeof element == "string") element = document.getElementById(element)
-    if(element.tagName === "A") history.pushState(null, null, element.href)
+    if (element.tagName === "A") history.pushState(null, null, element.href)
     element.scrollIntoView({ behavior: "smooth", block: position })
 }
 
@@ -355,9 +355,9 @@ function bounceArrow() {
 }
 const delay = ms => new Promise(res => setTimeout(res, ms))
 
-class SyncThreads{
+class SyncThreads {
     events = new Map()
-    id=0
+    id = 0
     worker
     constructor(w) {
         this.worker = w
@@ -369,7 +369,7 @@ class SyncThreads{
         let resolve
         this.id++
         const promise = new Promise(res => {
-            this.worker.postMessage({data, message, id: this.id})
+            this.worker.postMessage({ data, message, id: this.id })
             resolve = res
         })
         this.events.set(this.id, { id: this.id, message, promise, resolve })
@@ -380,7 +380,7 @@ class SyncThreads{
         let resolve
         this.id++
         const promise = new Promise(res => {
-            this.worker.postMessage({data, message, id: this.id}, transfer)
+            this.worker.postMessage({ data, message, id: this.id }, transfer)
             resolve = res
         })
         this.events.set(this.id, { id: this.id, message, promise, resolve })
@@ -394,7 +394,20 @@ class SyncThreads{
         }
     }
 }
+
+function changeDomain() {
+    //change links if the page is hosted on specy.app
+    const sky = document.getElementById("sky-music-nightly-link")
+    const genshin = document.getElementById("genshin-music-nightly-link")
+    if (window.location.hostname.includes("specy.app")) { 
+        sky.href = "https://sky-music.specy.app"
+        genshin.href = "https://genshin-music.specy.app"
+    }
+}
+
+
 const threds = new SyncThreads(worker)
 
 bounceArrow()
 window.requestAnimationFrame(handleFrame)
+changeDomain()
