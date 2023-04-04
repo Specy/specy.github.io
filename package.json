@@ -1,0 +1,24 @@
+{
+  "name": "specy.github.io",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Welcome to my portfolio website here I talk about who I'm and show my projects!",
+  "main": "index.js",
+  "scripts": {
+    "transform-portfolio": "node ./scripts/transform-portfolio.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Specy/specy.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Specy/specy.github.io/issues"
+  },
+  "homepage": "https://github.com/Specy/specy.github.io#readme",
+  "dependencies": {
+    "jsdom": "^21.1.1"
+  }
+}
