@@ -4,37 +4,72 @@
   "description": "A program to record, practice and share music. \nBy downloading the app, you get fullscreen and better overall experience",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "/skyMusic/favicon.ico",
       "sizes": "48x48",
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "/skyMusic/logo192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "/skyMusic/logo512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
   ],
+  "file_handlers": [
+    {
+      "action": "/skyMusic",
+      "name": "Import file in sky music",
+      "accept": {
+        "application/json": [
+          ".skysheet",
+          ".skybackup",
+          ".skytheme",
+          ".skyfolder"
+        ]
+      },
+      "icons": [
+        {
+          "src": "/skyMusic/favicon.ico",
+          "sizes": "48x48",
+          "type": "image/x-icon"
+        },
+        {
+          "src": "/skyMusic/logo192.png",
+          "type": "image/png",
+          "sizes": "192x192"
+        },
+        {
+          "src": "/skyMusic/logo512.png",
+          "type": "image/png",
+          "sizes": "512x512"
+        }
+      ]
+    }
+  ],
   "screenshots": [
     {
-      "src": "manifestData/main.webp",
+      "src": "/skyMusic/manifestData/player.webp",
       "type": "image/png",
       "sizes": "1280x720"
     },
     {
-      "src": "manifestData/composer.webp",
+      "src": "/skyMusic/manifestData/composer.webp",
+      "type": "image/png",
+      "sizes": "1280x720"
+    },
+    {
+      "src": "/skyMusic/manifestData/zenkeyboard.webp",
       "type": "image/png",
       "sizes": "1280x720"
     }
   ],
-
-  "start_url": ".",
+  "start_url": "/skyMusic",
   "display": "fullscreen",
-  "orientation":  "landscape",
+  "orientation": "landscape",
   "theme_color": "#63aea7",
   "background_color": "#495466"
 }
