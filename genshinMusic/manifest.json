@@ -4,36 +4,72 @@
   "description": "A program to record, practice and share music. \nBy downloading the app, you get fullscreen and better overall experience",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "/genshinMusic/favicon.ico",
       "sizes": "48x48",
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "/genshinMusic/logo192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "/genshinMusic/logo512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
   ],
+  "file_handlers": [
+    {
+      "action": "/genshinMusic",
+      "name": "Import file in genshin music",
+      "accept": {
+        "application/json": [
+          ".genshinsheet",
+          ".genshinbackup",
+          ".genshintheme",
+          ".genshinfolder"
+        ]
+      },
+      "icons": [
+        {
+          "src": "/genshinMusic/favicon.ico",
+          "sizes": "48x48",
+          "type": "image/x-icon"
+        },
+        {
+          "src": "/genshinMusic/logo192.png",
+          "type": "image/png",
+          "sizes": "192x192"
+        },
+        {
+          "src": "/genshinMusic/logo512.png",
+          "type": "image/png",
+          "sizes": "512x512"
+        }
+      ]
+    }
+  ],
   "screenshots": [
     {
-      "src": "manifestData/main.webp",
+      "src": "/genshinMusic/manifestData/player.webp",
       "type": "image/png",
       "sizes": "1280x720"
     },
     {
-      "src": "manifestData/composer.webp",
+      "src": "/genshinMusic/manifestData/composer.webp",
+      "type": "image/png",
+      "sizes": "1280x720"
+    },
+    {
+      "src": "/genshinMusic/manifestData/zenkeyboard.webp",
       "type": "image/png",
       "sizes": "1280x720"
     }
   ],
-  "start_url": ".",
+  "start_url": "/genshinMusic",
   "display": "fullscreen",
-  "orientation":  "landscape",
+  "orientation": "landscape",
   "theme_color": "#63aea7",
   "background_color": "#495466"
 }

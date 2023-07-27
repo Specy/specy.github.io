@@ -435,7 +435,7 @@ ul {
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
-	gap: 0.6rem;
+	gap: 0.4rem;
 }
 .tech img {
 	height: 1.2rem;
