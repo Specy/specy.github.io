@@ -1,0 +1,1 @@
+(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[1616],{85801:function(n,o,_){(window.__NEXT_P=window.__NEXT_P||[]).push(["/blog/posts/how-to-use-composer",function(){return _(11240)}])}},function(n){n.O(0,[5752,1240,9774,2888,179],function(){return n(n.s=85801)}),_N_E=n.O()}]);
