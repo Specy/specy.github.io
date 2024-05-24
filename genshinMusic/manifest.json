@@ -54,16 +54,37 @@
     {
       "src": "/genshinMusic/manifestData/player.webp",
       "type": "image/png",
+      "form_factor": "narrow",
       "sizes": "1280x720"
     },
     {
       "src": "/genshinMusic/manifestData/composer.webp",
       "type": "image/png",
+      "form_factor": "narrow",
       "sizes": "1280x720"
     },
     {
       "src": "/genshinMusic/manifestData/zenkeyboard.webp",
       "type": "image/png",
+      "form_factor": "narrow",
+      "sizes": "1280x720"
+    },
+    {
+      "src": "/genshinMusic/manifestData/player.webp",
+      "form_factor": "wide",
+      "type": "image/png",
+      "sizes": "1280x720"
+    },
+    {
+      "src": "/genshinMusic/manifestData/composer.webp",
+      "type": "image/png",
+      "form_factor": "wide",
+      "sizes": "1280x720"
+    },
+    {
+      "src": "/genshinMusic/manifestData/zenkeyboard.webp",
+      "type": "image/png",
+      "form_factor": "wide",
       "sizes": "1280x720"
     }
   ],
