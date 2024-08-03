@@ -808,12 +808,18 @@ ul {
 }
 
 @media (max-width: 678px) {
+	.timeline{
+		gap: 1rem;
+	}
+	.timeline-element{
+		gap: 1rem;
+	}
 	.timeline-element-header-image {
 		display: none;
 	}
 
 	.timeline-element-header {
-		padding-left: 1.2rem;
+		padding-left: 0.5rem;
 	}
 
 	.timeline-element-content {
@@ -823,6 +829,7 @@ ul {
 
 	.timeline-end {
 		margin-left: 1.1rem;
+		margin-top: -1rem;
 	}
 }
 
