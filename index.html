@@ -45,6 +45,9 @@
                 <a onclick="goToElement('myProjects')">
                     My projects
                 </a>
+                <a onclick="goToElement('work-experience')">
+                    Work experience
+                </a>
             </div>
             <button onclick="toggleUtils()" id="toggleUtils">Settings</button>
             <div id="utils">
@@ -88,6 +91,9 @@
             <a onclick="goToElement('myProjects')">
                 My projects
             </a>
+            <a onclick="goToElement('work-experience')">
+                Work experience
+            </a>
             <div class="dropdown-buttons">
                 <button onclick="toggleTrail()" class="trailBtn"
                     style="background-image:url('/assets/icons/trail.svg');" />
@@ -106,18 +112,19 @@
             </a>
             <div class="about-me-wrapper" style="min-height: unset; cursor: unset;">
                 <div class="smallMiddleText">
-                    <div style="padding: 0.5rem; margin-bottom: 1rem;">
+                    <div style="padding: 0.5rem; margin-bottom: 1rem;" class="text">
                         I'm <span style="color:var(--accent); display: inline;">Specy</span>, an italian computer
                         science student
                         with a passion in building, reparing and developing. <br><br>
                         I have experience in 3D printing, DIY, development of Websites, Apps and Webapps.
                         <br /><br />
-                        I specialise in creating tools to solve common problems or to help automate certain tasks.
+                        I specialise in creating richly interactive experiences and tools to solve common problems or to
+                        help automate certain tasks.
                         I've done so for many games to expand their functionality and to make their features more
                         accessible.
                         <br /><br />
-                        I always strive to use the newest technologies in programming and experiment with unusual features of the
-                        web, like WASM, Web audio/midi apis, workers, languages, etc...
+                        I always strive to use the newest technologies in programming and experiment with unusual
+                        features of the web, like WASM, Web audio/midi apis, workers, PWA, etc...
                     </div>
                     <div class="skills-wrapper">
                         <div>
@@ -157,14 +164,25 @@
                             <div class="accent-text">Learning</div>
                             <ul class="skills-list">
                                 <li>
+                                    <img src="./assets/icons/langs/rust.svg" class="lang-icon" />
+                                    Rust
+                                </li>
+                                <li>
                                     <img src="./assets/icons/langs/java.svg" class="lang-icon" />
 
                                     Java
                                 </li>
-                                <li>
-                                    <img src="./assets/icons/langs/cpp.svg" class="lang-icon" />
 
-                                    C / C++
+                                <li>
+                                    <img src="./assets/icons/langs/nest.svg" class="lang-icon" />
+
+                                    Nest.js
+                                </li>
+
+                                <li>
+                                    <img src="./assets/icons/langs/electron.svg" class="lang-icon" />
+
+                                    Electron
                                 </li>
                                 <li>
                                     <img src="./assets/icons/langs/react.svg" class="lang-icon" />
@@ -172,22 +190,15 @@
                                     React Native
                                 </li>
                                 <li>
-                                    <img src="./assets/icons/langs/rust.svg" class="lang-icon" />
-                                    Rust
-                                </li>
-                                <li>
-                                    <img src="./assets/icons/langs/nest.svg" class="lang-icon" />
-
-                                    Nest.js
-                                </li>
-                                <li>
-                                    <img src="./assets/icons/langs/electron.svg" class="lang-icon" />
-
-                                    Electron
-                                </li>
-                                <li>
                                     <img src="./assets/icons/langs/python.svg" class="lang-icon" />
                                     Python
+                                </li>
+                                <li>
+                                    <img src="./assets/icons/langs/cpp.svg" class="lang-icon" />
+
+                                    C / C++
+                                </li>
+
                             </ul>
                         </div>
                     </div>
@@ -195,9 +206,10 @@
             </div>
         </section>
         <a href="#myProjects" id="myProjects">
-            <h1 class="bigText" style="margin-bottom: 0.5rem;"> My Projects</h1>
+            <h1 class="bigText" style="margin-bottom: 1.5rem;"> My Projects</h1>
         </a>
         <section class="myProjects">
+
             <a class="project" href="/genshinMusic" target="_blank" id="genshin-music-nightly-link">
                 <img src='/assets/images/apps/GMN.webp' class="project-image" alt="Genshin music nightly image preview">
                 <div class="project-content">
@@ -212,8 +224,9 @@
                         </div>
                     </div>
 
-                    <div class="project-text-border">
-                        A musical app inspired by the game Genshin Impact, with over a million users, built with react and
+                    <div class="project-text-border text">
+                        A musical app inspired by the game Genshin Impact, with over a million users, built with react
+                        and
                         pixi.js
                     </div>
                 </div>
@@ -231,7 +244,7 @@
                             <img src="./assets/icons/langs/ts.svg" />
                         </div>
                     </div>
-                    <div class="project-text-border">
+                    <div class="project-text-border text">
                         Similar as Genshin Music Nightly but adapted for the game Sky: Children of the Light
                     </div>
                 </div>
@@ -250,7 +263,7 @@
                             <img src="./assets/icons/langs/ts.svg" />
                         </div>
                     </div>
-                    <div class="project-text-border">
+                    <div class="project-text-border text">
                         A machine learning image/gif/video upscaling and denoiser app made with
                         sveltekit + typescript + electron
                     </div>
@@ -287,9 +300,28 @@
                             <img src="./assets/icons/langs/ts.svg" />
                         </div>
                     </div>
-                    <div class="project-text-border">
+                    <div class="project-text-border text">
                         A web editor for learning m68k assembly, built using my WebAssembly rust interpreter and
                         sveltekit
+                    </div>
+                </div>
+            </a>
+            <a class="project" href="https://rooc.specy.app/" target="_blank">
+                <img src='/assets/images/apps/rooc-editor-wide.webp' class="project-image" alt="ASM Editor preview">
+                <div class="project-content">
+                    <div class="project-title">
+                        <div>
+                            ROOC Optimization
+                        </div>
+                        <div class="tech">
+                            <img src="/assets/icons/langs/svelte.svg" />
+                            <img src="./assets/icons/langs/rust.svg" />
+                            <img src="./assets/icons/langs/ts.svg" />
+                        </div>
+                    </div>
+                    <div class="project-text-border text">
+                        A language and platform for easy mathematical optimization models.
+                        </br> Work in progress for my thesis
                     </div>
                 </div>
             </a>
@@ -305,7 +337,7 @@
                             <img src="/assets/icons/langs/js.svg" />
                         </div>
                     </div>
-                    <div class="project-text-border">
+                    <div class="project-text-border text">
                         A webApp with over 500k users, made to help players of the game Sky Cotl to
                         practice, compose and share songs
                     </div>
@@ -323,12 +355,28 @@
                             <img src="./assets/icons/langs/ts.svg" />
                         </div>
                     </div>
-                    <div class="project-text-border">
+                    <div class="project-text-border text">
                         A website to play with Conway's game of life and create backgrounds with custom colors
                     </div>
                 </div>
             </a>
-            <a class="cell" href="https://github.com/Specy/Quick-safe-notes/releases/tag/v1.0.0" target="_blank">
+            <div class="old-work-wrapper">
+                <button onclick="showOlderWork()" id="old-work-button">
+                    Show older projects
+                </button>
+            </div>
+            <a class="cell old-work" href="https://specy.app" target="_blank">
+                <div class="middleText">
+                    <img class="logo" src="/assets/images/favicon.png" alt="Specy.app logo">
+                    <h2 class="project-title">Specy.app</h2>
+                </div>
+                <div class="project-text">
+                    The website where i host my webapps and all future projects
+                </div>
+                <div class="clickMe">open</div>
+            </a>
+            <a class="cell old-work" href="https://github.com/Specy/Quick-safe-notes/releases/tag/v1.0.0"
+                target="_blank">
                 <div class="middleText">
                     <img class="logo" src="/assets/images/QFN.png" alt="Quick Safe Notes logo">
                     <h2 class="project-title">Quick safe notes</h2>
@@ -339,7 +387,7 @@
                 </div>
                 <div class="clickMe">open</div>
             </a>
-            <a class="cell" href="/apps/SP_Code/index.html" target="_blank">
+            <a class="cell old-work" href="/apps/SP_Code/index.html" target="_blank">
                 <div class="middleText">
                     <img class="logo" src="/assets/images//SP_Code.png" alt="SP Code logo">
                     <h2 class="project-title">SP Code</h2>
@@ -352,17 +400,8 @@
                 </div>
                 <div class="clickMe">open</div>
             </a>
-            <a class="cell" href="https://specy.app" target="_blank">
-                <div class="middleText">
-                    <img class="logo" src="/assets/images/favicon.png" alt="Specy.app logo">
-                    <h2 class="project-title">Specy.app</h2>
-                </div>
-                <div class="project-text">
-                    The website where i host my webapps and all future projects
-                </div>
-                <div class="clickMe">open</div>
-            </a>
-            <article class="cell" onclick="showHiddenDiv(this)">
+
+            <article class="cell old-work" onclick="showHiddenDiv(this)">
                 <div class="middleText">
                     <img class="logo" src="/assets/images/eatSchool.png" alt="EatSchool logo">
                     <h2 class="project-title">EatSchool</h2>
@@ -385,16 +424,128 @@
                 </div>
                 <div class="clickMe">read more</div>
             </article>
-            <a class="cell" href="https://specy.altervista.org" target="_blank">
-                <div class="middleText">
-                    <img class="logo" src="/assets/images/favicon.png" alt="Check other projects">
-                    <h2 class="project-title">Other projects</h2>
-                </div>
-                <div class="project-text">
-                    I've made other small projects that you can find here
-                </div>
-                <div class="clickMe">open</div>
+        </section>
+        <section class="work-experience">
+            <a href="#work-experience" id="work-experience">
+                <h1 class="bigText">My experiences</h1>
             </a>
+            <div class="timeline">
+                <div class="timeline-element">
+                    <div class="timeline-element-header">
+                        <div class="timeline-element-header-image"
+                            style="background-color: var(--primary); padding: 0.8rem;">
+                            <img src="/assets/images/Universapp.webp" style="width: 100%; height: 100%;" />
+                        </div>
+
+                        <a href="https://learn.universapp.it" class="link" target="_blank">
+                            <h1>
+                                Universapp
+                            </h1>
+                        </a>
+                        <div class="work-date">
+                            May 2023 - Present
+                        </div>
+
+                    </div>
+                    <div class="timeline-element-content">
+                        <div class="work-experience-cell">
+                            <ul style="padding-left: 1rem;" class="text">
+                                <li>
+                                    Ideated and Developed the whole front end application for the <a class="link"
+                                        href="https://learn.universapp.it">Universapp</a> learning
+                                    platform and backoffice admin panel. Made with next.js and tailwind
+                                </li>
+                                <li>
+                                    Ideated and Developed AI features for content creation/summarization and
+                                    improvement, an interactive chatbot and other features for teachers and students.
+                                    <br /> Made with langchain, openai and claude
+                                </li>
+                                <li>
+                                    Assisted in the development of the LMS backend and developed the AI and chatbot
+                                    backends
+                                </li>
+                                <li>
+                                    Ideated and developed interactive learning tools to improve the learning experience
+                                    of students.
+                                </li>
+                            </ul>
+                            <div class="tech">
+                                <img src="/assets/icons/langs/nextjs.svg" />
+                                <img src="/assets/icons/langs/react.svg" />
+                                <img src="/assets/icons/langs/ts.svg" />
+                                <img src="/assets/icons/langs/tailwind.svg" />
+                                <img src="/assets/icons/langs/nest.svg" />
+                                <img src="/assets/icons/langs/langchain.svg" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-element">
+                    <div class="timeline-element-header">
+                        <img src="/assets/images/univaq.png" class="timeline-element-header-image" />
+                        <a href="https://www.univaq.it" class="link" target="_blank">
+                            <h1>
+                                Univaq
+                            </h1>
+                        </a>
+                        <div class="work-date">
+                            Sept 2021 - Present
+                        </div>
+
+                    </div>
+                    <div class="timeline-element-content">
+                        <div class="work-experience-cell" class="text">
+                            <div>
+
+                                I'm currently studying computer science at the <a href="https://www.univaq.it/"
+                                    class="link">University
+                                    of L'Aquila</a> and
+                                I'm working together with professors at the university to create tools to help students
+                                learn more easily </br> </br>
+
+                                My current plan is to create one project for each year of study, helping students with
+                                the courses which are hardest to
+                                learn because of the lack of tools and resources.
+                            </div>
+
+
+                            <ul style="padding-left: 1rem;">
+                                <li>
+                                    <b>First year:</b> I created an interpreter and web editor for the m68k assembly
+                                    language, available <a href="https://asm-editor.specy.app" class="link">here</a>
+                                    used by the university to teach the course of computer architecture. It allows
+                                    people to step through the code, undo the changes, view memory, registers,
+                                    etc...
+                                </li>
+                                <li>
+                                    <b>Second year:</b> I'm working on a language and platform for easy mathematical
+                                    optimization models, available <a href="https://rooc.specy.app"
+                                        class="link">here</a>
+                                    to help students with the course of operations research and combinatorial
+                                    optimization. <br /> <br /> It will allow students to create and solve
+                                    optimization models and
+                                    have them be solved by the platform
+                                    using the simplex (or others) algorithm, showing step by step the resolution.
+                                    </br> This is my thesis project.
+                                </li>
+                                <li>
+                                    <b>Third year:</b> I'm planning to create a set of tools to make it easier for
+                                    students to learn languages and compilers theory.
+                                </li>
+                            </ul>
+                            <div class="tech">
+                                <img src="/assets/icons/langs/svelte.svg" />
+                                <img src="/assets/icons/langs/ts.svg" />
+                                <img src="/assets/icons/langs/rust.svg" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-end">
+
+                </div>
+            </div>
+
         </section>
         <section class="contact">
             <a href="#contact" id="contact">
@@ -414,6 +565,14 @@
                         Discord:
                     </div>
                     <a style="user-select:all; cursor: pointer;">
+                        @specy
+                    </a>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-top:1rem; user-select: auto;">
+                    <div class="smallMiddleText" style="margin-right: 5px; color: var(--accent)">
+                        Github:
+                    </div>
+                    <a href="https://github.com/Specy" target="_blank">
                         @specy
                     </a>
                 </div>

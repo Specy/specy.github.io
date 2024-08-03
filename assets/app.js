@@ -257,14 +257,17 @@ function stop() {
     })
 
 }
-document.getElementById("mainContent").addEventListener("scroll", function () {
-    //when scrolling down the page, if it reached the "about me", start blurring the canvas to make it easier to see the text
-    return //disabled
-    let blur = ((this.scrollTop - screenHeight + 100) / 200).toFixed(2)
-    if (blur > 1.5 || isMobile) return
-    canvas.style.filter = 'blur(' + blur + 'px)'
-    canvas2.style.filter = 'blur(' + blur + 'px)'
-})
+const bg = document.querySelector(".background")
+
+function setBgOpacity() {
+    //when scrolling the page, after surpassing 30vh, the canvas will start to fade out, reaching at minumum 0.5 opacity
+    const scroll = document.documentElement.scrollTop - (screenHeight / 4)
+    const opacity = Math.max(0.4, 1 - (scroll / screenHeight))
+    bg.style.opacity = opacity
+}
+
+document.addEventListener("scroll",setBgOpacity)
+setBgOpacity()
 
 function random() {
     matrix = generateRandomMatrix(0.4)
@@ -336,7 +339,7 @@ async function drawS() {
         }
         pos[1] = +pos[1] + 7
         let y = Math.floor(pos[1] / 100 * height)
-        let noise = Math.round(Math.random() * 10 + 30)
+        let noise = Math.round(Math.random() * 10 + 50)
         await delay(4)
         drawMatrix(x + offsets.x, y + offsets.y, noise)
     }
@@ -399,11 +402,22 @@ function changeDomain() {
     //change links if the page is hosted on specy.app
     const sky = document.getElementById("sky-music-nightly-link")
     const genshin = document.getElementById("genshin-music-nightly-link")
-    if (window.location.hostname.includes("specy.app")) { 
+    if (window.location.hostname.includes("specy.app")) {
         sky.href = "https://sky-music.specy.app"
         genshin.href = "https://genshin-music.specy.app"
     }
 }
+
+const olderWork = document.querySelectorAll(".old-work")
+const oldWorkButton = document.querySelector(".old-work-wrapper")
+function showOlderWork() {
+    olderWork.forEach((work, i) => {
+        work.classList.add("old-work-visible")
+        work.style.animation = `fadeIn 0.5s ease ${i * 0.1}s forwards`
+    })
+    oldWorkButton.style.display = "none"
+}
+
 
 
 const threds = new SyncThreads(worker)
