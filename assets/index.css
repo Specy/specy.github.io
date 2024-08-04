@@ -65,6 +65,7 @@ footer {
 	image-rendering: crisp-edges;
 }
 
+
 .navbar {
 	position: fixed;
 	top: 0;
@@ -336,7 +337,7 @@ ul {
 
 .cell,
 .about-me-wrapper,
-.project,
+.project-wrapper,
 .contactCell {
 	cursor: pointer;
 	height: fit-content;
@@ -350,8 +351,58 @@ ul {
 	background-color: #18151fe6;
 }
 
-.project {
+
+.github-badge{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 0.35rem;
+	width: 5rem;
+	z-index: 2;
+	transform: rotate(-45deg) translateY(12%) translateX(-50%);
+	transform-origin: 0 0;
+	transition: 0.2s all;
+	background-color: var(--accent2);
+}
+.github-badge img{
+	width: 1.2rem;
+}
+.github-badge:hover{
+	background-color: var(--accent);
+}
+.github-badge:hover img{
+	filter: brightness(100);
+}
+
+.project-wrapper{
+	position: relative;
+	border-radius: 0.6rem;
+	padding: 0;
 	overflow: hidden;
+}
+
+.project-wrapper:hover,
+.cell:hover {
+	transform: scale(1.02);
+	filter: brightness(1.05);
+	background-color: rgba(31, 29, 37, 0.95);
+}
+
+.project-wrapper:active,
+.cell:active {
+	transform: scale(1.01)
+}
+.project-wrapper:hover .project-image {
+	filter: brightness(0.9);
+}
+
+
+
+
+.project {
 	padding: 0;
 	display: flex;
 	flex-direction: column;
@@ -361,18 +412,6 @@ ul {
 	color: var(--accent);
 }
 
-.project:hover,
-.cell:hover {
-	transform: scale(1.02);
-	filter: brightness(1.05);
-	background-color: rgba(31, 29, 37, 0.95);
-
-}
-
-.project:active,
-.cell:active {
-	transform: scale(1.02);
-}
 
 .project-image {
 	width: 100%;
@@ -389,9 +428,6 @@ ul {
 	object-position: center center;
 }
 
-.project:hover .project-image {
-	filter: brightness(0.9);
-}
 
 .project-content {
 	padding: 0.6rem 0.8rem;
@@ -877,7 +913,7 @@ ul {
 	}
 
 	.cell,
-	.project {
+	.project-wrapper {
 		width: 100%;
 		max-width: 500px;
 		font-size: 1.2rem;
