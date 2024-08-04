@@ -75,7 +75,7 @@ footer {
 	padding-left: 0.3rem;
 	display: flex;
 	justify-content: center;
-	z-index: 2;
+	z-index: 3;
 	border-bottom: 2px var(--accent-darker) solid;
 }
 
