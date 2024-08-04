@@ -768,7 +768,6 @@ ul {
 
 .timeline-end {
 	height: 4rem;
-	width: 100%;
 	border-left: var(--accent-darker2) dashed 0.3rem;
 	margin-left: 1.6rem;
 }
