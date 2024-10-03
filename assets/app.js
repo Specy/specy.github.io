@@ -15,10 +15,11 @@ const worker = new Worker('/assets/conway-worker.js')
 
 //limiting the matrix size to increase performance
 const isMobile = screenHeight > screenWidth
-if (screenWidth > 1400) {
-    console.log("Screen limit")
-    height = Math.floor(screenHeight / 1.8)
-    width = Math.floor(screenWidth / 1.8)
+const max = 728
+if (screenWidth > max) {
+    const aspect = screenWidth / screenHeight
+    width = max
+    height = Math.floor(max / aspect)
 }
 
 canvas.height = height
@@ -172,17 +173,14 @@ async function calculateGeneration(matrix) {
 let palette = {
     0: ['#283049', '#404B69', '#278EA5'],
     1: ['#283049', '#404B69', '#278EA5', "#134753"],
-    2: ['', '', '', ''],
-    3: ['', '', '', ''],
-    4: ['', '', '', '']
 }
 
 function getRandomColor(index = 0) {
-    //function that returns a random color from the palette
+    //returns a random color from the palette
     return palette[index][Math.floor(Math.random() * palette[index].length)]
 }
 
-const fpsController = 48
+const fpsController = 30
 const rafInterval = 1000 / fpsController
 let currentTime = 0
 let nextTime = Date.now()
@@ -190,8 +188,9 @@ let deltaTime = 0
 let every25 = 0
 let secondContextColor = getRandomColor(1)
 let generations = []
-
+let gameId = 0
 async function handleFrame() {
+    const id = gameId
     window.requestAnimationFrame(handleFrame)
     currentTime = Date.now()
     deltaTime = currentTime - nextTime
@@ -203,6 +202,7 @@ async function handleFrame() {
             drawCanvas(matrix, ctx, "#DA0363", true)
         } else {
             let nextGen = await calculateGeneration(matrix)
+            if(id !== gameId) return
             if (every25++ > 25) {
                 //change color every 30 frames
                 secondContextColor = getRandomColor(1)
@@ -280,6 +280,7 @@ function erase() {
     secondCanvasData = new Uint8ClampedArray(width * height * 4)
     eraseCanvas(ctx)
     eraseCanvas(ctx2)
+    
 }
 
 async function showHiddenDiv(div) {
@@ -325,8 +326,9 @@ setInterval(() => {
 let canDraw = false
 async function drawS() {
     //function to draw the S when the page loads
-    const offsets = { x: 0, y: -5 }
+    const offsets = { x: 0, y: -20 }
     let drawing = await fetch("/assets/drawing.json").then(file => file.json())
+    await delay(500)
     //fetches the array containing the positions to draw
     for (let i = 0; i < drawing.length - 5; i++) {
         //iterates through all the points and gives an offset according if the device is a mobile phone or pc
