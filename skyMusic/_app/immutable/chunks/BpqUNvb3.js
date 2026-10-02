@@ -1,0 +1,1 @@
+import{l as e}from"./CXan2lLt.js";import{n as t}from"./COS0FZKi.js";var n={title:`🥁 How to use the VSRG composer`,author:t,description:`Learn how to use the VSRG composer to create beatmaps of a song`,createdAt:new Date(`2024/03/19`),tags:[`Guide`],image:`${e}/assets/blog/help-vsrg-composer.webp`,relativeUrl:`how-to-use-vsrg-composer`};export{n as t};

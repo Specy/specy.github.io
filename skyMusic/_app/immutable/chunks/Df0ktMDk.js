@@ -1,0 +1,1 @@
+import{Y as e,dt as t,ht as n,pt as r}from"./DNu6mygQ.js";var i=new class{#e=n(t([]));get logs(){return e(this.#e)}set logs(e){r(this.#e,e,!0)}addLog(e){this.logs.find(t=>t.error===e.error)||this.logs.push(e)}clearLogs(){this.logs.splice(0,this.logs.length)}};export{i as t};

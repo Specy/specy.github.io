@@ -1,0 +1,1 @@
+function e(e,t){return t===`1 2 3`?e.replaceAll(`̇̇`,`a`).replaceAll(`̣̣`,`n`).replaceAll(`̇`,`z`).replaceAll(`̣`,`x`):e}export{e as t};

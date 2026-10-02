@@ -1,0 +1,1 @@
+import{l as e}from"./D3aEYCKm.js";import{n as t}from"./Dmoe-zEN.js";var n={title:`🎹 EASYPLAY 1s`,tags:[`Product`],relativeUrl:`easyplay-1s`,image:`${e}/assets/blog/easyplay.webp`,description:`The EASYPLAY 1s, the perfect keyboard for Sky Music Nightly`,createdAt:new Date(`2024/04/24`),author:t};export{n as t};

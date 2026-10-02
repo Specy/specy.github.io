@@ -1,0 +1,1 @@
+import{B as e,H as t,R as n,lt as r,nt as i}from"./DNu6mygQ.js";import"./xihTtKlq.js";var a=t(`<h1 class="svelte-tnxzh2"> </h1>`);function o(t,o){var s=a(),c=r(s,!0);i(()=>n(c,o.text)),e(t,s)}export{o as t};

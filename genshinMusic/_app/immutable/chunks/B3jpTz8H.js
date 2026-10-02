@@ -1,0 +1,1 @@
+import{l as e}from"./D3aEYCKm.js";import{n as t}from"./Dmoe-zEN.js";var n={title:`🎵 How to use the player`,relativeUrl:`how-to-use-player`,tags:[`Guide`],image:`${e}/assets/blog/help-player.webp`,description:`This is a guide to help you learn how to use the player to learn, record and play songs!`,createdAt:new Date(`2024/03/19`),author:t};export{n as t};

@@ -1,0 +1,1 @@
+import{l as e}from"./CXan2lLt.js";import{n as t}from"./COS0FZKi.js";var n={title:`⬇️ Add the app to the home screen`,tags:[`Guide`],relativeUrl:`add-to-home-screen`,image:`${e}/manifestData/main.webp`,description:`How to add the website to the home screen on your phone or computer.`,createdAt:new Date(`2024/05/22`),author:t};export{n as t};

@@ -1,0 +1,1 @@
+.donate-button{background-color:var(--accent);width:100%;color:var(--accent-text);text-align:center;cursor:pointer;border-radius:.5rem;justify-content:center;align-items:center;gap:.5rem;margin-top:auto;padding:.6rem;font-size:1.2rem;text-decoration:none;transition:transform .3s,filter .3s;display:flex}.donate-button:hover{filter:brightness(1.05);transform:translateY(-.2rem)}
