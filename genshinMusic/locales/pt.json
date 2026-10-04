@@ -121,7 +121,7 @@
   },
   "home": {
     "app_description": "Um aplicativo onde você pode criar, praticar e tocar músicas para o {{APP_NAME}}",
-    "add_to_home_screen": "Para ter o aplicativo em tela cheia, adicione o site à sua tela inicial",
+    "add_to_home_screen": "Para ter o aplicativo em tela cheia, adicione o site à sua tela inicial.",
     "clear_cache_warning": "Limpar o cache/armazenamento do navegador pode excluir suas músicas, certifique-se de fazer backups",
     "persistent_storage_button": "Clique no botão abaixo para garantir que seu navegador não exclua suas músicas se faltar armazenamento",
     "privacy_policy": "Usamos cookies para análise, ao continuar a usar este aplicativo, você concorda com o uso de cookies. Saiba mais em:",
@@ -264,6 +264,9 @@
       "player_number_of_visual_rows_description": "O número de linhas na partitura visual, mais linhas podem causar lentidão",
       "player_hide_practice_notes_description": "Durante o modo de prática, oculta as notas para que você possa testar sua memória, a partitura visual continuará visível",
       "player_reverb_description": "Faz soar como se você estivesse tocando em uma caverna",
+      "player_dont_sync_song_data": "Não sincronizar o instrumento e a tonalidade da música",
+      "player_dont_sync_song_data_description": "As músicas tocam com o seu próprio instrumento, tonalidade e reverberação em vez dos que foram salvos nelas, para ouvir como uma música soa em outro instrumento",
+      "player_dont_sync_song_data_warning": "As músicas tocam nas mesmas teclas com o seu instrumento e a sua tonalidade, então podem não soar como o pretendido. Notas em teclas que o seu instrumento não tem ficam em silêncio.",
       "player_note_name_type": "Tipo de nome da nota",
       "player_note_name_type_description": "O tipo de texto que será escrito na nota",
       "player_keyboard_size": "Tamanho do teclado",

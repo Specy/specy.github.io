@@ -1,0 +1,1 @@
+import{l as e}from"./juLz9x51.js";import{n as t}from"./D_Rx-s1R.js";var n={title:`🎛️ MIDI music transposition`,relativeUrl:`midi-transpose`,tags:[`Guide`],image:`${e}/assets/blog/midi-1.webp`,description:`Use MIDI songs to transpose music into the app's sheet`,createdAt:new Date(`2024/03/19`),author:t};export{n as t};

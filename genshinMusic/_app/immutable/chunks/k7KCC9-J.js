@@ -1,1 +1,0 @@
-import{l as e}from"./D3aEYCKm.js";import{n as t}from"./Dmoe-zEN.js";var n={title:`📀 How to use the composer`,tags:[`Guide`],relativeUrl:`how-to-use-composer`,image:`${e}/assets/blog/help-composer.webp`,description:`This is a guide to help you learn how to use the song composer to create and edit songs!`,createdAt:new Date(`2024/03/19`),author:t};export{n as t};

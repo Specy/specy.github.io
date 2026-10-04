@@ -1,0 +1,1 @@
+import{l as e}from"./D2gUbl2J.js";import{n as t}from"./CULnh6Lk.js";var n={title:`🎹 Use a MIDI keyboard/device`,tags:[`Guide`],relativeUrl:`connect-midi-device`,image:`${e}/assets/blog/zen-keyboard.webp`,description:`How to connect a MIDI keyboard/device to the app, and how to use it in the player and composer.`,createdAt:new Date(`2024/03/19`),author:t};export{n as t};

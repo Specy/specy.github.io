@@ -1,0 +1,38 @@
+import{B as e,Dt as t,H as n,L as r,Ot as i,W as a,Y as o,_t as s,bt as c,ct as l,l as u,st as d,ut as f,xt as p}from"../chunks/DNu6mygQ.js";import{l as m}from"../chunks/D2gUbl2J.js";import"../chunks/xihTtKlq.js";import{a as h}from"../chunks/CtC_Vi9Q.js";import"../chunks/C8DiuXg5.js";import{t as g}from"../chunks/iDy-roxl.js";import{t as _}from"../chunks/CGXdEFER.js";import{t as v}from"../chunks/C0kl8pj8.js";import{t as y}from"../chunks/CULnh6Lk.js";import{t as b}from"../chunks/D6Obhb7-.js";import{t as x}from"../chunks/cNws6Apl.js";import{i as S,r as C}from"../chunks/kG1k8kn2.js";var w=n(`<!> <p class="blog-p">The VSRG composer has some shortcuts you can use, if you want to change them, go to the <!></p> <!> <div class="row" style="padding:0.1rem;gap:1rem;margin-top:-0.1rem"><!> <div>Add hit object (syncs to the registered keybinds)</div></div>`,1),T=n(`<p class="blog-p">This is a composer to create beatmaps for the songs you have in the app. You select a song you
+    want to create the beatmap for, and then place notes in the canvas. Each note you place can also
+    play a sound, you can even fully compose a song in the VSRG composer (VSRG means "Vertically
+    Scrolling Rhythm Game"). Once created, you or whoever has the beatmap, can play the song with
+    the <!>. You will have to press the notes in time
+    to earn more points.</p> <!> <p class="blog-p">When creating a beatmap, you first have to choose which song the beatmap is for, and set some
+    settings related to it. Let's start off exploring all the settings in the VSRG composer!</p> <!> <ol class="blog-ol"><li><b class="blog-b">Keys</b>: This is the number of tracks you want the beatmap to have, choose
+      this wisely as changing it after you already made most of the beatmap might be difficult. A
+      beatmap with less tracks might be easier to play, but harder to compose.</li> <li><b class="blog-b">BPM</b>: The bpm of the beatmap, it is used to give you guiding "columns"
+      where to place notes, in the composer you can also select the "snap points" from 1/1 to 1/16
+      of the bpm. The BPM of the beatmap should either be the same of the song, or 1/2th or 1/4th of
+      it</li> <li><b class="blog-b">Base pitch</b>: This is the base pitch of the instruments of the beatmap,
+      you can use the instruments to play sounds when a note is pressed.</li> <li><b class="blog-b">Difficulty</b>: This is how strict the timing is for whoever plays the
+      beatmap, from 1 to 10. A low difficulty leaves a wide margin around each note, a high one
+      wants you to be almost exactly on it.</li> <li><b class="blog-b">Vertical Editor</b>: With this you can decide if either having the editor be
+      oriented vertically or horizontally, it doesn't affect the beatmap.</li> <li><b class="blog-b">Max FPS</b>: When you "play" the beatmap inside the editor, it moves at a
+      certain FPS, high values might make the editor look smoother, but give a bit of inaccuracies
+      in the audio, find a value that is best for your device, it doesn't affect the beatmap.</li> <li><b class="blog-b">Snap scroll to snap point</b>: When this is enabled, once you release your
+      mouse/finger from moving the canvas, it will "snap" to the closest snap point it can find.</li> <li><b class="blog-b">Auto save changes</b>: Auto saves the changes to a song every 5 edits.</li> <li><b class="blog-b">Background song</b>: Here you can select which of your songs will be used as
+      a background for the beatmap, look further for more info about this section.</li></ol> <p class="blog-p">When you select a song for a beatmap, you can decide which layers to include in the final song,
+    one good reason for this is to mute a specific layer that you are going to replace with the
+    beatmap instrument, making the song seem more interctive. You can also "show" the notes of the
+    layers inside of the editor, to more easily guide you where to place notes</p> <!> <ol class="blog-ol"><li>Deselects this song from the beatmap</li> <li>Hides the layer in the editor</li> <li>Mutes the layer</li></ol> <!> <p class="blog-p">Once finished setting up the song and settings, you can start actually composing the beatmap. To
+    do actions on the canvas you can click the boxes, you have 3 actions you can do, add a "tap" hit
+    object, add a "held" hit object, or remove one. You can select which of the 3 actions you want
+    to do by pressing the selector on the bottom left.</p> <!> <ol class="blog-ol"><li>This is the currently selected hit object, you can drag it around and change the notes that
+      will be played when that note is pressed.</li> <li>This is a held hit object, the person who will play the song will have to hold the button
+      instead of just tapping it.</li> <li>This is the timeline, you will be shown the notes of the song you selected so that you can
+      more easily place hit objects in your beatmap.</li> <li>This is the layer selection, a hit object is going to be part of a layer, each layer can have
+      a different color and a different instrument. When you want to create a hit object of that
+      layer, select the layer and then press on the canvas to create it.</li> <li>You can assign notes to a hit object, you need to select a hit object and then will be able to
+      assign notes to it. Whenever the hit object will be pressed, the sound will be played.</li> <li>The action to execute whenever you tap, either create a new tap hit object, a held hit object,
+      or delete the hit object that you click</li> <li>With this slider you can choose how much to "scale" the beatmap, to make it easier to view the
+      whole beatmap</li> <li>Select the playback speed of the song, it's useful to listen more carefully to a song when
+      composing</li> <li>Select how many snap points you want to create, 1/1 is one snap point per BPM, 1/2, ..., 1/16
+      is to place more snap points between 1 BPM unit. Every unit's BPM snap point will have a
+      different color than the inner BPM snap points.</li> <li>Current timestamp in the timeline.</li> <li>Add/Remove or move between the breakpoints of the beatmap, they are sections which you can
+      more easily jump to</li></ol> <!>`,1);function E(n,E){p(E,!1);let D=h.getVsrgKeybinds(6),O=h.getShortcutMap(`vsrg_composer`);u(),y(n,{get metadata(){return b},children:(n,c)=>{var u=T(),p=l(u),h=f(d(p));_(h,{href:`/vsrg-player`,children:(n,r)=>{t();var i=a(`VSRG player`);e(n,i)},$$slots:{default:!0}}),t(),i(p);var y=f(p,2);v(y,{type:`h2`,textSize:`2rem`,margin:`1rem 0`,children:(n,r)=>{t();var i=a(`How to setup a beatmap`);e(n,i)},$$slots:{default:!0}});var b=f(y,4);x(b,{get src(){return`${m??``}/assets/blog/help-vsrg-composer-2.webp`},alt:`VSRG composer settings`});var E=f(b,6);x(E,{get src(){return`${m??``}/assets/blog/help-vsrg-composer-3.webp`},alt:`VSRG song settings`});var k=f(E,4);v(k,{type:`h2`,textSize:`2rem`,margin:`1rem 0`,children:(n,r)=>{t();var i=a(`How to use the composer`);e(n,i)},$$slots:{default:!0}});var A=f(k,4);x(A,{get src(){return`${m??``}/assets/blog/help-vsrg-composer.webp`},alt:`tutorial for the vsrg composer page`});var j=f(A,4),M=n=>{var r=w(),c=l(r);v(c,{type:`h2`,textSize:`2rem`,margin:`1rem 0`,children:(n,r)=>{t();var i=a(`VSRG Composer shortcuts`);e(n,i)},$$slots:{default:!0}});var u=f(c,2),p=f(d(u));_(p,{href:`/keybinds`,children:(n,r)=>{t();var i=a(`keybinds page`);e(n,i)},$$slots:{default:!0}}),i(u);var m=f(u,2);S(m,()=>O);var h=f(m,2),g=d(h);{let e=s(()=>D.join(`/`));C(g,()=>o(e))}t(2),i(h),e(n,r)};r(j,e=>{g.state.IS_MOBILE||e(M)}),e(n,u)},$$slots:{default:!0}}),c()}export{E as component};
