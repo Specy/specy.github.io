@@ -1,663 +1,103 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta name="theme-color" content="var(--accent)">
-    <meta name="description" content="Specy's portfolio website">
-    <meta name="keywords"
-        content="Specy,portfolio,website,conway,game,projects, Sky cotl, Genshin, Genshin music nightly, Sky music nightly, Scapix">
-    <meta name="author" content="Specy">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="Specy's portfolio">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <link rel="apple-touch-icon" href="">
-    <meta property="og:image" content="/assets/images/description.jpg">
-    <meta property="og:title" content="Specy">
-    <meta property="og:url" content="https://specy.github.io/">
-    <meta property="og:description" content="Specy's portfolio website">
-    <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
-    <link rel="shortcut icon" href="/assets/images/favicon.png?v=2" type="image/x-icon" />
-    <link rel='manifest' href='/manifest.json'>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Specy's portfolio</title>
-    <link rel="stylesheet" href="/assets/index.css" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Specy – this site moved to specy.app</title>
+    <meta name="description" content="Specy's apps and portfolio now live at specy.app.">
+    <!-- Kept for people who still need the old apps, but not indexed: search engines should send traffic to specy.app -->
+    <meta name="robots" content="noindex, follow">
+    <link rel="canonical" href="https://specy.app/">
+    <link rel="icon" href="/assets/images/favicon.png">
+    <style>
+        :root {
+            --bg: #1a2e65;
+            --card: #233a7a;
+            --text: #dad8b3;
+            --muted: #b5b394;
+            --accent: #DA0363;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 16px;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+        }
+        main {
+            width: 100%;
+            max-width: 32rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        h1 { margin: 0; font-size: 1.8rem; }
+        p { margin: 0; color: var(--muted); }
+        .primary {
+            display: block;
+            text-align: center;
+            padding: 0.9rem 1rem;
+            border-radius: 0.6rem;
+            background: var(--accent);
+            color: #fff;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .primary:hover { filter: brightness(1.1); }
+        section {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            padding: 1rem;
+            border-radius: 0.6rem;
+            background: var(--card);
+        }
+        h2 { margin: 0; font-size: 1.05rem; }
+        .row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        button {
+            flex: 1 1 12rem;
+            padding: 0.7rem 1rem;
+            border: 1px solid var(--muted);
+            border-radius: 0.5rem;
+            background: transparent;
+            color: var(--text);
+            font: inherit;
+            cursor: pointer;
+        }
+        button:hover { background: rgba(255, 255, 255, 0.08); }
+    </style>
 </head>
-
 <body>
-    <div class="background">
-        <canvas id="canvas2"></canvas>
-        <canvas id="canvas"></canvas>
-    </div>
-    <div id="scrollDown"></div>
-    <nav class="navbar">
-        <div class="navbar-content">
-            <div class="navBarLogo" onclick="drawS()">
-                <img src="/assets/images/favicon.png" alt="logo" />
-            </div>
-            <div class="navbar-options">
-                <a onclick="goToElement('contact')">
-                    Contact
-                </a>
-                <a onclick="goToElement('aboutMe')">
-                    About me
-                </a>
-                <a onclick="goToElement('myProjects')">
-                    My projects
-                </a>
-                <a onclick="goToElement('work-experience')">
-                    Work experience
-                </a>
-            </div>
+<main>
+    <h1>This site moved to specy.app</h1>
+    <p>All of Specy's apps, projects and the blog now live at specy.app.</p>
+    <a class="primary" href="https://specy.app/">Go to specy.app</a>
 
-            <button onclick="toggleUtils()" id="toggleUtils">Settings</button>
-            <div id="utils">
-                <button onclick="toggleTrail()" class="trailBtn"
-                    style="background-image:url('/assets/icons/trail.svg');" />
-                <button onclick="stop()" class="stopBtn" style="background-image:url('/assets/icons/pause.svg');" />
-                <button onclick="random()" style="background-image:url('/assets/icons/random.svg');" />
-                <button onclick="erase()" style="background-image:url('/assets/icons/erase.svg');" />
-                <button onclick="takePicture()" class="take-picture" />
-            </div>
+    <section>
+        <h2>Looking for the old music apps?</h2>
+        <p>
+            The new versions are at genshin-music.specy.app and sky-music.specy.app.
+            The old versions below still work and keep the songs you saved on this site.
+        </p>
+        <!-- Buttons rather than links, so crawlers don't discover the old copies -->
+        <div class="row">
+            <button type="button" data-go="/genshinMusic/">Old Genshin Music Nightly</button>
+            <button type="button" data-go="/skyMusic/">Old Sky Music Nightly</button>
         </div>
-        <div class="navbar-content-mobile">
-            <div class="navBarLogo" onclick="drawS()">
-                <img src="/assets/images/favicon.png" alt="logo" />
-            </div>
-            <div class="navbar-name">
-                Specy
-            </div>
-            <div class="hamburger" onclick="toggleDropdown()">
-                <div class="hamburger-open">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#dad8b3">
-                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
-                    </svg>
-                </div>
-                <div class="hamburger-x">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#dad8b3">
-                        <path
-                            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z">
-                        </path>
-                    </svg>
-                </div>
-            </div>
-        </div>
-        <div class="navbar-dropdown">
-            <a onclick="goToElement('contact')">
-                Contact
-            </a>
-            <a onclick="goToElement('aboutMe')">
-                About me
-            </a>
-            <a onclick="goToElement('myProjects')">
-                My projects
-            </a>
-            <a onclick="goToElement('work-experience')">
-                Work experience
-            </a>
-            <div class="dropdown-buttons">
-                <button onclick="toggleTrail()" class="trailBtn"
-                    style="background-image:url('/assets/icons/trail.svg');" />
-                <button onclick="stop()" class="stopBtn" style="background-image:url('/assets/icons/pause.svg');" />
-                <button onclick="random()" style="background-image:url('/assets/icons/random.svg');" />
-                <button onclick="erase()" style="background-image:url('/assets/icons/erase.svg');" />
-                <button onclick="takePicture()" class="take-picture" />
-            </div>
-        </div>
-    </nav>
-    <main id="mainContent">
-        <div class="presentation" id="presentation"></div>
-        <section class="aboutMe" style="margin-bottom: 5rem;">
-            <a href="#aboutMe" id="aboutMe">
-                <h1 class="bigText" style="margin-bottom: 0.5rem;">About Me</h1>
-            </a>
-            <div class="about-me-wrapper" style="min-height: unset; cursor: unset;">
-                <div class="smallMiddleText">
-                    <div style="padding: 0.5rem; margin-bottom: 1rem;" class="text">
-                        I'm <span style="color:var(--accent); display: inline;">Specy</span>, an italian computer
-                        science student with a passion in building, reparing and developing.
-                        <br><br>
-                        I specialise in creating richly interactive experiences and tools to solve common problems and
-                        increase productivity.
-                        <br /><br />
-                        I always strive to experiment with the newest technologies in the tech world, especially unusual
-                        features of the web like WASM, Web audio/midi apis, workers, PWA, etc...
-                    </div>
-                    <div class="skills-wrapper">
-                        <div>
-                            <div class="accent-text">Proficient in</div>
-                            <ul class="skills-list">
-                                <li>
-                                    <img src="./assets/icons/langs/js.svg" class="lang-icon" />
-                                    JavaScript / Node.js
-                                </li>
-                                <li>
-                                    <img src="./assets/icons/langs/ts.svg" class="lang-icon" />
-
-                                    TypeScript
-                                </li>
-                                <li>
-                                    <img src="./assets/icons/langs/html.svg" class="lang-icon" />
-                                    HTML 5 / CSS 3 / Scss
-                                </li>
-                                <li>
-                                    <img src="./assets/icons/langs/react.svg" class="lang-icon" />
-
-                                    React
-                                </li>
-                                <li>
-                                    <img src="./assets/icons/langs/nextjs.svg" class="lang-icon" />
-
-                                    Next.js
-                                </li>
-                                <li>
-                                    <img src="./assets/icons/langs/svelte.svg" class="lang-icon" />
-
-                                    SvelteKit
-                                </li>
-                            </ul>
-                        </div>
-                        <div>
-                            <div class="accent-text">Learning</div>
-                            <ul class="skills-list">
-                                <li>
-                                    <img src="./assets/icons/langs/rust.svg" class="lang-icon" />
-                                    Rust
-                                </li>
-                                <li>
-                                    <img src="./assets/icons/langs/java.svg" class="lang-icon" />
-
-                                    Java
-                                </li>
-
-                                <li>
-                                    <img src="./assets/icons/langs/nest.svg" class="lang-icon" />
-
-                                    Nest.js
-                                </li>
-
-                                <li>
-                                    <img src="./assets/icons/langs/electron.svg" class="lang-icon" />
-
-                                    Electron
-                                </li>
-                                <li>
-                                    <img src="./assets/icons/langs/react.svg" class="lang-icon" />
-
-                                    React Native
-                                </li>
-                                <li>
-                                    <img src="./assets/icons/langs/python.svg" class="lang-icon" />
-                                    Python
-                                </li>
-                                <li>
-                                    <img src="./assets/icons/langs/cpp.svg" class="lang-icon" />
-
-                                    C / C++
-                                </li>
-
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <a href="#myProjects" id="myProjects">
-            <h1 class="bigText" style="margin-bottom: 1.5rem;"> My Projects</h1>
-        </a>
-        <section class="myProjects">
-            <div class="project-wrapper">
-                <a class="github-badge" target="_blank" href="https://github.com/Specy/genshin-music">
-                    <img src="./assets/icons/github.svg" />
-                </a>
-                <a class="project" href="/genshinMusic" target="_blank" id="genshin-music-nightly-link">
-                    <img src='/assets/images/apps/GMN.webp' class="project-image"
-                        alt="Genshin music nightly image preview">
-                    <div class="project-content">
-                        <div class="project-title">
-                            <div>
-                                Genshin Music Nightly
-                            </div>
-                            <div class="tech">
-                                <img src="/assets/icons/langs/nextjs.svg" />
-                                <img src="/assets/icons/langs/react.svg" />
-                                <img src="./assets/icons/langs/ts.svg" />
-                            </div>
-                        </div>
-
-                        <div class="project-text-border text">
-                            A musical app inspired by the game Genshin Impact, with over a million users, built with
-                            react
-                            and
-                            pixi.js
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="project-wrapper">
-                <a class="github-badge" target="_blank" href="https://github.com/Specy/genshin-music">
-                    <img src="./assets/icons/github.svg" />
-                </a>
-                <a class="project" href="/skyMusic" target="_blank" id="sky-music-nightly-link">
-                    <img src='/assets/images/apps/SMN.webp' class="project-image" alt="Sky music nightly image preview">
-                    <div class="project-content">
-                        <div class="project-title">
-                            <div>
-                                Sky Music Nightly
-                            </div>
-                            <div class="tech">
-                                <img src="/assets/icons/langs/nextjs.svg" />
-                                <img src="/assets/icons/langs/react.svg" />
-                                <img src="./assets/icons/langs/ts.svg" />
-                            </div>
-                        </div>
-                        <div class="project-text-border text">
-                            Similar as Genshin Music Nightly but adapted for the game Sky: Children of the Light
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-
-            <article class="project-wrapper" onclick="showHiddenDiv(this)">
-                <a class="github-badge" target="_blank" href="https://github.com/Specy/scapix">
-                    <img src="./assets/icons/github.svg" />
-                </a>
-                <img src='/assets/images/apps/Scapix.png' class="project-image" alt="Scapix image preview">
-                <div class="project-content">
-                    <div class="project-title">
-                        <div>
-                            Scapix
-                        </div>
-                        <div class="tech">
-                            <img src="./assets/icons/langs/svelte.svg" />
-                            <img src="./assets/icons/langs/electron.svg" />
-                            <img src="./assets/icons/langs/ts.svg" />
-                        </div>
-                    </div>
-                    <div class="project-text-border text">
-                        A machine learning image/gif/video upscaling and denoiser app made with
-                        sveltekit + typescript + electron
-                    </div>
-                    <div class="hiddenDiv">
-                        <br>
-                        <div class="smallMiddleText" style="color:var(--accent)">
-                            Features
-                        </div>
-
-                        <ul class="project-text">
-                            <li>Image and video upscaling with no size limit </li>
-                            <li>Denoise any kind of image kind, extend with your own denoise models</li>
-                            <li>Change file formats</li>
-                            <li>Fast and Modern UI</li>
-                            <li>100% offline </li>
-                        </ul>
-                        <br>
-                        <a class="project-button" href="https://github.com/Specy/Scapix">
-                            Click here to visit on github
-                        </a>
-                    </div>
-                </div>
-            </article>
-            <div class="project-wrapper">
-                <a class="github-badge" target="_blank" href="https://github.com/Specy/asm-editor">
-                    <img src="./assets/icons/github.svg" />
-                </a>
-                <a class="project" href="https://asm-editor.specy.app/" target="_blank">
-                    <img src='/assets/images/apps/ASM-editor.webp' class="project-image" alt="ASM Editor preview">
-                    <div class="project-content">
-                        <div class="project-title">
-                            <div>
-                                ASM Editor
-                            </div>
-                            <div class="tech">
-                                <img src="/assets/icons/langs/svelte.svg" />
-                                <img src="./assets/icons/langs/rust.svg" />
-                                <img src="./assets/icons/langs/ts.svg" />
-                            </div>
-                        </div>
-                        <div class="project-text-border text">
-                            A web editor for learning m68k assembly, built using my WebAssembly rust interpreter and
-                            sveltekit
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="project-wrapper">
-                <a class="github-badge" target="_blank" href="https://github.com/Specy/tokeko">
-                    <img src="./assets/icons/github.svg" />
-                </a>
-                <a class="project" href="https://tokeko.specy.app/" target="_blank">
-                    <img src='/assets/images/apps/tokeko.webp' class="project-image" alt="ASM Editor preview">
-                    <div class="project-content">
-                        <div class="project-title">
-                            <div>
-                                Tokeko
-                            </div>
-                            <div class="tech">
-                                <img src="/assets/icons/langs/svelte.svg" />
-                                <img src="./assets/icons/langs/rust.svg" />
-                                <img src="./assets/icons/langs/ts.svg" />
-                            </div>
-                        </div>
-                        <div class="project-text-border text">
-                            A webapp to learn compilers and language theory by creating your own grammar and seeing how
-                            a parser would parse it
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="project-wrapper">
-                <a class="github-badge" target="_blank" href="https://github.com/Specy/rooc">
-                    <img src="./assets/icons/github.svg" />
-                </a>
-                <a class="project" href="https://rooc.specy.app/" target="_blank">
-                    <img src='/assets/images/apps/rooc-editor-wide.webp' class="project-image" alt="ASM Editor preview">
-                    <div class="project-content">
-                        <div class="project-title">
-                            <div>
-                                ROOC Optimization
-                            </div>
-                            <div class="tech">
-                                <img src="/assets/icons/langs/svelte.svg" />
-                                <img src="./assets/icons/langs/rust.svg" />
-                                <img src="./assets/icons/langs/ts.svg" />
-                            </div>
-                        </div>
-                        <div class="project-text-border text">
-                            A language and platform for easy mathematical optimization models.
-                            </br> Made to bring optimization to more people
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="project-wrapper">
-                <a class="github-badge" target="_blank" href="https://github.com/thoseSkyModders/SkyMusic">
-                    <img src="./assets/icons/github.svg" />
-                </a>
-                <a class="project" href="https://sky-music.herokuapp.com" target="_blank">
-                    <img src='/assets/images/apps/SM.png' class="project-image" alt="Sky Music image preview">
-                    <div class="project-content">
-                        <div class="project-title">
-                            <div>
-                                Sky music
-                            </div>
-                            <div class="tech">
-                                <img src="./assets/icons/langs/html.svg" />
-                                <img src="/assets/icons/langs/js.svg" />
-                            </div>
-                        </div>
-                        <div class="project-text-border text">
-                            A webApp with over 500k users, made to help players of the game Sky Cotl to
-                            practice, compose and share songs
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="project-wrapper">
-                <a class="github-badge" target="_blank" href="https://github.com/Specy/cgol-background-generator">
-                    <img src="./assets/icons/github.svg" />
-                </a>
-                <a class="project" href="https://conway-generator.specy.app/" target="_blank">
-                    <img src='/assets/images/apps/Conway-generator.png' class="project-image" alt="ASM Editor preview">
-                    <div class="project-content">
-                        <div class="project-title">
-                            <div>
-                                Conway Generator
-                            </div>
-                            <div class="tech">
-                                <img src="/assets/icons/langs/svelte.svg" />
-                                <img src="./assets/icons/langs/ts.svg" />
-                            </div>
-                        </div>
-                        <div class="project-text-border text">
-                            A website to play with Conway's game of life and create backgrounds with custom colors, like
-                            this website!
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="old-work-wrapper">
-                <button onclick="showOlderWork()" id="old-work-button">
-                    Show older projects
-                </button>
-            </div>
-            <a class="cell old-work" href="https://specy.app" target="_blank">
-                <div class="middleText">
-                    <img class="logo" src="/assets/images/favicon.png" alt="Specy.app logo">
-                    <h2 class="project-title">Specy.app</h2>
-                </div>
-                <div class="project-text">
-                    The website where i host my webapps and all future projects
-                </div>
-                <div class="clickMe">open</div>
-            </a>
-            <a class="cell old-work" href="https://github.com/Specy/Quick-safe-notes/releases/tag/v1.0.0"
-                target="_blank">
-                <div class="middleText">
-                    <img class="logo" src="/assets/images/QFN.png" alt="Quick Safe Notes logo">
-                    <h2 class="project-title">Quick safe notes</h2>
-                </div>
-                <div class="project-text">
-                    An app created with react native to save create and organize notes, it has authentication and
-                    notes folders together with a simple UI
-                </div>
-                <div class="clickMe">open</div>
-            </a>
-            <a class="cell old-work" href="/apps/SP_Code/index.html" target="_blank">
-                <div class="middleText">
-                    <img class="logo" src="/assets/images//SP_Code.png" alt="SP Code logo">
-                    <h2 class="project-title">SP Code</h2>
-                </div>
-                <div class="project-text">
-                    A Javascript library for steganography that turns any text into an image that can be then
-                    converted back to
-                    text.<br>
-                    The data can also be added to an existing image
-                </div>
-                <div class="clickMe">open</div>
-            </a>
-
-            <article class="cell old-work" onclick="showHiddenDiv(this)">
-                <div class="middleText">
-                    <img class="logo" src="/assets/images/eatSchool.png" alt="EatSchool logo">
-                    <h2 class="project-title">EatSchool</h2>
-                </div>
-
-                <div class="project-text">
-                    A webapp created for my school to help food ordering during the COVID-19 pandemic
-                </div>
-                <div class="hiddenDiv">
-                    <div class="smallMiddleText" style="color:var(--accent)">
-                        How it works
-                    </div>
-                    <div class="project-text">
-                        Each class in the school owns an account which can be used to place orders to the school's bar
-                        <br>
-                        Once an order is placed, the bar owner can see the orders made by the classes and organise the
-                        delivery
-                        inside the school
-                    </div>
-                </div>
-                <div class="clickMe">read more</div>
-            </article>
-        </section>
-        <section class="work-experience">
-            <a href="#work-experience" id="work-experience">
-                <h1 class="bigText">My experiences</h1>
-            </a>
-            <div class="timeline">
-                <div class="timeline-element">
-                    <div class="timeline-element-header">
-                        <div class="timeline-element-header-image"
-                            style="background-color: var(--primary)">
-                            <img src="/assets/images/discerns.png" style="width: 100%; height: 100%; border-radius: 50%;" />
-                        </div>
-
-                        <a href="https://learn.universapp.it" class="link" target="_blank">
-                            <h1>
-                                Discerns
-                            </h1>
-                        </a>
-                        <div class="work-date">
-                            May 2023 - Present
-                        </div>
-
-                    </div>
-                    <div class="timeline-element-content">
-                        <div class="work-experience-cell">
-                            <div>
-                                Being the co-founder/CTO/CPO of the company, my role is to architect and develop
-                                the
-                                <a class="link" href="https://learn.universapp.it">Universapp and Discerns</a> learning platform.
-                            </div>
-                            <ul style="padding-left: 1rem;" class="text">
-                                <li>
-                                    Lead and developed the front end application of the LMS, from an MVP to the
-                                    final product. Made with next.js and tailwind.
-                                </li>
-                                <li>
-                                    Architected and developed AI features for content creation, summarization and
-                                    improvement, an interactive chatbot with memory, automatic course creation and more. Reducing
-                                    the workload on teachers and improving the learning experience for students.
-                                    Made with langchain, openai and claude.
-                                </li>
-                                <li>
-                                    Assisted in the development of the LMS backend and developed the AI and chatbot
-                                    backends.
-                                </li>
-                                <li>
-                                    Developed highly interactive features like a coding editor, custom markdown contents
-                                    for interactive lectures and more.
-                                </li>
-                            </ul>
-                            <div class="tech">
-                                <img src="/assets/icons/langs/nextjs.svg" />
-                                <img src="/assets/icons/langs/react.svg" />
-                                <img src="/assets/icons/langs/ts.svg" />
-                                <img src="/assets/icons/langs/tailwind.svg" />
-                                <img src="/assets/icons/langs/nest.svg" />
-                                <img src="/assets/icons/langs/langchain.svg" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-element">
-                    <div class="timeline-element-header">
-                        <div class="timeline-element-header-image" style="background-color: #1a2e65; padding: 0.3rem;">
-                            <img src="/assets/images/univaq.png"
-                                style="width: 100%; height: 100%; border-radius: 50%;" />
-
-                        </div>
-                        <a href="https://www.univaq.it" class="link" target="_blank">
-                            <h1>
-                                Univaq
-                            </h1>
-                        </a>
-                        <div class="work-date">
-                            Sept 2021 - Present
-                        </div>
-
-                    </div>
-                    <div class="timeline-element-content">
-                        <div class="work-experience-cell" class="text">
-                            <div>
-                                I'm currently studying computer science at the <a href="https://www.univaq.it/"
-                                    class="link" target="_blank">University
-                                    of L'Aquila</a>, working together with professors to create tools that make it
-                                easier for students to
-                                learn.
-                            </div>
-                            <ul style="padding-left: 1rem;">
-                                <li>
-                                    <b>First year:</b> I created an interpreter and web editor for the m68k assembly
-                                    language, available <a href="https://asm-editor.specy.app" class="link"
-                                        target="_blank">here</a>
-                                    used by the university to teach the course of computer architecture.
-                                </li>
-                                <li>
-                                    <b>Second year:</b> I'm working on a language and platform for easy mathematical
-                                    optimization models, available <a href="https://rooc.specy.app" class="link"
-                                        target="_blank">here</a>
-                                    to help students with the course of operations research and combinatorial
-                                    optimization.
-                                </li>
-                                <li>
-                                    <b>Third year:</b> I created a webapp to learn compilers and language theory by
-                                    creating your own grammar and seeing how a parser would parse it, available <a
-                                        href="https://tokeko.specy.app" class="link" target="_blank">here</a>
-                                </li>
-                            </ul>
-                            <div class="tech">
-                                <img src="/assets/icons/langs/svelte.svg" />
-                                <img src="/assets/icons/langs/ts.svg" />
-                                <img src="/assets/icons/langs/rust.svg" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-end">
-
-                </div>
-            </div>
-
-        </section>
-        <section class="contact">
-            <a href="#contact" id="contact">
-                <h1 class="bigText">Contact me!</h1>
-            </a>
-            <div class="contactCell" style="cursor: unset;">
-                <div style="display: flex; justify-content: space-between;">
-                    <div class="smallMiddleText" style="margin-right: 5px; color: var(--accent)">
-                        E-mail:
-                    </div>
-                    <a style="user-select:all; cursor: pointer;">
-                        specy.dev@gmail.com
-                    </a>
-                </div>
-                <div style="display: flex; justify-content: space-between; margin-top:1rem; user-select: auto;">
-                    <div class="smallMiddleText" style="margin-right: 5px; color: var(--accent)">
-                        Discord:
-                    </div>
-                    <a style="user-select:all; cursor: pointer;">
-                        @specy
-                    </a>
-                </div>
-                <div style="display: flex; justify-content: space-between; margin-top:1rem; user-select: auto;">
-                    <div class="smallMiddleText" style="margin-right: 5px; color: var(--accent)">
-                        Github:
-                    </div>
-                    <a href="https://github.com/Specy" target="_blank">
-                        @specy
-                    </a>
-                </div>
-            </div>
-        </section>
-    </main>
-    <footer class="footer">
-        <div class="footer-element">
-            <a href="https://github.com/Specy" class="github" target="_blank" rel="noreferrer">
-                <img src="/assets/images/github.png" alt="Github">
-            </a>
-            <a href="https://specy.app" class="footer-link" target="_blank" rel="noreferrer">
-                Specy.app
-            </a>
-        </div>
-
-        <div class="donation-wrapper">
-            <a href="https://paypal.me/specyDev" target="_blank" class="paypal" rel="noreferrer">
-                <img src='/assets/images/paypalme.png' alt="Donate on paypal" />
-            </a>
-            <a href="https://ko-fi.com/specy" target="_blank" class="kofi" rel="noreferrer"
-                style="background-color: white;">
-                <img src='/assets/images/kofi.png' alt="Donate on kofi" />
-            </a>
-        </div>
-    </footer>
-    <div id="fps" style="display: none;">
-        0
-    </div>
-    <script src="/assets/app.js"></script>
+    </section>
+</main>
+<script>
+    document.querySelectorAll('[data-go]').forEach(function (button) {
+        button.addEventListener('click', function () {
+            location.href = button.getAttribute('data-go');
+        });
+    });
+</script>
 </body>
-
 </html>
