@@ -3,16 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Specy – moved to specy.app</title>
+    <title>Specy – this site moved to specy.app</title>
+    <meta name="description" content="Specy's apps and portfolio now live at specy.app.">
+    <!-- Kept for people who still need the old apps, but not indexed: search engines should send traffic to specy.app -->
+    <meta name="robots" content="noindex, follow">
     <link rel="canonical" href="https://specy.app/">
-    <meta http-equiv="refresh" content="0; url=https://specy.app/">
-    <script>location.replace('https://specy.app/');</script>
+    <link rel="icon" href="/assets/images/favicon.png">
     <style>
-        body { font-family: system-ui, sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; padding: 0 16px; text-align: center; background: #1f4068; color: #fff; }
-        a { color: #DA0363; font-size: 1.2rem; }
+        :root {
+            --bg: #1a2e65;
+            --card: #233a7a;
+            --text: #dad8b3;
+            --muted: #b5b394;
+            --accent: #DA0363;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 16px;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+        }
+        main {
+            width: 100%;
+            max-width: 32rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        h1 { margin: 0; font-size: 1.8rem; }
+        p { margin: 0; color: var(--muted); }
+        .primary {
+            display: block;
+            text-align: center;
+            padding: 0.9rem 1rem;
+            border-radius: 0.6rem;
+            background: var(--accent);
+            color: #fff;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .primary:hover { filter: brightness(1.1); }
+        section {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            padding: 1rem;
+            border-radius: 0.6rem;
+            background: var(--card);
+        }
+        h2 { margin: 0; font-size: 1.05rem; }
+        .row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        button {
+            flex: 1 1 12rem;
+            padding: 0.7rem 1rem;
+            border: 1px solid var(--muted);
+            border-radius: 0.5rem;
+            background: transparent;
+            color: var(--text);
+            font: inherit;
+            cursor: pointer;
+        }
+        button:hover { background: rgba(255, 255, 255, 0.08); }
     </style>
 </head>
 <body>
-    <p>This site moved to <a href="https://specy.app/">specy.app</a>.</p>
+<main>
+    <h1>This site moved to specy.app</h1>
+    <p>All of Specy's apps, projects and the blog now live at specy.app.</p>
+    <a class="primary" href="https://specy.app/">Go to specy.app</a>
+
+    <section>
+        <h2>Looking for the old music apps?</h2>
+        <p>
+            The new versions are at genshin-music.specy.app and sky-music.specy.app.
+            The old versions below still work and keep the songs you saved on this site.
+        </p>
+        <!-- Buttons rather than links, so crawlers don't discover the old copies -->
+        <div class="row">
+            <button type="button" data-go="/genshinMusic/">Old Genshin Music Nightly</button>
+            <button type="button" data-go="/skyMusic/">Old Sky Music Nightly</button>
+        </div>
+    </section>
+</main>
+<script>
+    document.querySelectorAll('[data-go]').forEach(function (button) {
+        button.addEventListener('click', function () {
+            location.href = button.getAttribute('data-go');
+        });
+    });
+</script>
 </body>
 </html>
