@@ -1,0 +1,1 @@
+import{J as e}from"./DNu6mygQ.js";import"./C--Cg7cE.js";var t=t=>e(t,`touchstart`,e=>e.preventDefault(),{passive:!1});export{t};

@@ -1,0 +1,1 @@
+import{Nt as e}from"./DNu6mygQ.js";import{d as t,u as n}from"./D5yYdY7m.js";function r(t,r){throw e&&(isNaN(t)||t<400||t>599)?Error(`HTTP error status codes must be between 400 and 599 — ${t} is invalid`):new n(t,r)}function i(n,r){throw e&&(isNaN(n)||n<300||n>308)?Error(`Invalid status code`):new t(n,r.toString())}export{i as n,r as t};
