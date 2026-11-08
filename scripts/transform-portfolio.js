@@ -1,22 +1,21 @@
-import { JSDOM } from 'jsdom';
+// Cloudflare Pages build step for portfolio.specy.app (its build command runs this script).
+// GitHub Pages serves this repository as it is at specy.github.io, the old site where the music
+// apps used to live: there the home page is the "moved to specy.app" notice and the old apps send
+// visitors on to the new ones. portfolio.specy.app is the portfolio: nothing redirects, and the
+// whole site stays out of search results.
 import fs from 'fs/promises';
 import { resolve } from 'path';
 
-async function run(){
-    const page = await JSDOM.fromFile(resolve('index.html'));
-    const document = page.window.document;
-    const sky = document.getElementById("sky-music-nightly-link")
-    const genshin = document.getElementById("genshin-music-nightly-link")
-    // Only the old portfolio page had these links. The "moved to specy.app" page that replaced it
-    // already points at the new apps, so leave it as it is: throwing here fails the Cloudflare
-    // Pages build, which then keeps serving the last good deploy (the old portfolio).
-    if (!sky || !genshin) {
-        console.log("transform-portfolio: no nightly links in index.html, leaving it unchanged")
-        return
-    }
-    sky.href = "https://sky-music.specy.app"
-    genshin.href = "https://genshin-music.specy.app"
-    const html = page.serialize();
-    await fs.writeFile(resolve('index.html'), html);
+async function run() {
+    await fs.copyFile(resolve('portfolio.html'), resolve('index.html'));
+    // Every page of the old app copies under /genshinMusic and /skyMusic loads this script
+    await fs.writeFile(
+        resolve('legacy-redirect.js'),
+        '// Empty on portfolio.specy.app: only specy.github.io redirects (scripts/transform-portfolio.js)\n'
+    );
+    // Every response, the old app copies included. Cloudflare Pages reads _headers; GitHub Pages
+    // never sees it, since it only exists in this build.
+    await fs.writeFile(resolve('_headers'), '/*\n  X-Robots-Tag: noindex\n');
+    console.log('transform-portfolio: portfolio home page, no redirects, X-Robots-Tag: noindex everywhere');
 }
 run()

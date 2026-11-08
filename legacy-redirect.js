@@ -5,6 +5,9 @@
 //
 // The root page loads this directly. After replacing genshinMusic/ or skyMusic/ with a new build,
 // run `npm run inject-legacy-redirect` to add it to their pages.
+//
+// Only specy.github.io redirects: the portfolio.specy.app build (scripts/transform-portfolio.js)
+// replaces this file with an empty one, so nothing there sends visitors away.
 (function () {
     var prefix = location.pathname.split('/').slice(0, 2).join('/');
     var target;
